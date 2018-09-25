@@ -1,10 +1,50 @@
 /**
- * @author: zc 
- * @Date: 2018-09-25 10:49:35 
+ * @Author: zc 
+ * @Date: 2018-09-25 14:25:47 
  * @Email: 237350543@qq.com 
  * @Github: https://github.com/ZCreturn0/ZC-UI 
  */
 
+/**
+ * 
+ * if el had class 'className'
+ * @param el (object)
+ * @param className (string)
+ * @returns (boolean)
+ * 
+ */
+function hasClass(el,className){
+    if(el.className == ''){
+        return false;
+    }
+    else{
+        var classList = el.className.split(' ');
+        return classList.some((item) => {
+            return item == className
+        });
+    }
+}
+
+/**
+ * 
+ * el add class 'className'
+ * @param el (object)
+ * @param className (string)
+ * 
+ */
+function addClass(el,className){
+    if(hasClass(el,className)){
+        return;
+    }
+    else{
+        if(el.className == ''){
+            el.className = className;
+        }
+        else{
+            el.className += ' '+className;
+        }
+    }
+}
 
 function ZC_Table(table_setting) {
     if (!table_setting.el || !table_setting.captain || !table_setting.field){
@@ -19,6 +59,8 @@ function ZC_Table(table_setting) {
 }
 
 ZC_Table.prototype.update = function (table_data) {
+    this.el.innerHTML = '';
+
     var tr = document.createElement('tr');
     for(let item of this.captain){
         tr.innerHTML += `<th>${item}</th>`;
@@ -34,3 +76,4 @@ ZC_Table.prototype.update = function (table_data) {
         this.el.appendChild(tr);
     }
 }
+
