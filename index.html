@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+    <link rel="stylesheet" type="text/css" href="./css/zc_table.css"/>
+    <style>
+        #zc_table{
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <table id="zc_table"></table>
+    <script src="./js/zc_table.js"></script>
+    <script>
+        var tableElement = document.getElementById('zc_table');
+        var table_setting = {
+            el: tableElement,
+            captain: ['姓名','年龄','分数','地址'],
+            field:['name','age','score','addr']
+        }
+        var table_data = {
+            page: 1,
+            pageSize: 10,
+            total: 256,
+            list: [
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
+                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' }
+            ]
+        }
+
+        var table = new ZC_Table(table_setting);
+        table.update(table_data);
+    </script>
+</body>
+</html>
