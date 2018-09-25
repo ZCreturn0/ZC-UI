@@ -66,6 +66,8 @@ ZC_Table.prototype.update = function (table_data) {
         tr.innerHTML += `<th>${item}</th>`;
     }
 
+    addClass(tr,'zc_caption_tr');
+
     this.el.appendChild(tr);
 
     for(let item of table_data.list){

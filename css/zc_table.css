@@ -5,6 +5,25 @@
  * @Github: https://github.com/ZCreturn0/ZC-UI 
  */
 
+table{
+    color: #b3d4e4;
+    border-collapse:collapse;
+    margin-top: 10px;
+}
+
 th,td{
     text-align: center;
+    padding: 15px 0;
+}
+
+tr:nth-child(even){
+    background: #202f94;
+}
+
+tr:nth-child(odd){
+    background: #1f2681;
+}
+
+.zc_caption_tr{
+    background: #2c6edf;
 }
