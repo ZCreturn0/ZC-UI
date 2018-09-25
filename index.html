@@ -41,8 +41,29 @@
             ]
         }
 
+        var table_data2 = {
+            page: 2,
+            pageSize: 10,
+            total: 256,
+            list: [
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
+                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' }
+            ]
+        }
+
         var table = new ZC_Table(table_setting);
         table.update(table_data);
+        document.onclick = () => {
+            table.update(table_data2);
+        }
     </script>
 </body>
 </html>
