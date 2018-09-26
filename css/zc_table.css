@@ -27,3 +27,7 @@ tr:nth-child(odd){
 .zc_caption_tr{
     background: #2c6edf;
 }
+
+.zc_border{
+    border: 1px solid grey;
+}
