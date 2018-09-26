@@ -46,6 +46,33 @@ function addClass(el,className){
     }
 }
 
+/**
+ * judge a number is a Number and over 0
+ * @param num(any)
+ * @returns boolean
+ * 
+ */
+function judgeNumber(num){
+    if(typeof num != 'number'){
+        return false;
+    }
+    else{
+        if (num > 0 && /^\d+$/.test(num)){
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * 
+ * init table with some necessary params
+ * @param table_setting (object)
+ * @el table to mount(object)
+ * @caption text shown on the table caption(Array)
+ * @field attr on data list in table_data(Array)
+ * 
+ */
 function ZC_Table(table_setting) {
     if (!table_setting.el || !table_setting.captain || !table_setting.field){
         throw 'Lack of necessary params';
@@ -56,6 +83,13 @@ function ZC_Table(table_setting) {
     this.el = table_setting.el;
     this.captain = table_setting.captain;
     this.field = table_setting.field;
+    this.init();
+}
+/**
+ * initialize style with setting attribute
+ */
+ZC_Table.prototype.init = function(){
+    var zc_border = this.el.getAttribute('zc_border');
 }
 
 ZC_Table.prototype.update = function (table_data) {
@@ -77,5 +111,16 @@ ZC_Table.prototype.update = function (table_data) {
         };
         this.el.appendChild(tr);
     }
+
+    this.pagination(table_data.page,table_data.pageSize,table_data.total);
 }
 
+ZC_Table.prototype.pagination = function (page,pageSize,total){
+    if (!judgeNumber(page) || !judgeNumber(pageSize)){
+        throw 'page and pageSize must be integer and not 0';
+    }
+    else if (total != 0 && judgeNumber(total))
+    {
+        throw 'total must be integer';
+    }
+}
