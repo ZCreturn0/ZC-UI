@@ -9,6 +9,7 @@ table{
     color: #b3d4e4;
     border-collapse:collapse;
     margin-top: 10px;
+    width: 100%;
 }
 
 th,td{
