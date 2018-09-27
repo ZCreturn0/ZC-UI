@@ -10,6 +10,7 @@ table{
     border-collapse:collapse;
     margin-top: 10px;
     width: 100%;
+    border: 1px solid #2149c2;
 }
 
 th,td{
@@ -31,4 +32,29 @@ tr:nth-child(odd){
 
 .zc_border{
     border: 1px solid grey;
+}
+
+.pager{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pager-node{
+    background: #f4f4f5;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #606266;
+    font-weight: bold;
+}
+
+.pager-node:hover{
+    color: #409eff;
+}
+
+.pager-selected{
+    background: #409eff;
+    color: #fff;
 }
