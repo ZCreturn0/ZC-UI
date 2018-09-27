@@ -88,6 +88,7 @@ function ZC_Table(table_setting) {
         throw "Can't match length between captain and field";
     }
     this.el = table_setting.el;
+    this.table = document.createElement('table');
     this.captain = table_setting.captain;
     this.field = table_setting.field;
     this.tools = new ZC_Tools();
@@ -106,6 +107,7 @@ ZC_Table.prototype.init = function(){
  */
 ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
+    this.table.innerHTML = '';
 
     var tr = document.createElement('tr');
     for(let item of this.captain){
@@ -114,15 +116,16 @@ ZC_Table.prototype.update = function (table_data) {
 
     this.tools.addClass(tr,'zc_caption_tr');
 
-    this.el.appendChild(tr);
+    this.table.appendChild(tr);
 
     for(let item of table_data.list){
         var tr = document.createElement('tr');
         for(let attr of this.field){
             tr.innerHTML += `<td>${item[attr]}</td>`;
         };
-        this.el.appendChild(tr);
+        this.table.appendChild(tr);
     }
+    this.el.appendChild(this.table);
 
     this.pagination(table_data.page,table_data.pageSize,table_data.total);
 }
@@ -140,5 +143,8 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
     
     var pageNum = Math.ceil(total / pageSize);
+    if(page > pageNum){
+        throw 'out of pageNum';
+    }
 
 }
