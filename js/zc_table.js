@@ -6,6 +6,13 @@
  */
 
 /**
+ * basic tools
+ */
+function ZC_Tools(){
+
+}
+
+/**
  * 
  * if el had class 'className'
  * @param el (object)
@@ -13,7 +20,7 @@
  * @returns (boolean)
  * 
  */
-function hasClass(el,className){
+ZC_Tools.prototype.hasClass = function(el,className){
     if(el.className == ''){
         return false;
     }
@@ -32,8 +39,8 @@ function hasClass(el,className){
  * @param className (string)
  * 
  */
-function addClass(el,className){
-    if(hasClass(el,className)){
+ZC_Tools.prototype.addClass = function (el,className){
+    if (this.hasClass(el,className)){
         return;
     }
     else{
@@ -47,12 +54,12 @@ function addClass(el,className){
 }
 
 /**
- * judge a number is a Number and over 0
+ * judge a number is an Integer and over 0
  * @param num(any)
  * @returns boolean
  * 
  */
-function judgeNumber(num){
+ZC_Tools.prototype.judgeNumber = function(num){
     if(typeof num != 'number'){
         return false;
     }
@@ -83,8 +90,10 @@ function ZC_Table(table_setting) {
     this.el = table_setting.el;
     this.captain = table_setting.captain;
     this.field = table_setting.field;
+    this.tools = new ZC_Tools();
     this.init();
 }
+
 /**
  * initialize style with setting attribute
  */
@@ -92,6 +101,9 @@ ZC_Table.prototype.init = function(){
     var zc_border = this.el.getAttribute('zc_border');
 }
 
+/**
+ * set data into table and make pagination
+ */
 ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
 
@@ -100,7 +112,7 @@ ZC_Table.prototype.update = function (table_data) {
         tr.innerHTML += `<th>${item}</th>`;
     }
 
-    addClass(tr,'zc_caption_tr');
+    this.tools.addClass(tr,'zc_caption_tr');
 
     this.el.appendChild(tr);
 
@@ -115,12 +127,18 @@ ZC_Table.prototype.update = function (table_data) {
     this.pagination(table_data.page,table_data.pageSize,table_data.total);
 }
 
+/**
+ * pagination
+ */
 ZC_Table.prototype.pagination = function (page,pageSize,total){
-    if (!judgeNumber(page) || !judgeNumber(pageSize)){
+    if (!this.tools.judgeNumber(page) || !this.tools.judgeNumber(pageSize)){
         throw 'page and pageSize must be integer and not 0';
     }
-    else if (total != 0 && judgeNumber(total))
+    else if (total != 0 && !this.tools.judgeNumber(total))
     {
         throw 'total must be integer';
     }
+    
+    var pageNum = Math.ceil(total / pageSize);
+
 }
