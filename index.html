@@ -23,21 +23,21 @@
             captain: ['姓名','年龄','分数','地址'],
             field:['name','age','score','addr']
         }
-        var table_data = {
+        var table_data1 = {
             page: 1,
             pageSize: 10,
             total: 65,
             list: [
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' },
-                { name: 'aa', age: 12, score: 60, addr: 'dssdfsd' }
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+                { name: '11', age: 11, score: 11, addr: 'aaaaaa' }
             ]
         }
 
@@ -46,24 +46,46 @@
             pageSize: 10,
             total: 65,
             list: [
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' },
-                { name: 'bb', age: 12, score: 60, addr: 'kjdfghj' }
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' },
+                { name: '22', age: 22, score: 22, addr: 'bbbbbb' }
             ]
         }
 
-        var table = new ZC_Table(table_setting);
-        table.update(table_data);
-        document.onclick = () => {
-            table.update(table_data2);
+        function paginationCallback(n){
+            console.log(n);
+            var table_data = {
+                page: n,
+                pageSize: 10,
+                total: 65
+            }
+            var size;
+            if(n * table_data.pageSize <= table_data.total){
+                size = 10;
+            }
+            else{
+                size = table_data.total - ((n - 1) * table_data.pageSize);
+            }
+            var list = [];
+            for(var i=0;i< size;i++){
+                list.push({name:n+''+n,age: (n + '' + n) - 0,score: (n + '' + n) - 0,addr:''+n+n+n+n});
+            }
+            table_data.list = list;
+            console.log(table_data);
         }
+
+        var table = new ZC_Table(table_setting,paginationCallback);
+        table.update(table_data1);
+        // document.onclick = () => {
+        //     table.update(table_data2);
+        // }
     </script>
 </body>
 </html>

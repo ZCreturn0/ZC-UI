@@ -58,3 +58,8 @@ tr:nth-child(odd){
     background: #409eff;
     color: #fff;
 }
+
+.pager-selected:hover{
+    background: #409eff;
+    color: #fff;
+}

@@ -78,9 +78,10 @@ ZC_Tools.prototype.judgeNumber = function(num){
  *      --el table to mount(object)
  *      --caption text shown on the table caption(Array)
  *      --field attr on data list in table_data(Array)
+ * @param paginationCallback (function) when pagination called
  * 
  */
-function ZC_Table(table_setting) {
+function ZC_Table(table_setting,paginationCallback) {
     if (!table_setting.el || !table_setting.captain || !table_setting.field){
         throw 'Lack of necessary params';
     }
@@ -92,6 +93,7 @@ function ZC_Table(table_setting) {
     this.captain = table_setting.captain;
     this.field = table_setting.field;
     this.tools = new ZC_Tools();
+    this.paginationCallback = paginationCallback;
     this.init();
 }
 
@@ -104,6 +106,7 @@ ZC_Table.prototype.init = function(){
 
 /**
  * @description set data into table and make pagination
+ * @param table_data (object)
  */
 ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
@@ -142,8 +145,13 @@ ZC_Table.prototype.update = function (table_data) {
 
 /**
  * @description pagination
+ * @param page(Integer)
+ * @param pageSize(Integer)
+ * @param total (Integer)
  */
 ZC_Table.prototype.pagination = function (page,pageSize,total){
+    var _this = this;
+
     if (!this.tools.judgeNumber(page) || !this.tools.judgeNumber(pageSize)){
         throw 'page and pageSize must be integer and not 0';
     }
@@ -179,5 +187,10 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         next.innerText = '>';
         pager.appendChild(next);
         this.el.appendChild(pager);
+    }
+    for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
+        (function(i){
+            document.querySelectorAll('.pager-node')[i].addEventListener('click', () => {_this.paginationCallback(i)}, false);
+        })(i);
     }
 }
