@@ -15,9 +15,9 @@ function ZC_Tools(){
 /**
  * 
  * @description if el had class 'className'
- * @param el (object)
- * @param className (string)
- * @returns (boolean)
+ * @param {object} el
+ * @param {string} className
+ * @returns {boolean}
  * 
  */
 ZC_Tools.prototype.hasClass = function(el,className){
@@ -35,8 +35,8 @@ ZC_Tools.prototype.hasClass = function(el,className){
 /**
  * 
  * @description el add class 'className'
- * @param el (object)
- * @param className (string)
+ * @param {object} el
+ * @param {string} className
  * 
  */
 ZC_Tools.prototype.addClass = function (el,className){
@@ -55,8 +55,8 @@ ZC_Tools.prototype.addClass = function (el,className){
 
 /**
  * @description judge a number is an Integer and over 0
- * @param num(any)
- * @returns boolean
+ * @param {any} num
+ * @returns {boolean}
  * 
  */
 ZC_Tools.prototype.judgeNumber = function(num){
@@ -74,11 +74,11 @@ ZC_Tools.prototype.judgeNumber = function(num){
 /**
  * 
  * @description init table with some necessary params
- * @param table_setting (object)
+ * @param {object} table_setting
  *      --el table to mount(object)
  *      --caption text shown on the table caption(Array)
  *      --field attr on data list in table_data(Array)
- * @param paginationCallback (function) when pagination called
+ * @param {function} paginationCallback when pagination called
  * 
  */
 function ZC_Table(table_setting,paginationCallback) {
@@ -106,7 +106,7 @@ ZC_Table.prototype.init = function(){
 
 /**
  * @description set data into table and make pagination
- * @param table_data (object)
+ * @param {object]} table_data
  */
 ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
@@ -145,9 +145,9 @@ ZC_Table.prototype.update = function (table_data) {
 
 /**
  * @description pagination
- * @param page(Integer)
- * @param pageSize(Integer)
- * @param total (Integer)
+ * @param {Number} page
+ * @param {Number}pageSize
+ * @param {Number}total
  */
 ZC_Table.prototype.pagination = function (page,pageSize,total){
     var _this = this;
@@ -172,6 +172,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         var pre = document.createElement('div');
         pre.className = 'pre pager-node';
         pre.innerText = '<';
+        if(page == 1){
+            this.tools.addClass(pre,'disabled');
+        }
         pager.appendChild(pre);
         for(var i=1;i<=pageNum;i++){
             var pgNode = document.createElement('div');
@@ -185,12 +188,26 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         var next = document.createElement('div');
         next.className = 'next pager-node';
         next.innerText = '>';
+        if (page == pageNum) {
+            this.tools.addClass(next, 'disabled');
+        }
         pager.appendChild(next);
         this.el.appendChild(pager);
     }
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
         (function(i){
-            document.querySelectorAll('.pager-node')[i].addEventListener('click', () => {_this.paginationCallback(i)}, false);
+            var innerText = document.querySelectorAll('.pager-node')[i].innerText;
+            if (/^\d+$/.test(innerText)){
+                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(innerText - 0);}, false);
+            }
+            else{
+                if (innerText == '<' && page > 1){
+                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page - 1); }, false);
+                }
+                else if (innerText == '>' && page < pageNum){
+                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page + 1); }, false);
+                }
+            }
         })(i);
     }
 }
