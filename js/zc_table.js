@@ -165,10 +165,20 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         throw 'out of pageNum';
     }
 
+    //init pager,the container of pager-node
+    var pager = document.createElement('div');
+    pager.innerHTML = '';
+    pager.className = 'pager';
+
+    var zc_first = this.el.getAttribute('zc_first');
+    if (zc_first != null) {
+        var first = document.createElement('div');
+        first.className = 'pager-node';
+        first.innerText = zc_first ? zc_first : '首页';
+        pager.appendChild(first);
+    }
+
     if(pageNum <= 7){
-        var pager = document.createElement('div');
-        pager.innerHTML = '';
-        pager.className = 'pager';
         var pre = document.createElement('div');
         pre.className = 'pre pager-node';
         pre.innerText = '<';
@@ -194,6 +204,15 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         pager.appendChild(next);
         this.el.appendChild(pager);
     }
+
+    var zc_last = this.el.getAttribute('zc_last');
+    if (zc_last != null) {
+        var last = document.createElement('div');
+        last.className = 'pre pager-node';
+        last.innerText = zc_last ? zc_last : '尾页';
+        pager.appendChild(last);
+    }
+
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
         (function(i){
             var innerText = document.querySelectorAll('.pager-node')[i].innerText;
@@ -206,6 +225,12 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
                 }
                 else if (innerText == '>' && page < pageNum){
                     document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page + 1); }, false);
+                }
+                else if ((zc_first && innerText == zc_first) || (zc_first == '' && innerText == '首页')){
+                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(1 - 0); }, false);
+                }
+                else if ((zc_last && innerText == zc_last) || (zc_last == '' && innerText == '尾页')) {
+                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(pageNum - 0); }, false);
                 }
             }
         })(i);
