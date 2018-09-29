@@ -176,6 +176,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         first.className = 'pager-node';
         first.innerText = zc_first ? zc_first : '首页';
         pager.appendChild(first);
+        if(page == 1){
+            this.tools.addClass(first,'disabled');
+        }
     }
 
     if(pageNum <= 7){
@@ -211,6 +214,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         last.className = 'pre pager-node';
         last.innerText = zc_last ? zc_last : '尾页';
         pager.appendChild(last);
+        if (page == pageNum) {
+            this.tools.addClass(last, 'disabled');
+        }
     }
 
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
