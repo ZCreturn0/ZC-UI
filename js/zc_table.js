@@ -181,14 +181,15 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }
 
+    var pre = document.createElement('div');
+    pre.className = 'pre pager-node';
+    pre.innerText = '<';
+    if (page == 1) {
+        this.tools.addClass(pre, 'disabled');
+    }
+    pager.appendChild(pre);
+
     if(pageNum <= 7){
-        var pre = document.createElement('div');
-        pre.className = 'pre pager-node';
-        pre.innerText = '<';
-        if(page == 1){
-            this.tools.addClass(pre,'disabled');
-        }
-        pager.appendChild(pre);
         for(var i=1;i<=pageNum;i++){
             var pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
@@ -198,15 +199,15 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             pager.appendChild(pgNode);
         }
-        var next = document.createElement('div');
-        next.className = 'next pager-node';
-        next.innerText = '>';
-        if (page == pageNum) {
-            this.tools.addClass(next, 'disabled');
-        }
-        pager.appendChild(next);
-        this.el.appendChild(pager);
     }
+
+    var next = document.createElement('div');
+    next.className = 'next pager-node';
+    next.innerText = '>';
+    if (page == pageNum) {
+        this.tools.addClass(next, 'disabled');
+    }
+    pager.appendChild(next);
 
     var zc_last = this.el.getAttribute('zc_last');
     if (zc_last != null) {
@@ -218,6 +219,8 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
             this.tools.addClass(last, 'disabled');
         }
     }
+
+    this.el.appendChild(pager);
 
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
         (function(i){
