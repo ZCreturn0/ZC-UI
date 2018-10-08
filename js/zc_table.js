@@ -75,9 +75,9 @@ ZC_Tools.prototype.judgeNumber = function(num){
  * 
  * @description init table with some necessary params
  * @param {object} table_setting
- *      --el table to mount(object)
- *      --caption text shown on the table caption(Array)
- *      --field attr on data list in table_data(Array)
+ *      --el:table to mount(object)
+ *      --caption:text shown on the table caption(Array)
+ *      --field:attr on data list in table_data(Array)
  * @param {function} paginationCallback when pagination called
  * 
  */
@@ -152,6 +152,7 @@ ZC_Table.prototype.update = function (table_data) {
 ZC_Table.prototype.pagination = function (page,pageSize,total){
     var _this = this;
 
+    //make sure params are correct
     if (!this.tools.judgeNumber(page) || !this.tools.judgeNumber(pageSize)){
         throw 'page and pageSize must be integer and not 0';
     }
@@ -170,6 +171,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     pager.innerHTML = '';
     pager.className = 'pager';
 
+    //first page
     var zc_first = this.el.getAttribute('zc_first');
     if (zc_first != null) {
         var first = document.createElement('div');
@@ -181,6 +183,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }
 
+    //preview page
     var pre = document.createElement('div');
     pre.className = 'pre pager-node';
     pre.innerText = '<';
@@ -189,6 +192,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
     pager.appendChild(pre);
 
+    //diefferent pageNum conditions
     if(pageNum <= 7){
         for(var i=1;i<=pageNum;i++){
             var pgNode = document.createElement('div');
@@ -201,6 +205,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }
 
+    //next page
     var next = document.createElement('div');
     next.className = 'next pager-node';
     next.innerText = '>';
@@ -209,6 +214,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
     pager.appendChild(next);
 
+    //last page
     var zc_last = this.el.getAttribute('zc_last');
     if (zc_last != null) {
         var last = document.createElement('div');
@@ -220,8 +226,10 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }
 
+    //pager appendTo el
     this.el.appendChild(pager);
 
+    //add event to page-node
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
         (function(i){
             var innerText = document.querySelectorAll('.pager-node')[i].innerText;
