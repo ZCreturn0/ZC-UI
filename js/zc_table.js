@@ -152,8 +152,8 @@ ZC_Table.prototype.update = function (table_data) {
  * 
  * @description pagination
  * @param {Number} page
- * @param {Number}pageSize
- * @param {Number}total
+ * @param {Number} pageSize
+ * @param {Number} total
  * 
  */
 ZC_Table.prototype.pagination = function (page,pageSize,total){
@@ -180,6 +180,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
 
     //total records
     var zc_total = this.el.getAttribute('zc_total');
+    if (zc_total && zc_total.indexOf('{total}') < 0){
+        throw 'zc_total must contain "{total}"';
+    }
     if (zc_total != null){
         var total_el = document.createElement('div');
         total_el.className = 'total';
@@ -240,7 +243,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     var zc_last = this.el.getAttribute('zc_last');
     if (zc_last != null) {
         var last = document.createElement('div');
-        last.className = 'pre pager-node';
+        last.className = 'pager-node';
         last.innerText = zc_last ? zc_last : '尾页';
         pager.appendChild(last);
         if (page == pageNum) {
@@ -248,8 +251,39 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }
 
+    //jump
+    var zc_jump = this.el.getAttribute('zc_jump');
+    if (zc_jump && zc_jump.indexOf('{input}') < 0) {
+        throw 'zc_jump must contain "{input}"';
+    }
+    var jump_input = `<input type="input" class="jump-input" value="${page}">`;
+    if (zc_jump != null) {
+        var jump = document.createElement('div');
+        jump.className = 'jump';
+        jump.innerHTML = zc_jump ? zc_jump.replace("{input}", jump_input) : `跳转 ${jump_input} 页`;
+        pager.appendChild(jump);
+    }
+
     //pager appendTo el
     this.el.appendChild(pager);
+    document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function(e){
+        if(e.which == 13){
+            var jumpPage = this.value;
+            if (!_this.tools.judgeNumber(jumpPage-0)){
+                alert('请输入正确的数字');
+                throw 'wrong number';
+            }
+            else{
+                if (jumpPage > pageNum){
+                    jumpPage = pageNum;
+                }
+                else if (jumpPage < 1){
+                    jumpPage = 1;
+                }
+                _this.paginationCallback(jumpPage-0);
+            }
+        }
+    }, false);
 
     //add event to page-node
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
