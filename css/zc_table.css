@@ -27,7 +27,7 @@ tr:nth-child(odd){
 }
 
 .zc_caption_tr{
-    background: #2c6edf;
+    background: #2c6edf !important;
 }
 
 .zc_border{
@@ -71,4 +71,12 @@ tr:nth-child(odd){
 
 .disabled:hover{
     color: #ccc;
+}
+
+.total{
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #606266;
+    font-weight: bold;
 }

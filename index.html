@@ -14,7 +14,14 @@
     </style>
 </head>
 <body>
-    <div id="zc_table" zc_border zc_first='第一页' zc_last='最后一页' zc_pre zc_next></div>
+    <div id="zc_table" 
+        zc_border 
+        zc_first='第一页' 
+        zc_last='最后一页' 
+        zc_pre="上一页" 
+        zc_next="下一页" 
+        zc_total="总共 {total} 条记录">
+    </div>
     <script src="./js/zc_table.js"></script>
     <script>
         var tableElement = document.getElementById('zc_table');

@@ -54,6 +54,7 @@ ZC_Tools.prototype.addClass = function (el,className){
 }
 
 /**
+ * 
  * @description judge a number is an Integer and over 0
  * @param {any} num
  * @returns {boolean}
@@ -98,15 +99,19 @@ function ZC_Table(table_setting,paginationCallback) {
 }
 
 /**
+ * 
  * @description initialize style with setting attribute
+ * 
  */
 ZC_Table.prototype.init = function(){
     
 }
 
 /**
+ * 
  * @description set data into table and make pagination
- * @param {object]} table_data
+ * @param {object} table_data
+ * 
  */
 ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
@@ -144,10 +149,12 @@ ZC_Table.prototype.update = function (table_data) {
 }
 
 /**
+ * 
  * @description pagination
  * @param {Number} page
  * @param {Number}pageSize
  * @param {Number}total
+ * 
  */
 ZC_Table.prototype.pagination = function (page,pageSize,total){
     var _this = this;
@@ -170,6 +177,15 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     var pager = document.createElement('div');
     pager.innerHTML = '';
     pager.className = 'pager';
+
+    //total records
+    var zc_total = this.el.getAttribute('zc_total');
+    if (zc_total != null){
+        var total_el = document.createElement('div');
+        total_el.className = 'total';
+        total_el.innerText = zc_total ? (zc_total.replace('{total}',total)) : `共 ${total} 条`;
+        pager.appendChild(total_el);
+    }
 
     //first page
     var zc_first = this.el.getAttribute('zc_first');
