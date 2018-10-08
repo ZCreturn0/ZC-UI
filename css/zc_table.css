@@ -80,3 +80,26 @@ tr:nth-child(odd){
     color: #606266;
     font-weight: bold;
 }
+
+.jump{
+    background: #fff;
+    border-radius: 5px;
+    color: #606266;
+    font-weight: bold;
+}
+
+.jump-input{
+    display: inline-block;
+	outline-style: none ;
+	outline-width: 0px ;
+	border-style: none ;
+	text-shadow: none ;
+	-webkit-appearance: none ;
+	outline-color: transparent ;
+	box-shadow: none;
+    width: 50px;
+    line-height: 26px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
