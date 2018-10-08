@@ -184,13 +184,16 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //preview page
-    var pre = document.createElement('div');
-    pre.className = 'pre pager-node';
-    pre.innerText = '<';
-    if (page == 1) {
-        this.tools.addClass(pre, 'disabled');
+    var zc_pre = this.el.getAttribute('zc_pre');
+    if (zc_pre != null){
+        var pre = document.createElement('div');
+        pre.className = 'pre pager-node';
+        pre.innerText = zc_pre ? zc_pre : '<';
+        if (page == 1) {
+            this.tools.addClass(pre, 'disabled');
+        }
+        pager.appendChild(pre);
     }
-    pager.appendChild(pre);
 
     //diefferent pageNum conditions
     if(pageNum <= 7){
@@ -206,13 +209,16 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //next page
-    var next = document.createElement('div');
-    next.className = 'next pager-node';
-    next.innerText = '>';
-    if (page == pageNum) {
-        this.tools.addClass(next, 'disabled');
+    var zc_next = this.el.getAttribute('zc_next');
+    if (zc_next != null){
+        var next = document.createElement('div');
+        next.className = 'next pager-node';
+        next.innerText = zc_next ? zc_next : '>';
+        if (page == pageNum) {
+            this.tools.addClass(next, 'disabled');
+        }
+        pager.appendChild(next);
     }
-    pager.appendChild(next);
 
     //last page
     var zc_last = this.el.getAttribute('zc_last');
@@ -237,16 +243,16 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
                 document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(innerText - 0);}, false);
             }
             else{
-                if (innerText == '<' && page > 1){
+                if (((zc_pre && innerText == zc_pre) || (zc_pre == '' && innerText == '<')) && page > 1){
                     document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page - 1); }, false);
                 }
-                else if (innerText == '>' && page < pageNum){
+                else if (((zc_next && innerText == zc_next) || (zc_next == '' && innerText == '>')) && page < pageNum){
                     document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page + 1); }, false);
                 }
-                else if ((zc_first && innerText == zc_first) || (zc_first == '' && innerText == '首页')){
+                else if (((zc_first && innerText == zc_first) || (zc_first == '' && innerText == '首页')) && page > 1){
                     document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(1 - 0); }, false);
                 }
-                else if ((zc_last && innerText == zc_last) || (zc_last == '' && innerText == '尾页')) {
+                else if (((zc_last && innerText == zc_last) || (zc_last == '' && innerText == '尾页')) && page < pageNum) {
                     document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(pageNum - 0); }, false);
                 }
             }
