@@ -21,7 +21,7 @@
         zc_pre
         zc_next
         zc_total
-        zc_jump="跳转第 {input} 页">
+        zc_jump>
     </div>
     <script src="./js/zc_table.js"></script>
     <script>
@@ -34,7 +34,7 @@
         var table_data1 = {
             page: 1,
             pageSize: 10,
-            total: 65,
+            total: 165,
             list: [
                 { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
                 { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
@@ -53,7 +53,7 @@
             var table_data = {
                 page: n,
                 pageSize: 10,
-                total: 65
+                total: 165
             }
             var size;
             if(n * table_data.pageSize <= table_data.total){
