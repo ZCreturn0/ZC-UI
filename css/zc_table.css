@@ -103,3 +103,19 @@ tr:nth-child(odd){
     border: 1px solid #ccc;
     border-radius: 10px;
 }
+
+.jump-input:focus{
+    border: #409eff 1px solid;
+}
+
+.more{
+    line-height: 20px;
+}
+
+.more::before{
+    content: attr(data-icon);
+}
+
+/* .more_hover::before{
+    content: "\00bb";
+} */
