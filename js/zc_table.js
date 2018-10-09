@@ -370,24 +370,26 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
 
     //pager appendTo el
     this.el.appendChild(pager);
-    document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function(e){
-        if(e.which == 13){
-            var jumpPage = this.value;
-            if (!_this.tools.judgeNumber(jumpPage-0)){
-                alert('请输入正确的数字');
-                throw 'wrong number';
-            }
-            else{
-                if (jumpPage > pageNum){
-                    jumpPage = pageNum;
+    if (document.querySelectorAll('.jump-input')[0]){
+        document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function (e) {
+            if (e.which == 13) {
+                var jumpPage = this.value;
+                if (!_this.tools.judgeNumber(jumpPage - 0)) {
+                    alert('请输入正确的数字');
+                    throw 'wrong number';
                 }
-                else if (jumpPage < 1){
-                    jumpPage = 1;
+                else {
+                    if (jumpPage > pageNum) {
+                        jumpPage = pageNum;
+                    }
+                    else if (jumpPage < 1) {
+                        jumpPage = 1;
+                    }
+                    _this.paginationCallback(jumpPage - 0);
                 }
-                _this.paginationCallback(jumpPage-0);
             }
-        }
-    }, false);
+        }, false);
+    }
 
     //add event to .more-pre
     if (document.querySelectorAll('.more-pre')[0])
