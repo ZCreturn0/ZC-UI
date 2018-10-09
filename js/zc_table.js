@@ -398,6 +398,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         document.querySelectorAll('.more-pre')[0].addEventListener('mouseout', function (e) {
             this.setAttribute('data-icon', '…');
         }, false);
+        document.querySelectorAll('.more-pre')[0].addEventListener('click', function (e) {
+            _this.paginationCallback(page - 3);
+        }, false);
     }
 
     //add event to .more-next
@@ -408,6 +411,9 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }, false);
         document.querySelectorAll('.more-next')[0].addEventListener('mouseout', function (e) {
             this.setAttribute('data-icon', '…');
+        }, false);
+        document.querySelectorAll('.more-next')[0].addEventListener('click', function (e) {
+            _this.paginationCallback(page + 3);
         }, false);
     }
 
