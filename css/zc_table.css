@@ -108,14 +108,10 @@ tr:nth-child(odd){
     border: #409eff 1px solid;
 }
 
-.more{
+.more-pre,.more-next{
     line-height: 20px;
 }
 
-.more::before{
+.more-pre::before,.more-next::before{
     content: attr(data-icon);
 }
-
-/* .more_hover::before{
-    content: "\00bb";
-} */
