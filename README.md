@@ -9,11 +9,11 @@
 ```
 <div id="zc_table"></div>
 #zc_table{
-  width: 80%;
-  margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
 }
 ```
-### 3.2准备表格配置
+### 3.2 准备表格配置
 表格配置对象有三个必需参数:<br>
 >el:表格容器(HTMLElement)<br>
 >captain:表头名称(Array)<br>
@@ -28,3 +28,26 @@ var table_setting = {
     field:['name','age','score','addr']
 }
 ```
+### 3.3 准备翻页回调函数
+>用户选择页码后会产生一个回调函数,这个回调函数带一个参数,表示用户选择的页码
+示例:
+```
+//n表示页码
+function paginationCallback(n){
+    //Do something...
+}
+```
+## 四.创建表格对象
+创建`ZC_Table`对象,需传入`table_setting`和`paginationCallback`
+```
+var table = new ZC_Table(table_setting,paginationCallback);
+```
+## 五.往表格传入数据
+完成以上步骤就建立了表格对象,接下来建立数据对象,往表格填入数据<br>
+数据对象有四个必需参数:<br>
+>page:当前页码(number)<br>
+>pageSize:每页数据条数(number)<br>
+>total:总记录数(number)<br>
+>list:当前页的数据(Array)<br>
+list中每个元素为一个object,属性必须包含`table_setting`中`field`的所有值(如对应3.2实例,这里的object应为{ name: '11', age: 11, score: 11, addr: 'aaaaaa' })<br>
+page,pageSize,total必须是`number`,否则会报错
