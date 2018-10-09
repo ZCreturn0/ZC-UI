@@ -49,5 +49,29 @@ var table = new ZC_Table(table_setting,paginationCallback);
 >pageSize:每页数据条数(number)<br>
 >total:总记录数(number)<br>
 >list:当前页的数据(Array)<br>
-list中每个元素为一个object,属性必须包含`table_setting`中`field`的所有值(如对应3.2实例,这里的object应为{ name: '11', age: 11, score: 11, addr: 'aaaaaa' })<br>
-page,pageSize,total必须是`number`,否则会报错
+<br><br>
+>list中每个元素为一个object,属性必须包含`table_setting`中`field`的所有值(如对应3.2实例,这里的object应为{ name: '11', age: 11, score: 11, addr: 'aaaaaa' })<br>
+>page,pageSize,total必须是`number`,否则会报错<br><br>
+
+示例:
+```
+var table_data = {
+    page: 1,
+    pageSize: 10,
+    total: 165,
+    list: [
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' },
+        { name: '11', age: 11, score: 11, addr: 'aaaaaa' }
+    ]
+}
+```
+建立数据对象后,调用表格对象的update方法即可往表格填入数据:<br>
+table.update(table_data);
