@@ -55,6 +55,30 @@ ZC_Tools.prototype.addClass = function (el,className){
 
 /**
  * 
+ * @description el remove class 'className'
+ * @param {object} el
+ * @param {string} className
+ * 
+ */
+ZC_Tools.prototype.removeClass = function(el,className){
+    if (!this.hasClass(el, className)) {
+        return;
+    }
+    else{
+        var classList = el.className.split(' ');
+        var classStr = '';
+        for (var i=0;i<classList.length;i++){
+            if (className !== classList[i]){
+                classStr += classList[i] + ' ';
+            }
+        }
+        classStr = classStr.substring(0,classStr.length-1);
+        el.className = classStr;
+    }
+}
+
+/**
+ * 
  * @description judge a number is an Integer and over 0
  * @param {any} num
  * @returns {boolean}
@@ -226,6 +250,24 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
             pager.appendChild(pgNode);
         }
     }
+    else if (pageNum > 7){
+        //show 2 before and 2 after current page,and first,last page
+        if(page <= 4){
+            for (var i = 1; i <= 6; i++){
+                var pgNode = document.createElement('div');
+                pgNode.className = 'pager-node';
+                pgNode.innerText = i;
+                if (i == page) {
+                    this.tools.addClass(pgNode, 'pager-selected');
+                }
+                pager.appendChild(pgNode);
+            }
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node more';
+            pgNode.setAttribute('data-icon','…');
+            pager.appendChild(pgNode);
+        }
+    }
 
     //next page
     var zc_next = this.el.getAttribute('zc_next');
@@ -283,6 +325,14 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
                 _this.paginationCallback(jumpPage-0);
             }
         }
+    }, false);
+
+    //add event to .more
+    document.querySelectorAll('.more')[0].addEventListener('mouseover', function (e) { 
+        this.setAttribute('data-icon','>>');
+    }, false);
+    document.querySelectorAll('.more')[0].addEventListener('mouseout', function (e) {
+        this.setAttribute('data-icon', '…');
     }, false);
 
     //add event to page-node
