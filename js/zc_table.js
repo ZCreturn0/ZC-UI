@@ -240,6 +240,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
 
     //diefferent pageNum conditions
     if(pageNum <= 7){
+        //add all pages to pager
         for(var i=1;i<=pageNum;i++){
             var pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
@@ -253,6 +254,7 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
     else if (pageNum > 7){
         //show 2 before and 2 after current page,and first,last page
         if(page <= 4){
+            //add number page
             for (var i = 1; i <= 6; i++){
                 var pgNode = document.createElement('div');
                 pgNode.className = 'pager-node';
@@ -262,9 +264,69 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
                 }
                 pager.appendChild(pgNode);
             }
+            //add 'more-next' to pager
             var pgNode = document.createElement('div');
-            pgNode.className = 'pager-node more';
+            pgNode.className = 'pager-node more-next';
             pgNode.setAttribute('data-icon','…');
+            pager.appendChild(pgNode);
+            //add last page to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node';
+            pgNode.innerText = pageNum;
+            pager.appendChild(pgNode);
+        }
+        else if (page >= pageNum - 3){
+            //add first page to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node';
+            pgNode.innerText = 1;
+            pager.appendChild(pgNode);
+            //add 'more-pre' to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node more-pre';
+            pgNode.setAttribute('data-icon', '…');
+            pager.appendChild(pgNode);
+            //add number page
+            for (var i = pageNum - 4; i <= pageNum; i++) {
+                var pgNode = document.createElement('div');
+                pgNode.className = 'pager-node';
+                pgNode.innerText = i;
+                if (i == page) {
+                    this.tools.addClass(pgNode, 'pager-selected');
+                }
+                pager.appendChild(pgNode);
+            }
+        }
+        else{
+            //add first page to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node';
+            pgNode.innerText = 1;
+            pager.appendChild(pgNode);
+            //add 'more-pre' to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node more-pre';
+            pgNode.setAttribute('data-icon', '…');
+            pager.appendChild(pgNode);
+            //add number page
+            for (var i = page - 2; i <= page+2; i++) {
+                var pgNode = document.createElement('div');
+                pgNode.className = 'pager-node';
+                pgNode.innerText = i;
+                if (i == page) {
+                    this.tools.addClass(pgNode, 'pager-selected');
+                }
+                pager.appendChild(pgNode);
+            }
+            //add 'more-next' to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node more-next';
+            pgNode.setAttribute('data-icon', '…');
+            pager.appendChild(pgNode);
+            //add last page to pager
+            var pgNode = document.createElement('div');
+            pgNode.className = 'pager-node';
+            pgNode.innerText = pageNum;
             pager.appendChild(pgNode);
         }
     }
@@ -327,13 +389,27 @@ ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
     }, false);
 
-    //add event to .more
-    document.querySelectorAll('.more')[0].addEventListener('mouseover', function (e) { 
-        this.setAttribute('data-icon','>>');
-    }, false);
-    document.querySelectorAll('.more')[0].addEventListener('mouseout', function (e) {
-        this.setAttribute('data-icon', '…');
-    }, false);
+    //add event to .more-pre
+    if (document.querySelectorAll('.more-pre')[0])
+    {
+        document.querySelectorAll('.more-pre')[0].addEventListener('mouseover', function (e) {
+            this.setAttribute('data-icon', '<<');
+        }, false);
+        document.querySelectorAll('.more-pre')[0].addEventListener('mouseout', function (e) {
+            this.setAttribute('data-icon', '…');
+        }, false);
+    }
+
+    //add event to .more-next
+    if (document.querySelectorAll('.more-next')[0])
+    {
+        document.querySelectorAll('.more-next')[0].addEventListener('mouseover', function (e) {
+            this.setAttribute('data-icon', '>>');
+        }, false);
+        document.querySelectorAll('.more-next')[0].addEventListener('mouseout', function (e) {
+            this.setAttribute('data-icon', '…');
+        }, false);
+    }
 
     //add event to page-node
     for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
