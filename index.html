@@ -70,7 +70,9 @@
             table.update(table_data);
         }
 
-        var table = new ZC_Table(table_setting,paginationCallback);
+        var ui = new ZC_UI();
+        var table = ui.createTable();
+        table.init(table_setting, paginationCallback);
         table.update(table_data1);
         // document.onclick = () => {
         //     table.update(table_data2);

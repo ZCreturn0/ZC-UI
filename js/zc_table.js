@@ -1,12 +1,16 @@
 /**
+ * 
  * @Author: zc 
  * @Date: 2018-09-25 14:25:47 
  * @Email: 237350543@qq.com 
  * @Github: https://github.com/ZCreturn0/ZC-UI 
+ * 
  */
 
 /**
+ * 
  * basic tools
+ * 
  */
 function ZC_Tools(){
 
@@ -98,6 +102,34 @@ ZC_Tools.prototype.judgeNumber = function(num){
 
 /**
  * 
+ * @description all UI included in ZC_UI
+ *  
+ */
+function ZC_UI(){
+
+}
+
+/**
+ * 
+ * @description create a new table
+ * @returns tableElement
+ * 
+ */
+ZC_UI.prototype.createTable = function(){
+    return new this.ZC_Table();
+}
+
+/**
+ * 
+ * @description table
+ * 
+ */
+ZC_UI.prototype.ZC_Table = function() {
+    
+}
+
+/**
+ * 
  * @description init table with some necessary params
  * @param {object} table_setting
  *      --el:table to mount(object)
@@ -106,11 +138,11 @@ ZC_Tools.prototype.judgeNumber = function(num){
  * @param {function} paginationCallback when pagination called
  * 
  */
-function ZC_Table(table_setting,paginationCallback) {
-    if (!table_setting.el || !table_setting.captain || !table_setting.field){
+ZC_UI.prototype.ZC_Table.prototype.init = function (table_setting, paginationCallback){
+    if (!table_setting.el || !table_setting.captain || !table_setting.field) {
         throw 'Lack of necessary params';
     }
-    if (table_setting.captain.length != table_setting.field.length){
+    if (table_setting.captain.length != table_setting.field.length) {
         throw "Can't match length between captain and field";
     }
     this.el = table_setting.el;
@@ -119,16 +151,6 @@ function ZC_Table(table_setting,paginationCallback) {
     this.field = table_setting.field;
     this.tools = new ZC_Tools();
     this.paginationCallback = paginationCallback;
-    this.init();
-}
-
-/**
- * 
- * @description initialize style with setting attribute
- * 
- */
-ZC_Table.prototype.init = function(){
-    
 }
 
 /**
@@ -137,7 +159,7 @@ ZC_Table.prototype.init = function(){
  * @param {object} table_data
  * 
  */
-ZC_Table.prototype.update = function (table_data) {
+ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
     this.table.innerHTML = '';
 
@@ -180,7 +202,7 @@ ZC_Table.prototype.update = function (table_data) {
  * @param {Number} total
  * 
  */
-ZC_Table.prototype.pagination = function (page,pageSize,total){
+ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     var _this = this;
 
     //make sure params are correct
