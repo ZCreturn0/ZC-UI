@@ -1,10 +1,15 @@
 # ZC-UI
 ## 一.介绍
->用于快捷建立表格的一个插件
+>用于快捷搭建页面的一套UI插件
 ## 二.开始使用
 >引入css(zc_table.css)和js(zc_table.js)
 ## 三.具体配置
-### 3.1 准备表格容器
+>创建ZC_UI对象
+```
+var ui = new ZC_UI();
+```
+### 3.1 表格插件
+#### 3.1.1 准备表格容器
 >在页面放一个元素,设置基本属性:
 ```
 <div id="zc_table"></div>
@@ -13,7 +18,7 @@
     margin: 0 auto;
 }
 ```
-### 3.2 准备表格配置
+#### 3.1.2 准备表格配置
 >表格配置对象有三个必需参数:<br>
 >>el:表格容器(HTMLElement)<br>
 >>captain:表头名称(Array)<br>
@@ -28,7 +33,7 @@ var table_setting = {
     field:['name','age','score','addr']
 }
 ```
-### 3.3 准备翻页回调函数
+#### 3.1.3 准备翻页回调函数
 >用户选择页码后会产生一个回调函数,这个回调函数带一个参数,表示用户选择的页码
 示例:
 ```
@@ -37,12 +42,13 @@ function paginationCallback(n){
     //Do something...
 }
 ```
-## 四.创建表格对象
->创建`ZC_Table`对象,需传入`table_setting`和`paginationCallback`
+#### 3.1.4 创建表格对象
+>通过ZC_UI对象的createTable方法创建`ZC_Table`对象;然后需初始化,传入`table_setting`和`paginationCallback`
 ```
-var table = new ZC_Table(table_setting,paginationCallback);
+var table = ui.createTable();
+table.init(table_setting, paginationCallback);
 ```
-## 五.往表格传入数据
+#### 3.1.5 往表格传入数据
 >完成以上步骤就建立了表格对象,接下来建立数据对象,往表格填入数据<br>
 >数据对象有四个必需参数:<br>
 >>page:当前页码(number)<br>
@@ -75,7 +81,7 @@ var table_data = {
 ```
 >建立数据对象后,调用表格对象的update方法即可往表格填入数据:<br>
 >table.update(table_data);
-## 六.表格可选属性
+#### 3.1.6 表格可选属性
 >表格容器中可添加属性完成个性化配置,如:<br>
 ```
 <div id="zc_table" zc_border></div>
