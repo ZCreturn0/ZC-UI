@@ -107,3 +107,5 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_btn_danger_plain{color: #f56c6c;background: #fef0f0;border-color: #fbc4c4;}
 .zc_btn_danger_plain:hover{background: #f56c6c;border-color: #f56c6c;color: #fff;}
 .zc_btn_danger_plain[disabled]{color: #f9a7a7;background-color: #fef0f0;border-color: #fde2e2;}
+
+.zc_loading{position: fixed;width: 100vw;height: 100vh;z-index: 999999;background: rgba(0,0,0,0.5);top: 0;left: 0;}
