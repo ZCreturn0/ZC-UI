@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>测试</title>
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="./css/zc_ui.css"/>
     <style>
         #zc_table{
@@ -24,7 +25,7 @@
         zc_jump>
     </div>
     <br><br>
-    <div class="zc_btn zc_btn_default">默认按钮</div>
+    <div class="zc_btn zc_btn_default" onclick="showLoading()">默认按钮</div>
     <div class="zc_btn zc_btn_primary">主要按钮</div>
     <div class="zc_btn zc_btn_success">成功按钮</div>
     <div class="zc_btn zc_btn_info">信息按钮</div>
@@ -75,7 +76,6 @@
     <div class="zc_btn zc_btn_default" round medium>medium</div>
     <div class="zc_btn zc_btn_default" round small>small</div>
     <div class="zc_btn zc_btn_default" round mini>mini</div>
-    <div class="zc_loading"></div>
     <script src="./js/zc_ui.js"></script>
     <script>
         var tableElement = document.getElementById('zc_table');
@@ -127,9 +127,15 @@
         var table = ui.createTable();
         table.init(table_setting, paginationCallback);
         table.update(table_data1);
-        // document.onclick = () => {
-        //     table.update(table_data2);
-        // }
+
+        var loading = ui.createLoading();
+
+        function showLoading(){
+            loading.showLoading('加载中...');
+            setTimeout(() => {
+                loading.hideLoading();
+            },3000);
+        }
     </script>
 </body>
 </html>
