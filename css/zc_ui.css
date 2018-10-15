@@ -108,4 +108,9 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_btn_danger_plain:hover{background: #f56c6c;border-color: #f56c6c;color: #fff;}
 .zc_btn_danger_plain[disabled]{color: #f9a7a7;background-color: #fef0f0;border-color: #fde2e2;}
 
-.zc_loading{position: fixed;width: 100vw;height: 100vh;z-index: 999999;background: rgba(0,0,0,0.5);top: 0;left: 0;}
+@keyframes loadingRotate{
+    0%{transform:rotate(0deg);-ms-transform:rotate(0deg);-moz-transform:rotate(0deg);-webkit-transform:rotate(0deg);-o-transform:rotate(0deg);}
+    100%{transform:rotate(360deg);-ms-transform:rotate(360deg);-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+.zc_loading{position: fixed;width: 100vw;height: 100vh;line-height: 100vh;text-align: center;color: #fff;z-index: 999999;background: rgba(0,0,0,0.5);top: 0;left: 0;}
+.zc_icon_rotate{animation:loadingRotate 1s linear infinite;}
