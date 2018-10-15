@@ -111,21 +111,21 @@ function ZC_UI(){
 
 /**
  * 
- * @description create a new table
- * @returns tableElement
+ * @description table
  * 
  */
-ZC_UI.prototype.createTable = function(){
-    return new this.ZC_Table();
+ZC_UI.prototype.ZC_Table = function () {
+
 }
 
 /**
  * 
- * @description table
+ * @description create a new table
+ * @returns tableObject
  * 
  */
-ZC_UI.prototype.ZC_Table = function() {
-    
+ZC_UI.prototype.createTable = function(){
+    return new this.ZC_Table();
 }
 
 /**
@@ -464,4 +464,57 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
         })(i);
     }
+}
+
+/**
+ * 
+ * @description loading
+ * 
+ */
+ZC_UI.prototype.ZC_Loading = function () {
+
+}
+
+/**
+ * 
+ * @description create a new loading
+ * @returns loadingObject
+ * 
+ */
+ZC_UI.prototype.createLoading = function () {
+    return new this.ZC_Loading();
+}
+
+/**
+ * 
+ * @description show a fullscreen loading
+ * 
+ */
+ZC_UI.prototype.ZC_Loading.prototype.showLoading = function(text){
+    var loading = document.createElement('div');
+    var loadingContent = document.createElement('div');
+    var loadingIcon = document.createElement('div');
+    var loadingText = document.createElement('div');
+    loadingIcon.style.display = 'inline-block';
+    loadingIcon.className = 'zc_icon_rotate';
+    loadingIcon.innerHTML = '<i class="icon iconfont el-icon-erp-jiazai"></i>';
+    loadingText.innerText = text;
+    loadingText.style.display = 'inline-block';
+    loadingContent.appendChild(loadingIcon);
+    loadingContent.appendChild(loadingText);
+    loading.className = 'zc_loading';
+    loading.appendChild(loadingContent);
+    document.body.style.overflow = 'hidden';
+    document.body.appendChild(loading);
+}
+
+/**
+ * 
+ * @description hide loading
+ * 
+ */
+ZC_UI.prototype.ZC_Loading.prototype.hideLoading = function () {
+    var loading = document.querySelectorAll('.zc_loading')[0];
+    document.body.style.overflow = 'scroll';
+    document.body.removeChild(loading);
 }
