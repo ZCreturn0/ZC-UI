@@ -125,8 +125,8 @@ tr:nth-child(odd){background: #1f2681;}
 }
 .zc_message_icon{margin-right: 10px;font-size: 14px;}
 .zc_message_content{margin: 0 20px 0 0;font-size: 14px;line-height: 1;word-break:break-all;white-space:pre-warp;word-wrap:break-word;}
-.zc_message{position: fixed;max-width: 380px;z-index:99999;font-size: 14px;left: 50%;top: 20px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 15px 15px 15px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageAppear 0.5s ease-in-out;}
-.zc_message_close{position: absolute;font-size: 12px;right: 14px;color: #c0c4cc;}
+.zc_message{position: fixed;max-width: 380px;z-index:99999;font-size: 14px;left: 50%;top: 20px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 15px 40px 15px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageAppear 0.5s ease-in-out;}
+.zc_message_close{position: absolute;font-size: 12px;right: 14px;color: #c0c4cc;cursor: pointer;}
 .zc_message_success{background-color: #f0f9eb;border-color: #e1f3d8;color: #67c23a;}
 .zc_message_warning{background-color: #fdf6ec;border-color: #faecd8;color: #e6a23c;}
 .zc_message_info{border-color: #ebeef5;background-color: #edf2fc;color: #909399;}
