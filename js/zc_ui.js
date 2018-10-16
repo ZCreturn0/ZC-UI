@@ -488,6 +488,7 @@ ZC_UI.prototype.createLoading = function () {
 /**
  * 
  * @description show a fullscreen loading
+ * @param {string} text text shown in loading
  * 
  */
 ZC_UI.prototype.ZC_Loading.prototype.showLoading = function(text){
@@ -517,4 +518,39 @@ ZC_UI.prototype.ZC_Loading.prototype.hideLoading = function () {
     var loading = document.querySelectorAll('.zc_loading')[0];
     document.body.style.overflow = 'scroll';
     document.body.removeChild(loading);
+}
+
+/**
+ * 
+ * @description message maker,to create message with info type
+ * 
+ */
+ZC_UI.prototype.ZC_Message = function(){
+
+}
+
+/**
+ * 
+ * @description create a new message maker
+ * @returns messageObject
+ * 
+ */
+ZC_UI.prototype.createMessage = function(){
+    return new this.ZC_Message();
+}
+
+/**
+ * 
+ * @description show a message
+ * @param {object} msg
+ * @param {string} msg.text(necessary)
+ * @param {string} msg.type('success','warning','info'(default),'error')
+ * @param {boolean} msg.showClose
+ * 
+ */
+ZC_UI.prototype.ZC_Message.prototype.message = function(msg){
+    if(!msg || !msg.text){
+        throw 'no text available';
+    }
+    
 }
