@@ -102,6 +102,23 @@ ZC_Tools.prototype.judgeNumber = function(num){
 
 /**
  * 
+ * @description judge if ele in arr(Array) or not
+ * @param {Array} arr
+ * @param {any} ele
+ * @returns {boolean}
+ * 
+ */
+ZC_Tools.prototype.inArr = function(arr,ele){
+    for(var item of arr){
+        if(item === ele){
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * 
  * @description all UI included in ZC_UI
  *  
  */
@@ -546,11 +563,42 @@ ZC_UI.prototype.createMessage = function(){
  * @param {string} msg.text(necessary)
  * @param {string} msg.type('success','warning','info'(default),'error')
  * @param {boolean} msg.showClose
+ * @param {number} msg.interval time to appear(ms)
  * 
  */
-ZC_UI.prototype.ZC_Message.prototype.message = function(msg){
+ZC_UI.prototype.ZC_Message.prototype.$message = function(msg){
     if(!msg || !msg.text){
         throw 'no text available';
     }
-    
+    var types = ['success', 'warning', 'info', 'error'];
+    //default
+    var type = 'info';
+    this.tools = new ZC_Tools();
+    if (msg.type && this.tools.inArr(types, msg.type)){
+        type = msg.type;
+    }
+    else if (msg.type && !this.tools.inArr(types, msg.type)){
+        throw 'msg type not exsists';
+    }
+    var message = document.createElement('div');
+    var messageIcon = document.createElement('i');
+    var messageContent = document.createElement('p');
+    var messageClose = document.createElement('i');
+    var icon = '';
+    switch (type){
+        case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_message_icon';break;
+        case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_message_icon';break;
+        case 'info': icon = 'icon iconfont el-icon-erp-xinxi zc_message_icon';break;
+        case 'error': icon = 'icon iconfont el-icon-erp-jinggao1 zc_message_icon';break;
+    }
+    messageIcon.className = icon;
+    messageContent.innerText = msg.text;
+    messageClose.className = 'icon iconfont el-icon-erp-guanbi zc_message_close';
+    message.className = `zc_message zc_message_${type}`;
+    message.appendChild(messageIcon);
+    message.appendChild(messageContent);
+    if (msg.showClose){
+        message.appendChild(messageClose);
+    }
+    document.body.appendChild(message);
 }
