@@ -27,10 +27,10 @@
     <br><br>
     <div class="zc_btn zc_btn_default" onclick="showLoading()">显示加载效果</div>
     <div class="zc_btn zc_btn_primary">主要按钮</div>
-    <div class="zc_btn zc_btn_success">成功按钮</div>
-    <div class="zc_btn zc_btn_info">信息按钮</div>
-    <div class="zc_btn zc_btn_warning">警告按钮</div>
-    <div class="zc_btn zc_btn_danger">危险按钮</div>
+    <div class="zc_btn zc_btn_success" onclick="showMessage('success')">成功按钮</div>
+    <div class="zc_btn zc_btn_info" onclick="showMessage('info')">信息按钮</div>
+    <div class="zc_btn zc_btn_warning" onclick="showMessage('warning')">警告按钮</div>
+    <div class="zc_btn zc_btn_danger" onclick="showMessage('error')">危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default" round>默认按钮</div>
     <div class="zc_btn zc_btn_primary" round>主要按钮</div>
@@ -143,7 +143,9 @@
         }
     
         var $message = ui.createMessage();
-        $message.$message({text:'啊啊啊啊啊啊',type:'success',showClose:true});
+        function showMessage(type){
+            $message.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+        }
     </script>
 </body>
 </html>
