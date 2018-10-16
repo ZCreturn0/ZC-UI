@@ -563,7 +563,7 @@ ZC_UI.prototype.createMessage = function(){
  * @param {string} msg.text(necessary)
  * @param {string} msg.type('success','warning','info'(default),'error')
  * @param {boolean} msg.showClose
- * @param {number} msg.interval time to appear(ms)
+ * @param {number} msg.duration time to appear(ms),default 3000
  * 
  */
 ZC_UI.prototype.ZC_Message.prototype.$message = function(msg){
@@ -588,8 +588,8 @@ ZC_UI.prototype.ZC_Message.prototype.$message = function(msg){
     switch (type){
         case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_message_icon';break;
         case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_message_icon';break;
-        case 'info': icon = 'icon iconfont el-icon-erp-xinxi zc_message_icon';break;
-        case 'error': icon = 'icon iconfont el-icon-erp-jinggao1 zc_message_icon';break;
+        case 'info': icon = 'icon iconfont el-icon-erp-xinxi1 zc_message_icon';break;
+        case 'error': icon = 'icon iconfont el-icon-erp-chucuo zc_message_icon';break;
     }
     messageIcon.className = icon;
     messageContent.innerText = msg.text;
@@ -601,4 +601,24 @@ ZC_UI.prototype.ZC_Message.prototype.$message = function(msg){
         message.appendChild(messageClose);
     }
     document.body.appendChild(message);
+    var duration = 3000;
+    if (msg.duration && this.tools.judgeNumber(msg.duration)){
+        duration = msg.duration;
+    }
+    else if (msg.duration && !this.tools.judgeNumber(msg.duration)){
+        throw 'duration must be a number';
+    }
+    var timerOuter,timerInner;
+    timerOuter = setTimeout(() => {
+        this.tools.removeClass(message,'zc_message');
+        this.tools.addClass(message,'zc_message_disappear');
+        timerInner = setTimeout(() => {
+            document.body.removeChild(message);
+        },500);
+    }, duration);
+    messageClose.onclick = function (e) {
+        clearTimeout(timerOuter);
+        clearTimeout(timerInner);
+        document.body.removeChild(messageClose.parentNode);
+    }
 }
