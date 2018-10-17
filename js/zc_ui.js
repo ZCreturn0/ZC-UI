@@ -292,6 +292,9 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
     else if (pageNum > 7){
         //show 2 before and 2 after current page,and first,last page
+        var iconNormalClass = 'icon iconfont el-icon-erp-gengduo2';
+        var iconNextClass = 'icon iconfont el-icon-erp-arrow-right-double';
+        var iconPreClass = 'icon iconfont el-icon-erp-double_arrow';
         if(page <= 4){
             //add number page
             for (var i = 1; i <= 6; i++){
@@ -305,8 +308,16 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             //add 'more-next' to pager
             var pgNode = document.createElement('div');
+            var iconNext = document.createElement('i');
             pgNode.className = 'pager-node more-next';
-            pgNode.setAttribute('data-icon','…');
+            iconNext.className = iconNormalClass;
+            pgNode.appendChild(iconNext);
+            pgNode.onmouseenter = function(){
+                iconNext.className = iconNextClass;
+            }
+            pgNode.onmouseleave = function(){
+                iconNext.className = iconNormalClass;
+            }
             pager.appendChild(pgNode);
             //add last page to pager
             var pgNode = document.createElement('div');
@@ -322,8 +333,16 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             pager.appendChild(pgNode);
             //add 'more-pre' to pager
             var pgNode = document.createElement('div');
+            var iconPre = document.createElement('i');
             pgNode.className = 'pager-node more-pre';
-            pgNode.setAttribute('data-icon', '…');
+            iconPre.className = iconNormalClass;
+            pgNode.appendChild(iconPre);
+            pgNode.onmouseenter = function () {
+                iconPre.className = iconPreClass;
+            }
+            pgNode.onmouseleave = function () {
+                iconPre.className = iconNormalClass;
+            }
             pager.appendChild(pgNode);
             //add number page
             for (var i = pageNum - 4; i <= pageNum; i++) {
@@ -344,8 +363,16 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             pager.appendChild(pgNode);
             //add 'more-pre' to pager
             var pgNode = document.createElement('div');
+            var iconPre = document.createElement('i');
             pgNode.className = 'pager-node more-pre';
-            pgNode.setAttribute('data-icon', '…');
+            iconPre.className = iconNormalClass;
+            pgNode.appendChild(iconPre);
+            pgNode.onmouseenter = function () {
+                iconPre.className = iconPreClass;
+            }
+            pgNode.onmouseleave = function () {
+                iconPre.className = iconNormalClass;
+            }
             pager.appendChild(pgNode);
             //add number page
             for (var i = page - 2; i <= page+2; i++) {
@@ -359,8 +386,16 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             //add 'more-next' to pager
             var pgNode = document.createElement('div');
+            var iconNext = document.createElement('i');
             pgNode.className = 'pager-node more-next';
-            pgNode.setAttribute('data-icon', '…');
+            iconNext.className = iconNormalClass;
+            pgNode.appendChild(iconNext);
+            pgNode.onmouseenter = function () {
+                iconNext.className = iconNextClass;
+            }
+            pgNode.onmouseleave = function () {
+                iconNext.className = iconNormalClass;
+            }
             pager.appendChild(pgNode);
             //add last page to pager
             var pgNode = document.createElement('div');
@@ -433,29 +468,17 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     //add event to .more-pre
     if (document.querySelectorAll('.more-pre')[0])
     {
-        document.querySelectorAll('.more-pre')[0].addEventListener('mouseover', function (e) {
-            this.setAttribute('data-icon', '<<');
-        }, false);
-        document.querySelectorAll('.more-pre')[0].addEventListener('mouseout', function (e) {
-            this.setAttribute('data-icon', '…');
-        }, false);
-        document.querySelectorAll('.more-pre')[0].addEventListener('click', function (e) {
+        document.querySelectorAll('.more-pre')[0].onclick = function(){
             _this.paginationCallback(page - 3);
-        }, false);
+        }
     }
 
     //add event to .more-next
     if (document.querySelectorAll('.more-next')[0])
     {
-        document.querySelectorAll('.more-next')[0].addEventListener('mouseover', function (e) {
-            this.setAttribute('data-icon', '>>');
-        }, false);
-        document.querySelectorAll('.more-next')[0].addEventListener('mouseout', function (e) {
-            this.setAttribute('data-icon', '…');
-        }, false);
-        document.querySelectorAll('.more-next')[0].addEventListener('click', function (e) {
+        document.querySelectorAll('.more-next')[0].onclick = function () {
             _this.paginationCallback(page + 3);
-        }, false);
+        }
     }
 
     //add event to page-node
@@ -539,21 +562,21 @@ ZC_UI.prototype.ZC_Loading.prototype.hideLoading = function () {
 
 /**
  * 
- * @description message maker,to create message with info type
+ * @description notice maker,to create notice with info type
  * 
  */
-ZC_UI.prototype.ZC_Message = function(){
+ZC_UI.prototype.ZC_Notice = function(){
 
 }
 
 /**
  * 
- * @description create a new message maker
- * @returns messageObject
+ * @description create a new notice maker
+ * @returns noticeObject
  * 
  */
-ZC_UI.prototype.createMessage = function(){
-    return new this.ZC_Message();
+ZC_UI.prototype.createNotice = function(){
+    return new this.ZC_Notice();
 }
 
 /**
@@ -566,7 +589,7 @@ ZC_UI.prototype.createMessage = function(){
  * @param {number} msg.duration time to appear(ms),default 3000
  * 
  */
-ZC_UI.prototype.ZC_Message.prototype.$message = function(msg){
+ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
     if(!msg || !msg.text){
         throw 'no text available';
     }
