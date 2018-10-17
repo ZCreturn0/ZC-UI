@@ -277,7 +277,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
         pager.appendChild(pre);
     }
 
-    //diefferent pageNum conditions
+    //different pageNum conditions
     if(pageNum <= 7){
         //add all pages to pager
         for(var i=1;i<=pageNum;i++){
@@ -639,9 +639,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
             document.body.removeChild(message);
         },500);
     }, duration);
-    messageClose.onclick = function (e) {
+    messageClose.onclick = () => {
         clearTimeout(timerOuter);
         clearTimeout(timerInner);
-        document.body.removeChild(messageClose.parentNode);
+        this.tools.removeClass(message, 'zc_message');
+        this.tools.addClass(message, 'zc_message_disappear');
+        setTimeout(() => {
+            document.body.removeChild(messageClose.parentNode);
+        }, 500);
     }
 }
