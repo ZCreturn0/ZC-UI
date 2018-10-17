@@ -44,7 +44,7 @@
     <div class="zc_btn zc_btn_success_plain">成功按钮</div>
     <div class="zc_btn zc_btn_info_plain">信息按钮</div>
     <div class="zc_btn zc_btn_warning_plain">警告按钮</div>
-    <div class="zc_btn zc_btn_danger_plain">危险按钮</div>
+    <div class="zc_btn zc_btn_danger_plain zc_tooltip">危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain" round>默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain" round>主要按钮</div>
@@ -139,12 +139,16 @@
             loading.showLoading('加载中...');
             setTimeout(() => {
                 loading.hideLoading();
-            },3000);
+            },3 * 1000);
         }
     
-        var $message = ui.createMessage();
+        var $notice = ui.createNotice();
         function showMessage(type){
-            $message.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+        }
+
+        document.querySelectorAll('.zc_tooltip')[0].onmousemove = function(e){
+            
         }
     </script>
 </body>
