@@ -136,5 +136,6 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_message_info{border-color: #ebeef5;background-color: #edf2fc;color: #909399;}
 .zc_message_error{background-color: #fef0f0;border-color: #fde2e2;color: #f56c6c;}
 
-.zc_tooltip::before{position: absolute;content: 'before';background: #67c23a;}
-.zc_tooltip::after{position: absolute;content: 'after';background: #67c23a;}
+.zc_tooltip{position: relative;}
+.zc_tooltip::before{position: absolute;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 3px);}
+.zc_tooltip::after{position: absolute;content: attr(tooltip-text);background: #303133;color: #fff;padding: 10px;bottom:calc(100% + 12px);left:calc(50% - 20px);}
