@@ -33,11 +33,11 @@
     <div class="zc_btn zc_btn_danger" onclick="showMessage('error')">危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default" round>默认按钮</div>
-    <div class="zc_btn zc_btn_primary zc_tooltip" tooltip-text='aaaaa' round>主要按钮</div>
-    <div class="zc_btn zc_btn_success" round>成功按钮</div>
-    <div class="zc_btn zc_btn_info" round>信息按钮</div>
+    <div class="zc_btn zc_btn_primary zc_tooltip" tooltip-text='top' placement='top' round>主要按钮</div>
+    <div class="zc_btn zc_btn_success zc_tooltip" tooltip-text='right' placement='right' round>成功按钮</div>
+    <div class="zc_btn zc_btn_info zc_tooltip" tooltip-text='bottom' placement='bottom' round>信息按钮</div>
     <div class="zc_btn zc_btn_warning" round>警告按钮</div>
-    <div class="zc_btn zc_btn_danger" round>危险按钮</div>
+    <div class="zc_btn zc_btn_danger zc_tooltip" tooltip-text='left' placement='left' round>危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain">默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain">主要按钮</div>
@@ -144,7 +144,7 @@
     
         var $notice = ui.createNotice();
         function showMessage(type){
-            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3000 * 1000 });
         }
     </script>
 </body>
