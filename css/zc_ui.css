@@ -137,5 +137,11 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_message_error{background-color: #fef0f0;border-color: #fde2e2;color: #f56c6c;}
 
 .zc_tooltip{position: relative;}
-.zc_tooltip::before{position: absolute;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 3px);}
-.zc_tooltip::after{position: absolute;content: attr(tooltip-text);background: #303133;color: #fff;padding: 10px;bottom:calc(100% + 12px);left:calc(50% - 20px);}
+.zc_tooltip[placement='top']::before{position: absolute;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 6px);}
+.zc_tooltip[placement='top']::after{position: absolute;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;bottom:calc(100% + 12px);left: 50%;transform: translateX(-50%);}
+.zc_tooltip[placement='right']::before{position: absolute;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-right: 6px solid #303133;content: '';bottom: calc(50% - 6px);left: 100%;}
+.zc_tooltip[placement='right']::after{position: absolute;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;left:calc(100% + 12px);transform: translateY(calc(-50% + 7px));}
+.zc_tooltip[placement='bottom']::before{position: absolute;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-bottom: 6px solid #303133;content: '';top: 100%;left: calc(50% - 6px);}
+.zc_tooltip[placement='bottom']::after{position: absolute;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;top: calc(100% + 12px);left: 50%;transform: translateX(-50%);}
+.zc_tooltip[placement='left']::before{position: absolute;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-left: 6px solid #303133;content: '';bottom: calc(50% - 6px);right: 100%;}
+.zc_tooltip[placement='left']::after{position: absolute;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;right:calc(100% + 12px);transform: translateY(calc(-50% + 7px));}
