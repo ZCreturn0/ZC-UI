@@ -39,6 +39,7 @@ tr:nth-child(odd){background: #1f2681;}
     border: 1px solid #ccc;
     border-radius: 10px;
 }
+.jump-input:hover{border-color: #94969e;}
 .jump-input:focus{border: #409eff 1px solid;}
 .more-pre,.more-next{line-height: 20px;}
 .zc_btn{
@@ -190,6 +191,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_tooltip[placement='left']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-left: 6px solid #303133;content: '';bottom: calc(50% - 6px);right: 100%;}
 .zc_tooltip[placement='left']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;right:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
 
+.zc-input-content{display:inline-block;}
 .zc-input{
     display: inline-block;
     outline-style: none ;
@@ -208,5 +210,8 @@ tr:nth-child(odd){background: #1f2681;}
     padding: 0 15px;
     width: 180px;
 }
+.zc-input:hover{border-color: #94969e;}
 .zc-input:focus{border: #409eff 1px solid;}
 .zc-input[disabled]{background-color: #f5f7fa;border-color: #e4e7ed;color: #c0c4cc;cursor: not-allowed;}
+.zc-input[clearable]{padding-right: 25px;}
+.clearIcon{position: absolute;display: none;right: 5px;top: calc(50% - 9px);font-size: 18px;cursor: pointer;color: #c0c4cc;}

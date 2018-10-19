@@ -123,7 +123,7 @@ ZC_Tools.prototype.inArr = function(arr,ele){
  *  
  */
 function ZC_UI(){
-
+    
 }
 
 /**
