@@ -175,20 +175,20 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_tooltip{position: relative;}
 .zc_tooltip[placement='top']:hover::before,.zc_tooltip[placement='top']:focus::before{display: block;animation: topTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
 .zc_tooltip[placement='top']:hover::after,.zc_tooltip[placement='top']:focus::after{display: block;animation: topTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
-.zc_tooltip[placement='top']::before{position: absolute;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 6px);}
-.zc_tooltip[placement='top']::after{position: absolute;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;bottom:calc(100% + 12px);left: 50%;transform: translateX(-50%);}
+.zc_tooltip[placement='top']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 6px);}
+.zc_tooltip[placement='top']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;bottom:calc(100% + 12px);left: 50%;transform: translateX(-50%);}
 .zc_tooltip[placement='right']:hover::before{display: block;animation: rightTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
 .zc_tooltip[placement='right']:hover::after{display: block;animation: rightTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
-.zc_tooltip[placement='right']::before{position: absolute;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-right: 6px solid #303133;content: '';bottom: calc(50% - 6px);left: 100%;}
-.zc_tooltip[placement='right']::after{position: absolute;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;left:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
+.zc_tooltip[placement='right']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-right: 6px solid #303133;content: '';bottom: calc(50% - 6px);left: 100%;}
+.zc_tooltip[placement='right']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;left:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
 .zc_tooltip[placement='bottom']:hover::before{display: block;animation: bottomTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
 .zc_tooltip[placement='bottom']:hover::after{display: block;animation: bottomTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
-.zc_tooltip[placement='bottom']::before{position: absolute;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-bottom: 6px solid #303133;content: '';top: 100%;left: calc(50% - 6px);}
-.zc_tooltip[placement='bottom']::after{position: absolute;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;top: calc(100% + 12px);left: 50%;transform: translateX(-50%);}
+.zc_tooltip[placement='bottom']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-bottom: 6px solid #303133;content: '';top: 100%;left: calc(50% - 6px);}
+.zc_tooltip[placement='bottom']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;top: calc(100% + 12px);left: 50%;transform: translateX(-50%);}
 .zc_tooltip[placement='left']:hover::before{display: block;animation: leftTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
 .zc_tooltip[placement='left']:hover::after{display: block;animation: leftTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
-.zc_tooltip[placement='left']::before{position: absolute;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-left: 6px solid #303133;content: '';bottom: calc(50% - 6px);right: 100%;}
-.zc_tooltip[placement='left']::after{position: absolute;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;right:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
+.zc_tooltip[placement='left']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-left: 6px solid #303133;content: '';bottom: calc(50% - 6px);right: 100%;}
+.zc_tooltip[placement='left']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;right:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
 
 .zc-input{
     display: inline-block;
@@ -209,5 +209,4 @@ tr:nth-child(odd){background: #1f2681;}
     width: 180px;
 }
 .zc-input:focus{border: #409eff 1px solid;}
-.zc-input:hover{background: red;}
 .zc-input[disabled]{background-color: #f5f7fa;border-color: #e4e7ed;color: #c0c4cc;cursor: not-allowed;}
