@@ -91,8 +91,11 @@
     <div class="zc_btn zc_btn_default" round small>small</div>
     <div class="zc_btn zc_btn_default" round mini>mini</div>
     <br><br>
-    <div style="display:inline-block;" class="zc_tooltip" tooltip-text='top' placement='top'>
-        <input type="text"/>
+    <div style="display:inline-block;" class="zc_tooltip" tooltip-text='input要加tooltip必须被包含在position:relative的元素中' placement='top'>
+        <input class="zc-input" placeholder="请输入" type="text"/>
+    </div>
+    <div style="display:inline-block;" class="zc_tooltip" tooltip-text='right' placement='right'>
+        <input class="zc-input" placeholder="请输入" disabled type="text" />
     </div>
     <br><br>
     <!-- <div class="zc_message zc_message_error">
