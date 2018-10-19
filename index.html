@@ -36,15 +36,22 @@
     <div class="zc_btn zc_btn_primary zc_tooltip" tooltip-text='top' placement='top' round>主要按钮</div>
     <div class="zc_btn zc_btn_success zc_tooltip" tooltip-text='right' placement='right' round>成功按钮</div>
     <div class="zc_btn zc_btn_info zc_tooltip" tooltip-text='bottom' placement='bottom' round>信息按钮</div>
-    <div class="zc_btn zc_btn_warning" round>警告按钮</div>
-    <div class="zc_btn zc_btn_danger zc_tooltip" tooltip-text='left' placement='left' round>危险按钮</div>
+    <div class="zc_btn zc_btn_warning zc_tooltip" tooltip-text='left' placement='left' round>警告按钮</div>
+    <div class="zc_btn zc_btn_danger" round>危险按钮</div>
     <br><br>
-    <div class="zc_btn zc_btn_default_plain">默认按钮</div>
-    <div class="zc_btn zc_btn_primary_plain">主要按钮</div>
-    <div class="zc_btn zc_btn_success_plain">成功按钮</div>
-    <div class="zc_btn zc_btn_info_plain">信息按钮</div>
-    <div class="zc_btn zc_btn_warning_plain">警告按钮</div>
-    <div class="zc_btn zc_btn_danger_plain">危险按钮</div>
+    <div class="zc_btn zc_btn_default zc_btn_icon"><i class="icon iconfont el-icon-erp-sousuo"></i></div>
+    <div class="zc_btn zc_btn_primary zc_btn_icon"><i class="icon iconfont el-icon-erp-shuru"></i></div>
+    <div class="zc_btn zc_btn_success zc_btn_icon"><i class="icon iconfont el-icon-erp-zhengque"></i></div>
+    <div class="zc_btn zc_btn_info zc_btn_icon"><i class="icon iconfont el-icon-erp-speech3"></i></div>
+    <div class="zc_btn zc_btn_warning zc_btn_icon"><i class="icon iconfont el-icon-erp-shoucang"></i></div>
+    <div class="zc_btn zc_btn_danger zc_btn_icon"><i class="icon iconfont el-icon-erp-shanchu"></i></div>
+    <br><br>
+    <div class="zc_btn zc_btn_default_plain"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
+    <div class="zc_btn zc_btn_primary_plain"><i class="icon iconfont el-icon-erp-shuru"></i>主要按钮</div>
+    <div class="zc_btn zc_btn_success_plain"><i class="icon iconfont el-icon-erp-zhengque"></i>成功按钮</div>
+    <div class="zc_btn zc_btn_info_plain"><i class="icon iconfont el-icon-erp-speech3"></i>信息按钮</div>
+    <div class="zc_btn zc_btn_warning_plain"><i class="icon iconfont el-icon-erp-shoucang"></i>警告按钮</div>
+    <div class="zc_btn zc_btn_danger_plain"><i class="icon iconfont el-icon-erp-shanchu"></i>危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain" round>默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain" round>主要按钮</div>
@@ -52,6 +59,13 @@
     <div class="zc_btn zc_btn_info_plain" round>信息按钮</div>
     <div class="zc_btn zc_btn_warning_plain" round>警告按钮</div>
     <div class="zc_btn zc_btn_danger_plain" round>危险按钮</div>
+    <br><br>
+    <div class="zc_btn zc_btn_default_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-sousuo"></i></div>
+    <div class="zc_btn zc_btn_primary_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-shuru"></i></div>
+    <div class="zc_btn zc_btn_success_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-zhengque"></i></div>
+    <div class="zc_btn zc_btn_info_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-speech3"></i></div>
+    <div class="zc_btn zc_btn_warning_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-shoucang"></i></div>
+    <div class="zc_btn zc_btn_danger_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-shanchu"></i></div>
     <br><br>
     <div class="zc_btn zc_btn_default" disabled>默认按钮</div>
     <div class="zc_btn zc_btn_primary" disabled>主要按钮</div>
@@ -76,6 +90,11 @@
     <div class="zc_btn zc_btn_default" round medium>medium</div>
     <div class="zc_btn zc_btn_default" round small>small</div>
     <div class="zc_btn zc_btn_default" round mini>mini</div>
+    <br><br>
+    <div style="display:inline-block;" class="zc_tooltip" tooltip-text='top' placement='top'>
+        <input type="text"/>
+    </div>
+    <br><br>
     <!-- <div class="zc_message zc_message_error">
         <i class="icon iconfont el-icon-erp-chenggong zc_message_icon"></i>
         <p class="zc_message_content">asdfgsdfgsdfgsdfgsfhgsfhgfghsfhgsgfhfggggggggggggggggggg</p>
@@ -144,7 +163,7 @@
     
         var $notice = ui.createNotice();
         function showMessage(type){
-            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3000 * 1000 });
+            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
         }
     </script>
 </body>

@@ -64,6 +64,8 @@ tr:nth-child(odd){background: #1f2681;}
     font-size: 14px;
     border-radius: 4px;
 }
+.zc_btn>.icon{font-size: 14px;}
+.zc_btn>.icon::after{content: ' ';}
 
 .zc_btn[round]{border-radius: 20px;padding: 12px 23px;}
 .zc_btn[disabled]{cursor:not-allowed;}
@@ -110,6 +112,8 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_btn_danger_plain{color: #f56c6c;background: #fef0f0;border-color: #fbc4c4;}
 .zc_btn_danger_plain:hover{background: #f56c6c;border-color: #f56c6c;color: #fff;}
 .zc_btn_danger_plain[disabled]{color: #f9a7a7;background-color: #fef0f0;border-color: #fde2e2;}
+
+.zc_btn_icon{border-radius: 50%;padding: 10px;}
 
 @keyframes loadingRotate{
     0%{transform:rotate(0deg);-ms-transform:rotate(0deg);-moz-transform:rotate(0deg);-webkit-transform:rotate(0deg);-o-transform:rotate(0deg);}
@@ -169,8 +173,8 @@ tr:nth-child(odd){background: #1f2681;}
     100%{opacity: 1;transform: translate(0,calc(-50% - 7px));}
 }
 .zc_tooltip{position: relative;}
-.zc_tooltip[placement='top']:hover::before{display: block;animation: topTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
-.zc_tooltip[placement='top']:hover::after{display: block;animation: topTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
+.zc_tooltip[placement='top']:hover::before,.zc_tooltip[placement='top']:focus::before{display: block;animation: topTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
+.zc_tooltip[placement='top']:hover::after,.zc_tooltip[placement='top']:focus::after{display: block;animation: topTooltipContentAppear 0.4s linear;animation-fill-mode: forwards;}
 .zc_tooltip[placement='top']::before{position: absolute;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-top: 6px solid #303133;content: '';bottom: 100%;left: calc(50% - 6px);}
 .zc_tooltip[placement='top']::after{position: absolute;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;bottom:calc(100% + 12px);left: 50%;transform: translateX(-50%);}
 .zc_tooltip[placement='right']:hover::before{display: block;animation: rightTooltipCartAppear 0.4s linear;animation-fill-mode: forwards;}
