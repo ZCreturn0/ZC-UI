@@ -216,3 +216,10 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-input[clearable]{padding-right: 25px;}
 .clearIcon{position: absolute;display: none;right: 5px;top: calc(50% - 9px);font-size: 18px;cursor: pointer;color: #c0c4cc;}
 .clearIcon:hover{color: #909399;}
+.preIcon{position: absolute;left: 5px;top: calc(50% - 9px);font-size: 18px;cursor: default;color: #c0c4cc;}
+.sufIcon{position: absolute;right: 5px;top: calc(50% - 9px);font-size: 18px;cursor: default;color: #c0c4cc;}
+.zc-input[preIcon]{padding-left: 30px;}
+.zc-input[sufIcon]{padding-right: 25px;}
+.zc-input[medium]{height: 36px;line-height: 36px;}
+.zc-input[small]{height: 32px;line-height: 32px;}
+.zc-input[mini]{height: 28px;line-height: 28px;}
