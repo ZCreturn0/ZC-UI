@@ -215,3 +215,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-input[disabled]{background-color: #f5f7fa;border-color: #e4e7ed;color: #c0c4cc;cursor: not-allowed;}
 .zc-input[clearable]{padding-right: 25px;}
 .clearIcon{position: absolute;display: none;right: 5px;top: calc(50% - 9px);font-size: 18px;cursor: pointer;color: #c0c4cc;}
+.clearIcon:hover{color: #909399;}
