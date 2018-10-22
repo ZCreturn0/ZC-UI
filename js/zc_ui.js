@@ -123,7 +123,29 @@ ZC_Tools.prototype.inArr = function(arr,ele){
  *  
  */
 function ZC_UI(){
-    
+    var tools = new ZC_Tools();
+    document.addEventListener('mouseover',function(e){
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
+            target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'block';
+        }
+    },false);
+    document.addEventListener('mouseout', function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
+            target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'none';
+        }
+    }, false);
+    document.addEventListener('click',function(e){
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
+            target.parentNode.getElementsByClassName('zc-input')[0].value = '';
+            target.parentNode.getElementsByClassName('zc-input')[0].focus();
+        }
+    },false);
 }
 
 /**
