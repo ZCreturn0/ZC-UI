@@ -23,7 +23,7 @@ tr:nth-child(odd){background: #1f2681;}
 .disabled{cursor: not-allowed;color: #ccc;}
 .disabled:hover{color: #ccc;}
 .total{background: #fff;padding: 5px 10px;border-radius: 5px;color: #606266;font-weight: bold;}
-.jump{background: #fff;border-radius: 5px;color: #606266;font-weight: bold;}
+.jump{background: #fff;border-radius: 5px;color: #606266;font-weight: bold;transform: translateY(4px);}
 .jump-input{
     display: inline-block;
     outline-style: none ;
