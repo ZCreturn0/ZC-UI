@@ -46,7 +46,7 @@
     <div class="zc_btn zc_btn_warning zc_btn_icon"><i class="icon iconfont el-icon-erp-shoucang"></i></div>
     <div class="zc_btn zc_btn_danger zc_btn_icon"><i class="icon iconfont el-icon-erp-shanchu"></i></div>
     <br><br>
-    <div class="zc_btn zc_btn_default_plain"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
+    <div class="zc_btn zc_btn_default_plain" onclick="showAlert('success')"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain"><i class="icon iconfont el-icon-erp-shuru"></i>主要按钮</div>
     <div class="zc_btn zc_btn_success_plain"><i class="icon iconfont el-icon-erp-zhengque"></i>成功按钮</div>
     <div class="zc_btn zc_btn_info_plain"><i class="icon iconfont el-icon-erp-speech3"></i>信息按钮</div>
@@ -137,6 +137,7 @@
     </div> 
     -->
     <!-- raw $alert html -->
+    <!--
     <div class="zc_cover">
         <div class="zc_alert_box">
             <div class="zc_alert_header">
@@ -151,6 +152,7 @@
             </div>
         </div>
     </div>
+    -->
     <script src="./js/zc_ui.js"></script>
     <script>
         var tableElement = document.getElementById('zc_table');
@@ -215,6 +217,9 @@
         var $notice = ui.createNotice();
         function showMessage(type){
             $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+        }
+        function showAlert(type){
+            $notice.$alert('title','content',{});
         }
     </script>
 </body>
