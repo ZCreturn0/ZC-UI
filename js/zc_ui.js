@@ -671,3 +671,61 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
         }, 500);
     }
 }
+
+/**
+ * 
+ * @description show an alert which have one confirm btn only
+ * @param {any} title
+ * @param {any} content
+ * @param {object} option
+ * 
+ */
+ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
+    if (!title || !content){
+        throw 'title and content is necessary';
+    }
+    //cover and box
+    var zc_cover = document.createElement('div');
+    zc_cover.className = 'zc_cover';
+    var zc_alert_box = document.createElement('div');
+    zc_alert_box.className = 'zc_alert_box';
+
+    //header
+    var zc_alert_header = document.createElement('div');
+    zc_alert_header.className = 'zc_alert_header';
+    var zc_alert_title = document.createElement('div');
+    zc_alert_title.className = 'zc_alert_title';
+    var zc_alert_title_text = document.createElement('span');
+    zc_alert_title_text.innerText = title;
+    zc_alert_title.appendChild(zc_alert_title_text);
+    var closeIcon = document.createElement('i');
+    closeIcon.className = 'icon iconfont el-icon-erp-guanbi';
+    var zc_alert_close_icon = document.createElement('button');
+    zc_alert_close_icon.className = 'zc_alert_close_icon';
+    zc_alert_close_icon.appendChild(closeIcon);
+    zc_alert_header.appendChild(zc_alert_title);
+    zc_alert_header.appendChild(zc_alert_close_icon);
+
+    //content
+    var zc_alert_content = document.createElement('div');
+    zc_alert_content.className = 'zc_alert_content';
+    var zc_alert_content_text = document.createElement('p');
+    zc_alert_content_text.innerText = content;
+    zc_alert_content.appendChild(zc_alert_content_text);
+
+
+    //btns
+    var zc_alert_btns = document.createElement('div');
+    zc_alert_btns.className = 'zc_alert_btns';
+    var zc_btn = document.createElement('div');
+    zc_btn.className = 'zc_btn zc_btn_primary';
+    zc_btn.innerText = '确定';
+    zc_alert_btns.appendChild(zc_btn);
+
+    //all added
+    zc_alert_box.appendChild(zc_alert_header);
+    zc_alert_box.appendChild(zc_alert_content);
+    zc_alert_box.appendChild(zc_alert_btns);
+    zc_cover.appendChild(zc_alert_box);
+    document.body.appendChild(zc_cover);
+}
