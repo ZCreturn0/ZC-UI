@@ -682,7 +682,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
  *              --type:icon type
  * 
  */
-ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
+ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,confirmCallback,closeCallback){
     if (!title || !content){
         throw 'title and content is necessary';
     }
@@ -704,9 +704,9 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
     zc_alert_title_text.innerText = title;
     zc_alert_title.appendChild(zc_alert_title_text);
     var closeIcon = document.createElement('i');
-    closeIcon.className = 'icon iconfont el-icon-erp-guanbi';
+    closeIcon.className = 'icon iconfont el-icon-erp-guanbi zc_btn_close';
     var zc_alert_close_icon = document.createElement('button');
-    zc_alert_close_icon.className = 'zc_alert_close_icon';
+    zc_alert_close_icon.className = 'zc_alert_close_icon zc_btn_close';
     zc_alert_close_icon.appendChild(closeIcon);
     zc_alert_header.appendChild(zc_alert_title);
     zc_alert_header.appendChild(zc_alert_close_icon);
@@ -733,9 +733,9 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
 
     //btns
     var zc_alert_btns = document.createElement('div');
-    zc_alert_btns.className = 'zc_alert_btns';
+    zc_alert_btns.className = 'zc_alert_btns zc_btn_confirm';
     var zc_btn = document.createElement('div');
-    zc_btn.className = 'zc_btn zc_btn_primary';
+    zc_btn.className = 'zc_btn zc_btn_primary zc_btn_confirm';
     zc_btn.innerText = option.confirmButtonText ? option.confirmButtonText : '确定';
     zc_alert_btns.appendChild(zc_btn);
 
@@ -745,4 +745,19 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
     zc_alert_box.appendChild(zc_alert_btns);
     zc_cover.appendChild(zc_alert_box);
     document.body.appendChild(zc_cover);
+
+    //add event to zc_alert_box,when alert shown,zc_cover has no event
+    document.getElementsByClassName('zc_alert_box')[0].addEventListener('click',function(e){
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target.className);
+        if (target.className.indexOf('zc_btn_confirm') >= 0){
+            document.body.removeChild(zc_cover);
+            confirmCallback();
+        }
+        else if (target.className.indexOf('zc_btn_close') >= 0){
+            document.body.removeChild(zc_cover);
+            closeCallback();
+        }
+    },true);
 }

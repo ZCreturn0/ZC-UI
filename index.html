@@ -142,13 +142,13 @@
         <div class="zc_alert_box">
             <div class="zc_alert_header">
                 <div class="zc_alert_title"><span>标题</span></div>
-                <button class="zc_alert_close_icon"><i class="icon iconfont el-icon-erp-guanbi"></i></button>
+                <button class="zc_alert_close_icon zc_btn_close"><i class="icon iconfont el-icon-erp-guanbi zc_btn_close"></i></button>
             </div>
             <div class="zc_alert_content">
                 <p>斯蒂芬斯蒂芬函数返回是否更换</p>
             </div>
-            <div class="zc_alert_btns">
-                <div class="zc_btn zc_btn_primary" small>确定</div>
+            <div class="zc_alert_btns zc_btn_confirm">
+                <div class="zc_btn zc_btn_primary zc_btn_confirm" small>确定</div>
             </div>
         </div>
     </div>
@@ -216,10 +216,16 @@
     
         var $notice = ui.createNotice();
         function showMessage(type){
-            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 300 * 1000 });
+            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+        }
+        function confirmCallback(){
+            $notice.$message({ text: '确认成功', type: 'success', showClose: true, duration: 3 * 1000 });
+        }
+        function closeCallback(){
+            $notice.$message({ text: '已关闭', type: 'info', showClose: true, duration: 3 * 1000 });
         }
         function showAlert(type){
-            $notice.$alert('提示','内容',{ confirmButtonText:'OK',type: type});
+            $notice.$alert('提示','内容',{ confirmButtonText:'OK',type: type}, confirmCallback, closeCallback);
         }
     </script>
 </body>
