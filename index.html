@@ -46,12 +46,12 @@
     <div class="zc_btn zc_btn_warning zc_btn_icon"><i class="icon iconfont el-icon-erp-shoucang"></i></div>
     <div class="zc_btn zc_btn_danger zc_btn_icon"><i class="icon iconfont el-icon-erp-shanchu"></i></div>
     <br><br>
-    <div class="zc_btn zc_btn_default_plain" onclick="showAlert('success')"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
+    <div class="zc_btn zc_btn_default_plain"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain"><i class="icon iconfont el-icon-erp-shuru"></i>主要按钮</div>
-    <div class="zc_btn zc_btn_success_plain"><i class="icon iconfont el-icon-erp-zhengque"></i>成功按钮</div>
-    <div class="zc_btn zc_btn_info_plain"><i class="icon iconfont el-icon-erp-speech3"></i>信息按钮</div>
-    <div class="zc_btn zc_btn_warning_plain"><i class="icon iconfont el-icon-erp-shoucang"></i>警告按钮</div>
-    <div class="zc_btn zc_btn_danger_plain"><i class="icon iconfont el-icon-erp-shanchu"></i>危险按钮</div>
+    <div class="zc_btn zc_btn_success_plain" onclick="showAlert('success')"><i class="icon iconfont el-icon-erp-zhengque"></i>成功按钮</div>
+    <div class="zc_btn zc_btn_info_plain" onclick="showAlert('info')"><i class="icon iconfont el-icon-erp-speech3"></i>信息按钮</div>
+    <div class="zc_btn zc_btn_warning_plain" onclick="showAlert('warning')"><i class="icon iconfont el-icon-erp-shoucang"></i>警告按钮</div>
+    <div class="zc_btn zc_btn_danger_plain" onclick="showAlert('error')"><i class="icon iconfont el-icon-erp-shanchu"></i>危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain" round>默认按钮</div>
     <div class="zc_btn zc_btn_primary_plain" round>主要按钮</div>
@@ -216,10 +216,10 @@
     
         var $notice = ui.createNotice();
         function showMessage(type){
-            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
+            $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 300 * 1000 });
         }
         function showAlert(type){
-            $notice.$alert('title','content',{});
+            $notice.$alert('提示','内容',{ confirmButtonText:'OK',type: type});
         }
     </script>
 </body>

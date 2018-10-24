@@ -236,10 +236,11 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_alert_close_icon{position: absolute;top: 15px;right: 15px;padding: 0;border: none;outline: none;background: transparent;font-size: 16px;cursor: pointer;color: #909399;}
 .zc_alert_close_icon:hover{color: #409eff;}
 .zc_alert_close_icon>.icon{font-size: 12px;}
-.zc_alert_content{position: relative;padding: 10px 15px;color: #606266;font-size: 14px;}
-.zc_alert_content>p{margin: 0;line-height: 24px;}
+.zc_alert_content{position: relative;padding: 10px 15px;color: #606266;}
+.zc_alert_content>span{margin: 0;line-height: 24px;font-size: 14px;display: inline-block;transform: translateY(-4px);}
+.zc_alert_content>.icon{line-height: 24px;font-size: 24px;}
 .zc_alert_btns{padding: 5px 15px 0;text-align: right;}
-.zc_success_icon{color: #67c23a;}
-.zc_info_icon{color: #909399;}
-.zc_warning_icon{color: #e6a23c;}
-.zc_error_icon{color: #f56c6c;}
+.zc_success_icon{color: #67c23a;margin-right: 15px;}
+.zc_info_icon{color: #909399;margin-right: 15px;}
+.zc_warning_icon{color: #e6a23c;margin-right: 15px;}
+.zc_error_icon{color: #f56c6c;margin-right: 15px;}
