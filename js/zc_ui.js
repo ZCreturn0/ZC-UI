@@ -678,12 +678,17 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
  * @param {any} title
  * @param {any} content
  * @param {object} option
+ *              --option.confirmButtonText:text shown in confirm btn
+ *              --type:icon type
  * 
  */
 ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
     if (!title || !content){
         throw 'title and content is necessary';
     }
+    //hide scroll bar
+    document.body.style.overflow = 'hidden';
+
     //cover and box
     var zc_cover = document.createElement('div');
     zc_cover.className = 'zc_cover';
@@ -709,7 +714,19 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
     //content
     var zc_alert_content = document.createElement('div');
     zc_alert_content.className = 'zc_alert_content';
-    var zc_alert_content_text = document.createElement('p');
+    var zc_alert_content_text = document.createElement('span');
+    if (option.type){
+        var icon = '';
+        switch (option.type) {
+            case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_success_icon'; break;
+            case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_warning_icon'; break;
+            case 'info': icon = 'icon iconfont el-icon-erp-xinxi1 zc_info_icon'; break;
+            case 'error': icon = 'icon iconfont el-icon-erp-chucuo zc_error_icon'; break;
+        }
+        var zc_alert_type_icon = document.createElement('i');
+        zc_alert_type_icon.className = icon;
+        zc_alert_content.appendChild(zc_alert_type_icon);
+    }
     zc_alert_content_text.innerText = content;
     zc_alert_content.appendChild(zc_alert_content_text);
 
@@ -719,7 +736,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option){
     zc_alert_btns.className = 'zc_alert_btns';
     var zc_btn = document.createElement('div');
     zc_btn.className = 'zc_btn zc_btn_primary';
-    zc_btn.innerText = '确定';
+    zc_btn.innerText = option.confirmButtonText ? option.confirmButtonText : '确定';
     zc_alert_btns.appendChild(zc_btn);
 
     //all added
