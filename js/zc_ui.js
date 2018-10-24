@@ -750,14 +750,19 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     document.getElementsByClassName('zc_alert_box')[0].addEventListener('click',function(e){
         var e = e || window.event;
         var target = e.target || e.srcElement;
-        console.log(target.className);
         if (target.className.indexOf('zc_btn_confirm') >= 0){
             document.body.removeChild(zc_cover);
-            confirmCallback();
+            document.body.style.overflow = 'scroll';
+            if (confirmCallback){
+                confirmCallback();
+            }
         }
         else if (target.className.indexOf('zc_btn_close') >= 0){
             document.body.removeChild(zc_cover);
-            closeCallback();
+            document.body.style.overflow = 'scroll';
+            if (closeCallback) {
+                closeCallback();
+            }
         }
     },true);
 }
