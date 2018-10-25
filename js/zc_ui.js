@@ -686,6 +686,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     if (!title || !content){
         throw 'title and content is necessary';
     }
+    var tools = new ZC_Tools();
     //hide scroll bar
     document.body.style.overflow = 'hidden';
 
@@ -730,7 +731,6 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     zc_alert_content_text.innerText = content;
     zc_alert_content.appendChild(zc_alert_content_text);
 
-
     //btns
     var zc_alert_btns = document.createElement('div');
     zc_alert_btns.className = 'zc_alert_btns zc_btn_confirm';
@@ -751,18 +751,26 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
         var e = e || window.event;
         var target = e.target || e.srcElement;
         if (target.className.indexOf('zc_btn_confirm') >= 0){
-            document.body.removeChild(zc_cover);
-            document.body.style.overflow = 'scroll';
-            if (confirmCallback){
-                confirmCallback();
-            }
+            tools.removeClass(zc_alert_box, 'zc_alert_box');
+            tools.addClass(zc_alert_box, 'zc_alert_box_disAppear');
+            timerInner = setTimeout(() => {
+                document.body.removeChild(zc_cover);
+                document.body.style.overflow = 'scroll';
+                if (confirmCallback) {
+                    confirmCallback();
+                }
+            }, 200);
         }
         else if (target.className.indexOf('zc_btn_close') >= 0){
-            document.body.removeChild(zc_cover);
-            document.body.style.overflow = 'scroll';
-            if (closeCallback) {
-                closeCallback();
-            }
+            tools.removeClass(zc_alert_box, 'zc_alert_box');
+            tools.addClass(zc_alert_box, 'zc_alert_box_disAppear');
+            timerInner = setTimeout(() => {
+                document.body.removeChild(zc_cover);
+                document.body.style.overflow = 'scroll';
+                if (closeCallback) {
+                    closeCallback();
+                }
+            }, 200);
         }
     },true);
 }
