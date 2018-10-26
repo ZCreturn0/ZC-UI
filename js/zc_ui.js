@@ -680,6 +680,8 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
  * @param {object} option
  *              --option.confirmButtonText:text shown in confirm btn
  *              --type:icon type
+ * @param {function} confirmCallback: called when confirm btn is clicked
+ * @param {function} closeCallback: called when close icon is clicked
  * 
  */
 ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,confirmCallback,closeCallback){
@@ -736,6 +738,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     zc_alert_btns.className = 'zc_alert_btns zc_btn_confirm';
     var zc_btn = document.createElement('div');
     zc_btn.className = 'zc_btn zc_btn_primary zc_btn_confirm';
+    zc_btn.setAttribute('medium', '');
     zc_btn.innerText = option.confirmButtonText ? option.confirmButtonText : '确定';
     zc_alert_btns.appendChild(zc_btn);
 
@@ -773,4 +776,125 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
             }, 200);
         }
     },true);
+}
+
+/**
+ * 
+ * @description show a confirm which have one confirm btn and one calcel btn
+ * @param {any} title
+ * @param {any} content
+ * @param {object} option
+ *              --option.confirmButtonText:text shown in confirm btn
+ *              --option.cancelButtonText:text shown in cancel btn
+ *              --option.type:icon type
+ *              --option.cancelFirst:when is true,cancel btn on the left(default false)
+ * @param {function} confirmCallback: called when confirm btn is clicked
+ * @param {function} closeCallback: called when close icon is clicked
+ * 
+ */
+ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option, confirmCallback, cancelCallback, closeCallback) {
+    if (!title || !content) {
+        throw 'title and content is necessary';
+    }
+    var tools = new ZC_Tools();
+
+    //hide scroll bar
+    document.body.style.overflow = 'hidden';
+
+    //cover and box
+    var zc_cover = document.createElement('div');
+    zc_cover.className = 'zc_cover';
+    var zc_confirm_box = document.createElement('div');
+    zc_confirm_box.className = 'zc_confirm_box';
+
+    //header
+    var zc_confirm_header = document.createElement('div');
+    zc_confirm_header.className = 'zc_confirm_header';
+    var zc_confirm_title = document.createElement('div');
+    zc_confirm_title.className = 'zc_confirm_title';
+    var zc_confirm_title_text = document.createElement('span');
+    zc_confirm_title_text.innerText = title;
+    zc_confirm_title.appendChild(zc_confirm_title_text);
+    var closeIcon = document.createElement('i');
+    closeIcon.className = 'icon iconfont el-icon-erp-guanbi zc_btn_close';
+    var zc_confirm_close_icon = document.createElement('button');
+    zc_confirm_close_icon.className = 'zc_confirm_close_icon zc_btn_close';
+    zc_confirm_close_icon.appendChild(closeIcon);
+    zc_confirm_header.appendChild(zc_confirm_title);
+    zc_confirm_header.appendChild(zc_confirm_close_icon);
+
+    //content
+    var zc_confirm_content = document.createElement('div');
+    zc_confirm_content.className = 'zc_confirm_content';
+    var zc_confirm_content_text = document.createElement('span');
+    if (option.type) {
+        var icon = '';
+        switch (option.type) {
+            case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_success_icon'; break;
+            case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_warning_icon'; break;
+            case 'info': icon = 'icon iconfont el-icon-erp-xinxi1 zc_info_icon'; break;
+            case 'error': icon = 'icon iconfont el-icon-erp-chucuo zc_error_icon'; break;
+        }
+        var zc_confirm_type_icon = document.createElement('i');
+        zc_confirm_type_icon.className = icon;
+        zc_confirm_content.appendChild(zc_confirm_type_icon);
+    }
+    zc_confirm_content_text.innerText = content;
+    zc_confirm_content.appendChild(zc_confirm_content_text);
+
+    //btns
+    var zc_confirm_btns = document.createElement('div');
+    zc_confirm_btns.className = 'zc_confirm_btns';
+    var zc_btn_confirm = document.createElement('div');
+    var zc_btn_cancel = document.createElement('div');
+    zc_btn_confirm.className = 'zc_btn zc_btn_primary zc_btn_confirm';
+    zc_btn_cancel.className = 'zc_btn zc_btn_default zc_btn_cancel';
+    zc_btn_confirm.setAttribute('medium','');
+    zc_btn_cancel.setAttribute('medium', '');
+    zc_btn_confirm.innerText = option.confirmButtonText ? option.confirmButtonText : '确定';
+    zc_btn_cancel.innerText = option.cancelButtonText ? option.cancelButtonText : '取消';
+    if (option.cancelFirst){
+        zc_confirm_btns.appendChild(zc_btn_cancel);
+        zc_confirm_btns.appendChild(zc_btn_confirm);
+    }
+    else{
+        zc_confirm_btns.appendChild(zc_btn_confirm);
+        zc_confirm_btns.appendChild(zc_btn_cancel);
+    }
+
+    //all added
+    zc_confirm_box.appendChild(zc_confirm_header);
+    zc_confirm_box.appendChild(zc_confirm_content);
+    zc_confirm_box.appendChild(zc_confirm_btns);
+    zc_cover.appendChild(zc_confirm_box);
+    document.body.appendChild(zc_cover);
+
+    //add event to zc_confirm_box,when confirm shown,zc_cover has no event
+    document.getElementsByClassName('zc_confirm_box')[0].addEventListener('click', function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target.className);
+        // if (target.className.indexOf('zc_btn_confirm') >= 0) {
+        //     tools.removeClass(zc_confirm_box, 'zc_confirm_box');
+        //     tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
+        //     timerInner = setTimeout(() => {
+        //         document.body.removeChild(zc_cover);
+        //         document.body.style.overflow = 'scroll';
+        //         if (confirmCallback) {
+        //             confirmCallback();
+        //         }
+        //     }, 200);
+        // }
+        // else if (target.className.indexOf('zc_btn_close') >= 0) {
+        //     tools.removeClass(zc_confirm_box, 'zc_confirm_box');
+        //     tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
+        //     timerInner = setTimeout(() => {
+        //         document.body.removeChild(zc_cover);
+        //         document.body.style.overflow = 'scroll';
+        //         if (closeCallback) {
+        //             closeCallback();
+        //         }
+        //     }, 200);
+        // }
+    }, true);
 }
