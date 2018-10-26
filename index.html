@@ -47,18 +47,18 @@
     <div class="zc_btn zc_btn_danger zc_btn_icon"><i class="icon iconfont el-icon-erp-shanchu"></i></div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain"><i class="icon iconfont el-icon-erp-sousuo"></i>默认按钮</div>
-    <div class="zc_btn zc_btn_primary_plain"><i class="icon iconfont el-icon-erp-shuru"></i>主要按钮</div>
+    <div class="zc_btn zc_btn_primary_plain" onclick="showAlert('')"><i class="icon iconfont el-icon-erp-shuru"></i>主要按钮</div>
     <div class="zc_btn zc_btn_success_plain" onclick="showAlert('success')"><i class="icon iconfont el-icon-erp-zhengque"></i>成功按钮</div>
     <div class="zc_btn zc_btn_info_plain" onclick="showAlert('info')"><i class="icon iconfont el-icon-erp-speech3"></i>信息按钮</div>
     <div class="zc_btn zc_btn_warning_plain" onclick="showAlert('warning')"><i class="icon iconfont el-icon-erp-shoucang"></i>警告按钮</div>
     <div class="zc_btn zc_btn_danger_plain" onclick="showAlert('error')"><i class="icon iconfont el-icon-erp-shanchu"></i>危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain" round>默认按钮</div>
-    <div class="zc_btn zc_btn_primary_plain" round>主要按钮</div>
-    <div class="zc_btn zc_btn_success_plain" round>成功按钮</div>
-    <div class="zc_btn zc_btn_info_plain" round>信息按钮</div>
-    <div class="zc_btn zc_btn_warning_plain" round>警告按钮</div>
-    <div class="zc_btn zc_btn_danger_plain" round>危险按钮</div>
+    <div class="zc_btn zc_btn_primary_plain" onclick="showConfirm()" round>主要按钮</div>
+    <div class="zc_btn zc_btn_success_plain" onclick="showConfirm('success')" round>成功按钮</div>
+    <div class="zc_btn zc_btn_info_plain" onclick="showConfirm('info')" round>信息按钮</div>
+    <div class="zc_btn zc_btn_warning_plain" onclick="showConfirm('warning')" round>警告按钮</div>
+    <div class="zc_btn zc_btn_danger_plain" onclick="showConfirm('error')" round>危险按钮</div>
     <br><br>
     <div class="zc_btn zc_btn_default_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-sousuo"></i></div>
     <div class="zc_btn zc_btn_primary_plain zc_btn_icon"><i class="icon iconfont el-icon-erp-shuru"></i></div>
@@ -154,22 +154,23 @@
     </div>
     -->
     <!-- raw $confirm html -->
-    
+    <!-- 
     <div class="zc_cover">
-        <div class="zc_alert_box">
-            <div class="zc_alert_header">
-                <div class="zc_alert_title"><span>标题</span></div>
-                <button class="zc_alert_close_icon zc_btn_close"><i class="icon iconfont el-icon-erp-guanbi zc_btn_close"></i></button>
+        <div class="zc_confirm_box">
+            <div class="zc_confirm_header">
+                <div class="zc_confirm_title"><span>标题</span></div>
+                <button class="zc_confirm_close_icon zc_btn_close"><i class="icon iconfont el-icon-erp-guanbi zc_btn_close"></i></button>
             </div>
-            <div class="zc_alert_content">
+            <div class="zc_confirm_content">
                 <p>斯蒂芬斯蒂芬函数返回是否更换</p>
             </div>
-            <div class="zc_alert_btns zc_btn_confirm">
+            <div class="zc_confirm_btns">
                 <div class="zc_btn zc_btn_primary zc_btn_confirm" small>确定</div>
-                <div class="zc_btn zc_btn_default zc_btn_confirm" small>取消</div>
+                <div class="zc_btn zc_btn_default zc_btn_cancel" small>取消</div>
             </div>
         </div>
     </div> 
+     -->
    
     <script src="./js/zc_ui.js"></script>
     <script>
@@ -242,8 +243,14 @@
         function closeCallback(){
             $notice.$message({ text: '已关闭', type: 'info', showClose: true, duration: 3 * 1000 });
         }
+        function cancelCallback(){
+            $notice.$message({ text: '取消操作', type: 'info', showClose: true, duration: 3 * 1000 });
+        }
         function showAlert(type){
-            $notice.$alert('提示','内容',{ confirmButtonText:'OK',type: type}, confirmCallback, closeCallback);
+            $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: type}, confirmCallback, closeCallback);
+        }
+        function showConfirm(type){
+            $notice.$confirm('标题','内容',{ type: type, cancelFirst:false}, confirmCallback, closeCallback, cancelCallback);
         }
     </script>
 </body>
