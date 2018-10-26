@@ -245,6 +245,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_alert_content>span,.zc_confirm_content>span{margin: 0;line-height: 24px;font-size: 14px;display: inline-block;transform: translateY(-4px);}
 .zc_alert_content>.icon,.zc_confirm_content>.icon{line-height: 24px;font-size: 24px;}
 .zc_alert_btns,.zc_confirm_btns{padding: 5px 15px 0;text-align: right;}
+.zc_confirm_btns>.zc_btn{margin-left: 15px;}
 .zc_success_icon{color: #67c23a;margin-right: 15px;}
 .zc_info_icon{color: #909399;margin-right: 15px;}
 .zc_warning_icon{color: #e6a23c;margin-right: 15px;}
