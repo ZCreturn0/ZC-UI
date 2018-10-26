@@ -873,28 +873,38 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
     document.getElementsByClassName('zc_confirm_box')[0].addEventListener('click', function (e) {
         var e = e || window.event;
         var target = e.target || e.srcElement;
-        console.log(target.className);
-        // if (target.className.indexOf('zc_btn_confirm') >= 0) {
-        //     tools.removeClass(zc_confirm_box, 'zc_confirm_box');
-        //     tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
-        //     timerInner = setTimeout(() => {
-        //         document.body.removeChild(zc_cover);
-        //         document.body.style.overflow = 'scroll';
-        //         if (confirmCallback) {
-        //             confirmCallback();
-        //         }
-        //     }, 200);
-        // }
-        // else if (target.className.indexOf('zc_btn_close') >= 0) {
-        //     tools.removeClass(zc_confirm_box, 'zc_confirm_box');
-        //     tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
-        //     timerInner = setTimeout(() => {
-        //         document.body.removeChild(zc_cover);
-        //         document.body.style.overflow = 'scroll';
-        //         if (closeCallback) {
-        //             closeCallback();
-        //         }
-        //     }, 200);
-        // }
+        if (target.className.indexOf('zc_btn_confirm') >= 0) {
+            tools.removeClass(zc_confirm_box, 'zc_confirm_box');
+            tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
+            timerInner = setTimeout(() => {
+                document.body.removeChild(zc_cover);
+                document.body.style.overflow = 'scroll';
+                if (confirmCallback) {
+                    confirmCallback();
+                }
+            }, 200);
+        }
+        else if (target.className.indexOf('zc_btn_close') >= 0) {
+            tools.removeClass(zc_confirm_box, 'zc_confirm_box');
+            tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
+            timerInner = setTimeout(() => {
+                document.body.removeChild(zc_cover);
+                document.body.style.overflow = 'scroll';
+                if (closeCallback) {
+                    closeCallback();
+                }
+            }, 200);
+        }
+        else if (target.className.indexOf('zc_btn_cancel') >= 0){
+            tools.removeClass(zc_confirm_box, 'zc_confirm_box');
+            tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
+            timerInner = setTimeout(() => {
+                document.body.removeChild(zc_cover);
+                document.body.style.overflow = 'scroll';
+                if (cancelCallback) {
+                    cancelCallback();
+                }
+            }, 200);
+        }
     }, true);
 }
