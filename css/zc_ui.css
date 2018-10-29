@@ -191,7 +191,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_tooltip[placement='left']::before{position: absolute;white-space:nowrap;display: none;z-index: 9999;width: 0;height: 0;border: 6px solid transparent;border-left: 6px solid #303133;content: '';bottom: calc(50% - 6px);right: 100%;}
 .zc_tooltip[placement='left']::after{position: absolute;white-space:nowrap;display: none;z-index: 9999;content: attr(tooltip-text);background: #303133;border-radius: 6px;color: #fff;padding: 10px;right:calc(100% + 12px);bottom: -50%;transform: translateY(calc(-50% - 2px));}
 
-.zc-input-content{display:inline-block;margin: 20px 0;}
+.zc-input-content{display:inline-block;margin: 20px 0;position: relative;}
 .zc-input{
     display: inline-block;
     outline-style: none ;
@@ -268,3 +268,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_info_icon{color: #909399;margin-right: 15px;}
 .zc_warning_icon{color: #e6a23c;margin-right: 15px;}
 .zc_error_icon{color: #f56c6c;margin-right: 15px;}
+
