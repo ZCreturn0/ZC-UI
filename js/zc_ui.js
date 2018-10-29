@@ -150,24 +150,60 @@ function ZC_UI(){
         var e = e || window.event;
         var target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input')) {
-            var Msg = {};
             if (target.getAttribute('required') != null && target.value == ''){
                 target.setAttribute('validate','failed');
-                var nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';
-                Msg.type = 'failed';
-                Msg.text = nullmsg;
-                var result = document.createElement('div');
-                result.className = 'zc-validate-failed';
-                result.innerText = Msg.text;
-                target.parentNode.appendChild(result);
+                const nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';
+                //to prevent add more than one 'nullmsg'
+                if (!target.parentNode.getElementsByClassName('zc-validate-failed')[0]){
+                    var result = document.createElement('div');
+                    result.className = 'zc-validate-failed';
+                    result.innerText = nullmsg;
+                    target.parentNode.appendChild(result);
+                }
+                else{
+                    target.parentNode.getElementsByClassName('zc-validate-failed')[0].innerText = nullmsg;
+                }
             }
             else if (target.getAttribute('required') != null && target.value != ''){
-                target.setAttribute('validate', 'success');
-                if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]){
-                    target.parentNode.getElementsByClassName('zc-validate-failed')[0].style.animation = 'validateDisappear 0.2s linear';
-                    setTimeout(() => {
-                        target.parentNode.removeChild(target.parentNode.getElementsByClassName('zc-validate-failed')[0]);
-                    },200);
+                var reg = eval(target.getAttribute('regex'));
+                if (reg != null && !!new RegExp(reg)){
+                    //to prevent add more than one 'nullmsg'
+                    if (!(new RegExp(reg).test(target.value))){
+                        target.setAttribute('validate', 'failed');
+                        var errorMsg = target.getAttribute('errormsg');
+                        errorMsg = errorMsg ? errorMsg : '格式错误';
+                        if (!target.parentNode.getElementsByClassName('zc-validate-failed')[0]) {
+                            var result = document.createElement('div');
+                            result.className = 'zc-validate-failed';
+                            result.innerText = errorMsg;
+                            target.parentNode.appendChild(result);
+                        }
+                        else{
+                            target.parentNode.getElementsByClassName('zc-validate-failed')[0].innerText = errorMsg;
+                        }
+                    }
+                    else {
+                        target.setAttribute('validate', 'success');
+                        if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]) {
+                            target.parentNode.getElementsByClassName('zc-validate-failed')[0].style.animation = 'validateDisappear 0.2s linear';
+                            setTimeout(() => {
+                                if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]){
+                                    target.parentNode.removeChild(target.parentNode.getElementsByClassName('zc-validate-failed')[0]);
+                                }
+                            }, 200);
+                        }
+                    }
+                }
+                else {
+                    target.setAttribute('validate', 'success');
+                    if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]) {
+                        target.parentNode.getElementsByClassName('zc-validate-failed')[0].style.animation = 'validateDisappear 0.2s linear';
+                        setTimeout(() => {
+                            if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]) {
+                                target.parentNode.removeChild(target.parentNode.getElementsByClassName('zc-validate-failed')[0]);
+                            }
+                        }, 200);
+                    }
                 }
             }
         }
