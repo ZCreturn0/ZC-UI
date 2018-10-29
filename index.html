@@ -129,11 +129,11 @@
     </div>
     <br><br>
     <div class="zc_tooltip zc-input-content" tooltip-text='validate' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" required/>
+        <input class="zc-input" placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" type="text" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"/>
         <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
     </div>
     <br><br>
-    <!-- raw message html -->
+    <!-- raw $message html -->
     <!--
     <div class="zc_message zc_message_error">
         <i class="icon iconfont el-icon-erp-chenggong zc_message_icon"></i>
