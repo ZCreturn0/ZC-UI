@@ -146,6 +146,32 @@ function ZC_UI(){
             target.parentNode.getElementsByClassName('zc-input')[0].focus();
         }
     },false);
+    document.addEventListener('keyup', function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.classList && tools.inArr(target.classList, 'zc-input')) {
+            var Msg = {};
+            if (target.getAttribute('required') != null && target.value == ''){
+                target.setAttribute('validate','failed');
+                var nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';
+                Msg.type = 'failed';
+                Msg.text = nullmsg;
+                var result = document.createElement('div');
+                result.className = 'zc-validate-failed';
+                result.innerText = Msg.text;
+                target.parentNode.appendChild(result);
+            }
+            else if (target.getAttribute('required') != null && target.value != ''){
+                target.setAttribute('validate', 'success');
+                if (target.parentNode.getElementsByClassName('zc-validate-failed')[0]){
+                    target.parentNode.getElementsByClassName('zc-validate-failed')[0].style.animation = 'validateDisappear 0.2s linear';
+                    setTimeout(() => {
+                        target.parentNode.removeChild(target.parentNode.getElementsByClassName('zc-validate-failed')[0]);
+                    },200);
+                }
+            }
+        }
+    }, false);
 }
 
 /**
