@@ -103,5 +103,5 @@ var table_data = {
 #### 3.2.1 基本按钮
 在有zc_btn类的前提下添加不同的类显示不同类型的按钮:
 
-|类名|描述|属性值|
-
+|类名|描述|图例|
+|zc_btn_default|默认按钮| ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)|
