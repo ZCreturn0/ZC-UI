@@ -55,6 +55,7 @@ table.init(table_setting, paginationCallback);
 * pageSize:每页数据条数(number)<br>
 * total:总记录数(number)<br>
 * list:当前页的数据(Array)<br>
+
 <br><br>
 list中每个元素为一个object,属性必须包含`table_setting`中`field`的所有值(如对应3.2实例,这里的object应为{ name: '11', age: 11, score: 11, addr: 'aaaaaa' })<br>
 page,pageSize,total必须是`number`,否则会报错<br><br>
