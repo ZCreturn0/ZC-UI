@@ -124,3 +124,10 @@ table.update(table_data);
 |zc_btn_info_plain|信息按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/info_plain.png)|
 |zc_btn_warning_plain|警告按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/warning_plain.png)|
 |zc_btn_danger_plain|危险按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/danger_plain.png)|
+
+#### 3.2.3 圆角
+给按钮增加'round'属性:
+```
+<div class="zc_btn zc_btn_primary" round>主要按钮</div>
+```
+
