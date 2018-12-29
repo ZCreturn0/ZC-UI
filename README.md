@@ -134,4 +134,10 @@ table.update(table_data);
 
 #### 3.2.4 图标按钮
 图标参考 [图标](https://zcreturn0.github.io/ZC-UI/font_608239_92bsv2a958/demo_fontclass.html)  
+创建一个图标按钮,需添加'zc_btn_icon'类,可创建基本按钮或朴素按钮,内容为icon:
+```
+<div class="zc_btn zc_btn_primary zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shuru"></i>
+</div>
+```
 
