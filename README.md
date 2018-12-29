@@ -140,8 +140,8 @@ table.update(table_data);
     <i class="icon iconfont el-icon-erp-shuru"></i>
 </div>
 ```
-![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/primary_icon.png)
-zc_btn:按钮
-zc_btn_primary:基本按钮(primary)
-zc_btn_icon:图标按钮
-<i class="icon iconfont el-icon-erp-shuru"></i>:按钮里显示的图标
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/primary_icon.png)<br>
+* zc_btn:按钮<br>
+* zc_btn_primary:基本按钮(primary)<br>
+* zc_btn_icon:图标按钮<br>
+* <i class="icon iconfont el-icon-erp-shuru"></i>:按钮里显示的图标<br>
