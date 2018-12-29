@@ -140,4 +140,4 @@ table.update(table_data);
     <i class="icon iconfont el-icon-erp-shuru"></i>
 </div>
 ```
-
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/primary_icon.png)
