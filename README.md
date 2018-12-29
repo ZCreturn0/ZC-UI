@@ -145,3 +145,37 @@ table.update(table_data);
 * zc_btn_primary:基本按钮(primary)<br>
 * zc_btn_icon:图标按钮<br>
 * `<i class="icon iconfont el-icon-erp-shuru"></i>`:按钮里显示的图标<br>
+
+示例1:<br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/btn_icon_example.png)<br>
+以上按钮对应的代码分别为:
+```
+<div class="zc_btn zc_btn_default zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-sousuo"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_primary zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shuru"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_success zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-zhengque"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_info zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-speech3"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_warning zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shoucang"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_danger zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shanchu"></i>
+</div>
+```
