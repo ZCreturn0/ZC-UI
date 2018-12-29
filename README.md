@@ -144,4 +144,4 @@ table.update(table_data);
 * zc_btn:按钮<br>
 * zc_btn_primary:基本按钮(primary)<br>
 * zc_btn_icon:图标按钮<br>
-* ```<i class="icon iconfont el-icon-erp-shuru"></i>```:按钮里显示的图标<br>
+* `<i class="icon iconfont el-icon-erp-shuru"></i>`:按钮里显示的图标<br>
