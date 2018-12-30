@@ -215,4 +215,10 @@ table.update(table_data);
 ```
 
 #### 3.2.5 文字图标结合
-
+示例1,图标在前:<br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/pre_icon_btn.png)<br>
+```
+<div class="zc_btn zc_btn_primary_plain" onclick="showAlert('')">
+    <i class="icon iconfont el-icon-erp-shuru"></i>主要按钮
+</div>
+```
