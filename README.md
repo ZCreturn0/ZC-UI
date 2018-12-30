@@ -222,3 +222,11 @@ table.update(table_data);
     <i class="icon iconfont el-icon-erp-shuru"></i>主要按钮
 </div>
 ```
+
+示例2,文字在前:<br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/suf_icon_btn.png)<br>
+```
+<div class="zc_btn zc_btn_success_plain" onclick="showAlert('success')">
+    成功按钮 <i class="icon iconfont el-icon-erp-zhengque"></i>
+</div>
+```
