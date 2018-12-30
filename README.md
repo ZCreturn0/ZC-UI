@@ -179,3 +179,37 @@ table.update(table_data);
     <i class="icon iconfont el-icon-erp-shanchu"></i>
 </div>
 ```
+
+示例2:<br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/plain_btn_icon_example.png)<br>
+以上按钮对应的代码分别为:
+```
+<div class="zc_btn zc_btn_default_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-sousuo"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_primary_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shuru"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_success_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-zhengque"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_info_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-speech3"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_warning_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shoucang"></i>
+</div>
+```
+```
+<div class="zc_btn zc_btn_danger_plain zc_btn_icon">
+    <i class="icon iconfont el-icon-erp-shanchu"></i>
+</div>
+```
