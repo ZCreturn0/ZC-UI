@@ -213,3 +213,6 @@ table.update(table_data);
     <i class="icon iconfont el-icon-erp-shanchu"></i>
 </div>
 ```
+
+#### 3.2.5 文字图标结合
+
