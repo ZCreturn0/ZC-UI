@@ -230,3 +230,7 @@ table.update(table_data);
     成功按钮 <i class="icon iconfont el-icon-erp-zhengque"></i>
 </div>
 ```
+
+#### 3.2.6 按钮禁用
+按钮禁用只需加上`disabled`属性即可,按钮禁用后`hover`效果及按钮上的事件都会失效
+
