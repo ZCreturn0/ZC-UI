@@ -233,4 +233,23 @@ table.update(table_data);
 
 #### 3.2.6 按钮禁用
 按钮禁用只需加上`disabled`属性即可,按钮禁用后`hover`效果及按钮上的事件都会失效
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/disabled_btn.png)<br>
+```
+<div class="zc_btn zc_btn_default" disabled="">默认按钮</div>
+```
+```
+<div class="zc_btn zc_btn_primary" disabled="">主要按钮</div>
+```
+```
+<div class="zc_btn zc_btn_success" disabled="">成功按钮</div>
+```
+```
+<div class="zc_btn zc_btn_info" disabled="">信息按钮</div>
+```
+```
+<div class="zc_btn zc_btn_warning" disabled="">警告按钮</div>
+```
+```
+<div class="zc_btn zc_btn_danger" disabled="">危险按钮</div>
+```
 
