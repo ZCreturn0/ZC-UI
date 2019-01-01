@@ -253,3 +253,18 @@ table.update(table_data);
 <div class="zc_btn zc_btn_danger" disabled="">危险按钮</div>
 ```
 
+#### 3.2.7 按钮尺寸
+按钮可选择不同尺寸大小,只需加上`medium`,`small`,或`mini`属性,默认为最大尺寸<br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/btn-size.png)<br>
+```
+<div class="zc_btn zc_btn_default">默认按钮</div>
+```
+```
+<div class="zc_btn zc_btn_default" medium="">medium</div>
+```
+```
+<div class="zc_btn zc_btn_default" small="">small</div>
+```
+```
+<div class="zc_btn zc_btn_default" mini="">mini</div>
+```
