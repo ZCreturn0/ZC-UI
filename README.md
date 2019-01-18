@@ -273,3 +273,4 @@ table.update(table_data);
 为按钮加上`tooltip-text`和`placement`属性,这两个属性是成对存在的<br>
 `tooltip-text`:tooltip中显示的文字<br>
 `placement`:tooltip的方向<br>
+`placement`可取值:`top`,`bottom`,`left`,`right`;分别代表四个方向
