@@ -270,6 +270,6 @@ table.update(table_data);
 ```
 
 #### 3.2.8 为按钮加上tooltip
-为按钮加上`tooltip-text`和`placement`属性,这两个属性是成对存在的
-`tooltip-text`:tooltip中显示的文字
-`placement`:tooltip的方向
+为按钮加上`tooltip-text`和`placement`属性,这两个属性是成对存在的<br>
+`tooltip-text`:tooltip中显示的文字<br>
+`placement`:tooltip的方向<br>
