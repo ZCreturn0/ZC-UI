@@ -277,3 +277,17 @@ table.update(table_data);
 
 ### 3.3 加载中
 在页面上显示`加载中`效果:全屏半透明背景,正中间显示加载中与图标<br>
+步骤:<br>
+1.创建UI对象:
+```
+var ui = new ZC_UI();
+```
+2.通过UI对象创建loading对象
+```
+var loading = ui.createLoading();
+```
+3.loading的显示与移除
+```
+loading.showLoading('加载中...');
+```
+`showLoading()`有一个参数:显示loading时的提示文字,默认为`加载中...`
