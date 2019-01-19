@@ -274,3 +274,6 @@ table.update(table_data);
 `tooltip-text`:tooltip中显示的文字<br>
 `placement`:tooltip的方向<br>
 `placement`可取值:`top`,`bottom`,`left`,`right`;分别代表四个方向
+
+### 3.3 加载中
+在页面上显示`加载中`效果:全屏半透明背景,正中间显示加载中与图标<br>
