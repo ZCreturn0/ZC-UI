@@ -286,12 +286,12 @@ var ui = new ZC_UI();
 ```
 var loading = ui.createLoading();
 ```
-3.loading的显示与移除
+3.loading的显示与移除<br>
 显示:
 ```
 loading.showLoading('加载中...');
 ```
-`showLoading()`有一个参数:显示loading时的提示文字,默认为`加载中...`
+`showLoading()`有一个参数:显示loading时的提示文字,默认为`加载中...`<br>
 移除:
 ```
 loading.hideLoading();
