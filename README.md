@@ -311,5 +311,8 @@ var $notice = ui.createNotice();
 ```
 3.调用$message方法<br>
 
-$message方法参数:<br>
+$message方法参数为一个对象,对象属性为:<br>
 
+|属性名|描述|属性默认值|
+|:---|:---|:---|
+|text|$message显示的文字|
