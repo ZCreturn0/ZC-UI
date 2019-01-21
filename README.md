@@ -309,4 +309,7 @@ var ui = new ZC_UI();
 ```
 var $notice = ui.createNotice();
 ```
-3.调用$message方法
+3.调用$message方法<br>
+
+$message方法参数:<br>
+
