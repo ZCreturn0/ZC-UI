@@ -313,6 +313,11 @@ var $notice = ui.createNotice();
 
 $message方法参数为一个对象,对象属性为:<br>
 
-|属性名|描述|属性默认值|
-|:---|:---|:---|
-|text|$message显示的文字|
+|属性名|描述|数据类型|属性默认值|是否必需
+|:---|:---|:---|:---|:---|
+|text|$message显示的文字|string|-|必需|
+|type|类型|string|'info'|非必需|
+|showClose|是否显示关闭按钮|boolean|false|非必需|
+|duration|显示的时间|number|3000|非必需|
+
+
