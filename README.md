@@ -328,3 +328,5 @@ $notice.$message({ text: '啊啊啊啊啊啊', type: 'success', showClose: true,
 ```
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/message.png)<br>
 
+创建一个message,3s后关闭,也可手动关闭
+
