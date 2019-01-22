@@ -320,4 +320,11 @@ $message方法参数为一个对象,对象属性为:<br>
 |showClose|是否显示关闭按钮|boolean|false|非必需|
 |duration|显示的时间|number|3000|非必需|
 
+例子:
+```
+var ui = new ZC_UI();
+var $notice = ui.createNotice();
+$notice.$message({ text: '啊啊啊啊啊啊', type: 'success', showClose: true, duration: 3 * 1000 });
+```
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/message.png)<br>
 
