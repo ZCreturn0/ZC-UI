@@ -336,3 +336,4 @@ $alert也是$notice下的组件,可通过$notice.$alert()来调用,参数形式�
 $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallback)
 所生成的$alert样式如下:<br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/alert.png)<br>
+含有:标题,内容,确认按钮与关闭按钮,背景加有蒙版效果,此时页面被$alert层覆盖不能操作
