@@ -330,3 +330,7 @@ $notice.$message({ text: '啊啊啊啊啊啊', type: 'success', showClose: true,
 
 创建一个message,3s后关闭,也可手动关闭
 
+### 3.5 $alert提示框
+代替原生alert<br>
+$alert也是$notice下的组件,可通过$notice.$alert()来调用,参数形式为:
+$notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallback)
