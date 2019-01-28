@@ -339,3 +339,8 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 含有:标题,内容,确认按钮与关闭按钮,背景加有蒙版效果,此时页面被$alert层覆盖不能操作<br>
 参数列表:
 |属性名|描述|数据类型|属性默认值|是否必需
+|:---|:---|:---|:---|:---|
+|title|$alert标题|string|-|必需|
+|content|$alert内容|string|-|必需|
+|confirmButtonText|$alert确认按钮显示文字|string|"确定"|非必需|
+|type|$alert内容前类型图标|string|-|可选|
