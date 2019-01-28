@@ -337,7 +337,8 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 所生成的$alert样式如下:<br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/alert.png)<br>
 含有:标题,内容,确认按钮与关闭按钮,背景加有蒙版效果,此时页面被$alert层覆盖不能操作<br>
-参数列表:
+参数列表:<br>
+
 |属性名|描述|数据类型|属性默认值|是否必需
 |:---|:---|:---|:---|:---|
 |title|$alert标题|string|-|必需|
