@@ -352,11 +352,13 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 
 <br>
 示例:<br>
-1.创建UI对象:
+1.创建UI对象:<br>
+
 ```
 var ui = new ZC_UI();
 ```
-2.通过UI对象创建$notice:
+
+2.通过UI对象创建$notice:<br>
 ```
 var $notice = ui.createNotice();
 ```
