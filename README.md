@@ -345,3 +345,5 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 |content|$alert内容|string|-|必需|
 |confirmButtonText|$alert确认按钮显示文字|string|"确定"|非必需|
 |type|$alert内容前类型图标|string|-|可选|
+|confirmCallback|按确认按钮后回调|function|-|可选|
+|closeCallback|按关闭后回调|function|-|可选|
