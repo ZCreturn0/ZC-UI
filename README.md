@@ -349,3 +349,14 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 |type|$alert内容前类型图标|string|-|可选|
 |confirmCallback|按确认按钮后回调|function|-|可选|
 |closeCallback|按关闭后回调|function|-|可选|
+
+<br>
+示例:<br>
+1.创建UI对象:
+```
+var ui = new ZC_UI();
+```
+2.通过UI对象创建$notice:
+```
+var $notice = ui.createNotice();
+```
