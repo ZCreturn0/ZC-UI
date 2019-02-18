@@ -273,3 +273,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_tag_success{background-color: rgba(103, 194, 58, 0.1);border-color: rgba(103, 194, 58, 0.2);color: #67c23a;}
 .zc_tag_info{background-color: rgba(144, 147, 153, 0.1);border-color: rgba(144, 147, 153, 0.2);color: #909399;}
 .zc_tag_warning{background-color: rgba(230, 162, 60, 0.1);border-color: rgba(230, 162, 60, 0.2);color: #e6a23c;}
+.zc_tag_danger{background-color: rgba(245, 108, 108, 0.1);border-color: rgba(245, 108, 108, 0.2);color: #f56c6c;}
