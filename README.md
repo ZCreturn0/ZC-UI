@@ -362,3 +362,16 @@ var ui = new ZC_UI();
 ```
 var $notice = ui.createNotice();
 ```
+3.准备回调方法(可选):<br>
+```
+function confirmCallback(){
+    //Do something...
+}
+function closeCallback(){
+    //Do something...
+}
+```
+4.调用$notice的$alert方法:
+```
+$notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, confirmCallback, closeCallback);
+```
