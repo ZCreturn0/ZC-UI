@@ -842,7 +842,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
 
 /**
  * 
- * @description show a confirm which have one confirm btn and one calcel btn
+ * @description show a confirm which have one confirm btn and one cancel btn
  * @param {any} title
  * @param {any} content
  * @param {object} option
