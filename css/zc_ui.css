@@ -277,3 +277,6 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_tag[medium]{height: 28px;line-height: 26px;}
 .zc_tag[small]{height: 24px;padding: 0 8px;line-height: 22px;}
 .zc_tag[mini]{height: 20px;padding: 0 5px;line-height: 19px;}
+
+.zc_input_number{position: relative;display: inline-block;width: 180px;line-height: 38px;padding-left: 50px;padding-right: 50px;}
+.zc-input-number-inner{text-align: center;width: 80px;}
