@@ -280,5 +280,5 @@ tr:nth-child(odd){background: #1f2681;}
 
 .zc_input_number{position: relative;display: inline-block;width: 112px;line-height: 38px;padding-left: 50px;padding-right: 50px;}
 .zc-input-number-inner{text-align: center;width: 80px;border-radius: 0;}
-.zc_input_number_decrease{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;left: 9px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;}
-.zc_input_number_increase{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;right: 9px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;}
+.zc_input_number_decrease{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;left: 9px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
+.zc_input_number_increase{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;right: 9px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
