@@ -177,7 +177,9 @@ function ZC_UI(){
         var e = e || window.event;
         var target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
-            
+            if (!tools.judgeNumber(target.value)){
+                target.value = numberBefore;
+            }
         }
     }, true);
     document.addEventListener('keyup', function (e) {
