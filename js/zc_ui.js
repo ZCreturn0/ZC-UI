@@ -88,7 +88,7 @@ ZC_Tools.prototype.removeClass = function(el,className){
  * @returns {boolean}
  * 
  */
-ZC_Tools.prototype.judgeNumber = function(num){
+ZC_Tools.prototype.judgeInt = function(num){
     if(typeof num != 'number'){
         return false;
     }
@@ -158,7 +158,7 @@ function ZC_UI(){
         var e = e || window.event;
         var target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
-            console.log(tools.judgeNumber(target.value - 0));
+            
         }
     }, true);
     document.addEventListener('keyup', function (e) {
@@ -332,10 +332,10 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     var _this = this;
 
     //make sure params are correct
-    if (!this.tools.judgeNumber(page) || !this.tools.judgeNumber(pageSize)){
+    if (!this.tools.judgeInt(page) || !this.tools.judgeInt(pageSize)){
         throw 'page and pageSize must be integer and not 0';
     }
-    else if (total != 0 && !this.tools.judgeNumber(total))
+    else if (total != 0 && !this.tools.judgeInt(total))
     {
         throw 'total must be integer';
     }
@@ -557,7 +557,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
         document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function (e) {
             if (e.which == 13) {
                 var jumpPage = this.value;
-                if (!_this.tools.judgeNumber(jumpPage - 0)) {
+                if (!_this.tools.judgeInt(jumpPage - 0)) {
                     alert('请输入正确的数字');
                     throw 'wrong number';
                 }
@@ -734,10 +734,10 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
     }
     document.body.appendChild(message);
     var duration = 3000;
-    if (msg.duration && this.tools.judgeNumber(msg.duration)){
+    if (msg.duration && this.tools.judgeInt(msg.duration)){
         duration = msg.duration;
     }
-    else if (msg.duration && !this.tools.judgeNumber(msg.duration)){
+    else if (msg.duration && !this.tools.judgeInt(msg.duration)){
         throw 'duration must be a number';
     }
     var timerOuter,timerInner;
