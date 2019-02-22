@@ -277,6 +277,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
 
     this.table.appendChild(tr);
 
+    // index
     let n = 1;
     for(let item of table_data.list){
         var tr = document.createElement('tr');
