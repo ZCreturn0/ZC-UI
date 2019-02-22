@@ -146,6 +146,21 @@ function ZC_UI(){
             target.parentNode.getElementsByClassName('zc-input')[0].focus();
         }
     },false);
+    var numberBefore = "";
+    document.addEventListener('focus', function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
+            numberBefore = target.value;
+        }
+    }, true);
+    document.addEventListener('blur', function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
+            console.log(tools.judgeNumber(target.value - 0));
+        }
+    }, true);
     document.addEventListener('keyup', function (e) {
         var e = e || window.event;
         var target = e.target || e.srcElement;
