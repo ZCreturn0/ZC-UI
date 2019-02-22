@@ -264,7 +264,12 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
     this.table.innerHTML = '';
 
+    var zc_index = this.el.getAttribute('zc_index');
     var tr = document.createElement('tr');
+    console.log(zc_index);
+    if (zc_index) {
+        tr.innerHTML += `<th class="zc_th">${zc_index}</th>`;
+    }
     for(let item of this.captain){
         tr.innerHTML += `<th class="zc_th">${item}</th>`;
     }
@@ -273,12 +278,17 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
 
     this.table.appendChild(tr);
 
+    let n = 1;
     for(let item of table_data.list){
         var tr = document.createElement('tr');
+        if (zc_index){
+            tr.innerHTML += `<td class="zc_td">${n}</td>`;
+        }
         for(let attr of this.field){
             tr.innerHTML += `<td class="zc_td">${item[attr]}</td>`;
         }
         this.table.appendChild(tr);
+        n++;
     }
     this.el.appendChild(this.table);
 
