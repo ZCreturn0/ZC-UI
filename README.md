@@ -99,6 +99,7 @@ table.update(table_data);
 |zc_next|为表格添加`下一页`选项,点击后跳转到下一页|同上,默认为`下一页`|
 |zc_total|为表格添加`条数统计`选项,显示表格总共的条数(即table_data.toatl)|同上,默认为`共 xx 条`,值需包含`{total}`字样,表示table_data.toatl,如:```<div id="zc_table" zc_total="有 {total} 条数据"></div>```|
 |zc_jump|为表格添加`页面跳转`选项,可根据用户输入的页码跳转到对应的页面|同上,默认值格式为`跳转 {input} 页`,`{input}`为页码输入框|
+|zc_index|为表格添加`序号`|值可选,值为空时序号表头空白;不为空则显示为传入的值|
 
 ### 3.2 按钮
 按钮需要添加zc_btn类
