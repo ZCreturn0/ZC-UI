@@ -232,10 +232,10 @@ ZC_UI.prototype.createTable = function(){
 /**
  * 
  * @description init table with some necessary params
- * @param {object} table_setting
- *      --el:table to mount(object)
- *      --caption:text shown on the table caption(Array)
- *      --field:attr on data list in table_data(Array)
+ * @param {object} table_setting init setting for table
+ *      @param {object} table_setting.el table to mount(object)
+ *      @param {Array} table_setting.caption text shown on the table caption(Array)
+ *      @param {Array} table_setting.field attr on data list in table_data(Array)
  * @param {function} paginationCallback when pagination called
  * 
  */
