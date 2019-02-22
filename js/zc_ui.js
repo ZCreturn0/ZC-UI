@@ -83,7 +83,7 @@ ZC_Tools.prototype.removeClass = function(el,className){
 
 /**
  * 
- * @description judge a number is an Integer and over 0
+ * @description judge a number is an Integer and over 0(int only)
  * @param {any} num
  * @returns {boolean}
  * 
@@ -98,6 +98,25 @@ ZC_Tools.prototype.judgeInt = function(num){
         }
     }
     return false;
+}
+
+/**
+ *
+ * @description judge a number is a number(int,float)
+ * @param {any} num
+ * @returns {boolean}
+ *
+ */
+
+ZC_Tools.prototype.judgeNumber = function(num){
+    var regPos = /^\d+(\.\d+)?$/; 
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; 
+    if (regPos.test(num) || regNeg.test(num)) {
+        return true;
+    } 
+    else {
+        return false;
+    }
 }
 
 /**
