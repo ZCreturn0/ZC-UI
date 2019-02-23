@@ -789,8 +789,8 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
  * @param {any} title title shown in $alert top
  * @param {any} content content shown in $alert middle
  * @param {object} option
- *      @param option.confirmButtonText text shown in confirm btn
- *      @param option.icon icon type
+ *      @param {string} option.confirmButtonText text shown in confirm btn
+ *      @param {enum} option.icon icon type
  * @param {function} confirmCallback called when confirm btn is clicked
  * @param {function} closeCallback called when close icon is clicked
  * 
@@ -892,13 +892,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
 /**
  * 
  * @description show a confirm which have one confirm btn and one cancel btn
- * @param {any} title
- * @param {any} content
+ * @param {any} title title shown in $confirm top
+ * @param {any} content content shown in $confirm middle
  * @param {object} option
- *              --option.confirmButtonText:text shown in confirm btn
- *              --option.cancelButtonText:text shown in cancel btn
- *              --option.type:icon type
- *              --option.cancelFirst:when is true,cancel btn on the left(default false)
+ *      @param {string} option.confirmButtonText text shown in confirm btn
+ *      @param {string} option.cancelButtonText text shown in cancel btn
+ *      @param {enum} option.type icon type
+ *      @param {boolean} option.cancelFirst when is true,cancel btn on the left(default false)
  * @param {function} confirmCallback: called when confirm btn is clicked
  * @param {function} closeCallback: called when close icon is clicked
  * 
