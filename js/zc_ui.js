@@ -9,7 +9,7 @@
 
 /**
  * 
- * basic tools
+ * @description basic tools
  * 
  */
 function ZC_Tools(){
@@ -19,7 +19,7 @@ function ZC_Tools(){
 /**
  * 
  * @description if el had class 'className'
- * @param {object} el
+ * @param {object} el element object
  * @param {string} className
  * @returns {boolean}
  * 
@@ -39,7 +39,7 @@ ZC_Tools.prototype.hasClass = function(el,className){
 /**
  * 
  * @description el add class 'className'
- * @param {object} el
+ * @param {object} el element object
  * @param {string} className
  * 
  */
@@ -60,7 +60,7 @@ ZC_Tools.prototype.addClass = function (el,className){
 /**
  * 
  * @description el remove class 'className'
- * @param {object} el
+ * @param {object} el element object
  * @param {string} className
  * 
  */
@@ -122,8 +122,8 @@ ZC_Tools.prototype.judgeNumber = function(num){
 /**
  * 
  * @description judge if ele in arr(Array) or not
- * @param {Array} arr
- * @param {any} ele
+ * @param {Array} arr source array
+ * @param {any} ele element
  * @returns {boolean}
  * 
  */
