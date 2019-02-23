@@ -347,9 +347,9 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
 /**
  * 
  * @description pagination
- * @param {Number} page
- * @param {Number} pageSize
- * @param {Number} total
+ * @param {Number} page current page
+ * @param {Number} pageSize number of info shown in one page
+ * @param {Number} total number of all info
  * 
  */
 ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
@@ -651,7 +651,7 @@ ZC_UI.prototype.ZC_Loading = function () {
 /**
  * 
  * @description create a new loading
- * @returns loadingObject
+ * @returns {object} loadingObject
  * 
  */
 ZC_UI.prototype.createLoading = function () {
@@ -705,7 +705,7 @@ ZC_UI.prototype.ZC_Notice = function(){
 /**
  * 
  * @description create a new notice maker
- * @returns noticeObject
+ * @returns {object} noticeObject
  * 
  */
 ZC_UI.prototype.createNotice = function(){
@@ -716,10 +716,10 @@ ZC_UI.prototype.createNotice = function(){
  * 
  * @description show a message
  * @param {object} msg
- * @param {string} msg.text(necessary)
- * @param {string} msg.type('success','warning','info'(default),'error')
- * @param {boolean} msg.showClose
- * @param {number} msg.duration time to appear(ms),default 3000
+ *      @param {string} msg.text (necessary)
+ *      @param {string} msg.type ('success','warning','info'(default),'error')
+ *      @param {boolean} msg.showClose show close icon or not
+ *      @param {number} msg.duration time to appear(ms),default 3000
  * 
  */
 ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
@@ -786,13 +786,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
 /**
  * 
  * @description show an alert which have one confirm btn only
- * @param {any} title
- * @param {any} content
+ * @param {any} title title shown in $alert top
+ * @param {any} content content shown in $alert middle
  * @param {object} option
- *              --option.confirmButtonText:text shown in confirm btn
- *              --type:icon type
- * @param {function} confirmCallback: called when confirm btn is clicked
- * @param {function} closeCallback: called when close icon is clicked
+ *      @param option.confirmButtonText text shown in confirm btn
+ *      @param option.icon icon type
+ * @param {function} confirmCallback called when confirm btn is clicked
+ * @param {function} closeCallback called when close icon is clicked
  * 
  */
 ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,confirmCallback,closeCallback){
