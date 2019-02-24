@@ -172,7 +172,8 @@ function ZC_UI(){
             else if(tools.inArr(target.parentNode.classList, 'zc_input_number_decrease')){
                 numberNode = target.parentNode.parentNode;
             }
-            console.log(numberNode)
+            var step = numberNode.getAttribute("step");
+            console.log(step)
         }
     },true);
     var numberBefore = "";
