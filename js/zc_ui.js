@@ -172,7 +172,10 @@ function ZC_UI(){
             else if(tools.inArr(target.parentNode.classList, 'zc_input_number_decrease')){
                 numberNode = target.parentNode.parentNode;
             }
-            var step = numberNode.getAttribute("step");
+            // step default 1
+            var step = numberNode.getAttribute("step") || 1;
+            var min = numberNode.getAttribute("min");
+            var max = numberNode.getAttribute("max");
             console.log(step)
         }
     },true);
