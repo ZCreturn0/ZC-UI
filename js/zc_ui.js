@@ -164,7 +164,10 @@ function ZC_UI(){
             target.parentNode.getElementsByClassName('zc-input')[0].value = '';
             target.parentNode.getElementsByClassName('zc-input')[0].focus();
         }
-    },false);
+        else if(target.classList && tools.inArr(target.classList, 'zc_input_number_decrease') || tools.inArr(target.parentNode.classList, 'zc_input_number_decrease')){
+            console.log(target)
+        }
+    },true);
     var numberBefore = "";
     document.addEventListener('focus', function (e) {
         var e = e || window.event;
