@@ -165,6 +165,8 @@ function ZC_UI(){
             item.value = min;
             // set item attribute
             item.setAttribute('value', min);
+            // set decrease disabled
+            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0],'zc_input_number_disabled');
         }
         else if (max && max < val) {
             if (ENV === "development") {
@@ -176,6 +178,7 @@ function ZC_UI(){
             item.getElementsByClassName('zc-input-number-inner')[0].value = max;
             item.value = max;
             item.setAttribute('value', max);
+            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
         }
         else{
             item.getElementsByClassName('zc-input-number-inner')[0].value = val;
