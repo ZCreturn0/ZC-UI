@@ -154,22 +154,33 @@ function ZC_UI(){
         var max = item.getAttribute('max') - 0;
         if(min && min > val){
             if (ENV === "development"){
-                throw new RangeError('zc_input_number:init value can not less than min');
-            }
-            else if (ENV === "production"){
                 console.error('zc_input_number:init value can not less than min');
             }
-        }
-        if (max && max < val) {
-            if (ENV === "development") {
-                throw new RangeError('zc_input_number:init value can not more than max');
+            else if (ENV === "production"){
+                throw new RangeError('zc_input_number:init value can not less than min');
             }
-            else if (ENV === "production") {
+            // set input value
+            item.getElementsByClassName('zc-input-number-inner')[0].value = min;
+            // set object value
+            item.value = min;
+            // set item attribute
+            item.setAttribute('value', min);
+        }
+        else if (max && max < val) {
+            if (ENV === "development") {
                 console.error('zc_input_number:init value can not more than max');
             }
+            else if (ENV === "production") {
+                throw new RangeError('zc_input_number:init value can not more than max');
+            }
+            item.getElementsByClassName('zc-input-number-inner')[0].value = max;
+            item.value = max;
+            item.setAttribute('value', max);
         }
-        item.getElementsByClassName('zc-input-number-inner')[0].value = val;
-        item.value = val;
+        else{
+            item.getElementsByClassName('zc-input-number-inner')[0].value = val;
+            item.value = val;
+        }
     }
     document.addEventListener('mouseover',function(e){
         var e = e || window.event;
