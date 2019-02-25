@@ -7,6 +7,9 @@
  * 
  */
 
+ // choose environment:'development' or 'production'
+ const ENV = "development";
+
 /**
  * 
  * @description basic tools
@@ -148,6 +151,7 @@ function ZC_UI(){
     for (var item of numberList){
         var val = item.getAttribute('value') || 0;
         item.getElementsByClassName('zc-input-number-inner')[0].value = val;
+        item.value = val;
     }
     document.addEventListener('mouseover',function(e){
         var e = e || window.event;
