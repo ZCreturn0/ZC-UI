@@ -143,6 +143,12 @@ ZC_Tools.prototype.inArr = function(arr,ele){
  */
 function ZC_UI(){
     var tools = new ZC_Tools();
+    // fill number into zc-input-number-inner using value or default
+    var numberList = document.getElementsByClassName('zc_input_number');
+    for (var item of numberList){
+        var val = item.getAttribute('value') || 0;
+        item.getElementsByClassName('zc-input-number-inner')[0].value = val;
+    }
     document.addEventListener('mouseover',function(e){
         var e = e || window.event;
         var target = e.target || e.srcElement;
@@ -176,6 +182,7 @@ function ZC_UI(){
             var step = numberNode.getAttribute("step") || 1;
             var min = numberNode.getAttribute("min");
             var max = numberNode.getAttribute("max");
+            var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value;
             console.log(step)
         }
     },true);
