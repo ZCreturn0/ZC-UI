@@ -152,6 +152,7 @@ function ZC_UI(){
         var val = item.getAttribute('value') - 0 || 0;
         var min = item.getAttribute('min') - 0;
         var max = item.getAttribute('max') - 0;
+        var step = item.getAttribute("step") - 0 || 1;
         if(min && min > val){
             if (ENV === "development"){
                 console.error('zc_input_number:init value can not less than min');
@@ -184,6 +185,12 @@ function ZC_UI(){
             item.getElementsByClassName('zc-input-number-inner')[0].value = val;
             item.value = val;
         }
+        if (min && val - step < min){
+            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+        }
+        if (max && val + step > max){
+            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+        }
     }
     document.addEventListener('mouseover',function(e){
         var e = e || window.event;
@@ -215,10 +222,10 @@ function ZC_UI(){
                 numberNode = target.parentNode.parentNode;
             }
             // step default 1
-            var step = numberNode.getAttribute("step") || 1;
-            var min = numberNode.getAttribute("min");
-            var max = numberNode.getAttribute("max");
-            var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value;
+            var step = numberNode.getAttribute("step") - 0 || 1;
+            var min = numberNode.getAttribute("min") - 0;
+            var max = numberNode.getAttribute("max") - 0;
+            var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
             console.log(step)
         }
     },true);
