@@ -149,7 +149,25 @@ function ZC_UI(){
     // fill number into zc-input-number-inner using value or default
     var numberList = document.getElementsByClassName('zc_input_number');
     for (var item of numberList){
-        var val = item.getAttribute('value') || 0;
+        var val = item.getAttribute('value') - 0 || 0;
+        var min = item.getAttribute('min') - 0;
+        var max = item.getAttribute('max') - 0;
+        if(min && min > val){
+            if (ENV === "development"){
+                throw new RangeError('zc_input_number:init value can not less than min');
+            }
+            else if (ENV === "production"){
+                console.error('zc_input_number:init value can not less than min');
+            }
+        }
+        if (max && max < val) {
+            if (ENV === "development") {
+                throw new RangeError('zc_input_number:init value can not more than max');
+            }
+            else if (ENV === "production") {
+                console.error('zc_input_number:init value can not more than max');
+            }
+        }
         item.getElementsByClassName('zc-input-number-inner')[0].value = val;
         item.value = val;
     }
