@@ -286,3 +286,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-input-number-inner:focus{border-color: #ccc;}
 .zc_input_number_decrease{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;left: 0px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
 .zc_input_number_increase{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;right: 0px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
+.zc_input_number_disabled{color: #c0c4cc;cursor: not-allowed;}
