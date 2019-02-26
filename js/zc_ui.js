@@ -230,15 +230,19 @@ function ZC_UI(){
             var min = numberNode.getAttribute("min") - 0;
             var max = numberNode.getAttribute("max") - 0;
             var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
+            // less than one step, disabled, pass
             if (min && currentValue - step < min){
                 return;
             }
+            // at least one step, currentValue decrease one step
             else{
                 currentValue -= step;
             }
+            // update value
             numberNode.value = currentValue;
             numberNode.setAttribute('value', currentValue);
             numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
+            // less than one step,set disabled
             if (min && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
