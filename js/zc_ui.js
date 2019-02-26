@@ -314,6 +314,30 @@ function ZC_UI(){
             if (!tools.judgeNumber(target.value)){
                 target.value = numberBefore;
             }
+            var currentValue = target.value - 0;
+            var numberNode = target.parentNode;
+            var step = numberNode.getAttribute("step") - 0 || 1;
+            var min = numberNode.getAttribute("min") - 0;
+            var max = numberNode.getAttribute("max") - 0;
+            if (min && currentValue - step < min) {
+                tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+                numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
+            }
+            else {
+                tools.removeClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+                numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = '';
+            }
+            if (max && currentValue + step > max) {
+                tools.addClass(numberNode.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+                numberNode.getElementsByClassName('zc_input_number_increase')[0].disabled = 'disabled';
+            }
+            else {
+                tools.removeClass(numberNode.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+                numberNode.getElementsByClassName('zc_input_number_increase')[0].disabled = '';
+            }
+            numberNode.value = currentValue;
+            numberNode.setAttribute('value', currentValue);
+            numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
         }
     }, true);
     document.addEventListener('keyup', function (e) {
