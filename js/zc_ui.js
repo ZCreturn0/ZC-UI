@@ -153,6 +153,7 @@ function ZC_UI(){
         var min = item.getAttribute('min') - 0;
         var max = item.getAttribute('max') - 0;
         var step = item.getAttribute("step") - 0 || 1;
+        // init value out of ranger
         if(min && min > val){
             if (ENV === "development"){
                 console.error('zc_input_number:init value can not less than min');
@@ -185,6 +186,7 @@ function ZC_UI(){
             item.getElementsByClassName('zc-input-number-inner')[0].value = val;
             item.value = val;
         }
+        // less than one step,set disabled
         if (min && val - step < min){
             tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
             item.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
