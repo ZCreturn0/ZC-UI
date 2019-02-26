@@ -242,14 +242,22 @@ function ZC_UI(){
             numberNode.value = currentValue;
             numberNode.setAttribute('value', currentValue);
             numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
-            // less than one step,set disabled
+            // less than one step,set disabled;or opposite
             if (min && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
             }
+            else{
+                tools.removeClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+                numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = '';
+            }
             if (max && currentValue + step > max) {
                 tools.addClass(currentValue.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
                 currentValue.getElementsByClassName('zc_input_number_increase')[0].disabled = 'disabled';
+            }
+            else{
+                tools.removeClass(currentValue.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+                currentValue.getElementsByClassName('zc_input_number_increase')[0].disabled = '';
             }
         }
     },true);
