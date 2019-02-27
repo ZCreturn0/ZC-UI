@@ -299,7 +299,7 @@ loading.hideLoading();
 ```
 `hideLoading()`会从DOM移除loading
 
-### 3.4 message
+### 3.4 $message
 在页面顶部显示简短的提示信息<br>
 步骤:<br>
 1.创建UI对象:
