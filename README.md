@@ -376,3 +376,6 @@ function closeCallback(){
 ```
 $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, confirmCallback, closeCallback);
 ```
+
+### 3.6 $confirm确认框
+替代原生confirm<br>
