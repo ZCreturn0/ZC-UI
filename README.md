@@ -383,3 +383,4 @@ $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, 
 ```
 $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFirst},confirmCallback,cancelCallback,closeCallback)
 ```
+
