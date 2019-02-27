@@ -383,4 +383,5 @@ $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, 
 ```
 $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFirst},confirmCallback,cancelCallback,closeCallback)
 ```
-
+所生成的$confirm样式如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/confirm.png)<br><br>
