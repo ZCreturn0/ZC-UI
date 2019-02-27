@@ -381,6 +381,5 @@ $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, 
 替代原生confirm<br>
 与$alert类似,同为$notice下的组件,可通过$notice.$alert()来调用,参数形式为:<br>
 ```
-
-```
 $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFirst},confirmCallback,cancelCallback,closeCallback)
+```
