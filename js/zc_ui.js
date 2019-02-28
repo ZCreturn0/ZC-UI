@@ -7,6 +7,8 @@
  * 
  */
 
+ /*jshint esversion: 6 */
+
  // choose environment:'development' or 'production'
  const ENV = "development";
 
@@ -153,6 +155,7 @@ function ZC_UI(){
         var min = item.getAttribute('min') - 0;
         var max = item.getAttribute('max') - 0;
         var step = item.getAttribute("step") - 0 || 1;
+        var disabled = item.getAttribute("disabled");
         // init value out of ranger
         if(min && min > val){
             if (ENV === "development"){
@@ -194,6 +197,11 @@ function ZC_UI(){
         if (max && val + step > max){
             tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
             item.getElementsByClassName('zc_input_number_increase')[0].disabled = 'disabled';
+        }
+        if (disabled != null){
+            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+            item.getElementsByClassName('zc-input-number-inner')[0].setAttribute('disabled','disabled');
         }
     }
     document.addEventListener('mouseover',function(e){
