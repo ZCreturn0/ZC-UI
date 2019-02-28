@@ -298,3 +298,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_input_number[small] .zc_input_number_decrease{width: 30px;height: 30px;}
 .zc_input_number[small] .zc-input-number-inner{width: 28px;height: 30px;left: -18px;top: -2px;}
 .zc_input_number[small] .zc_input_number_increase{width: 30px;height: 30px;right: 0px;}
+.zc_input_number[mini]{width: 6px;height: 27px;line-height: 23px;}
+.zc_input_number[mini] .zc_input_number_decrease{width: 25px;height: 25px;}
+.zc_input_number[mini] .zc-input-number-inner{width: 20px;height: 25px;left: -23px;top: -1px;}
+.zc_input_number[mini] .zc_input_number_increase{width: 25px;height: 25px;right: 0px;}
