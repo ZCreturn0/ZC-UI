@@ -9,6 +9,7 @@
 ::-webkit-scrollbar-thumb{border-radius: 5px;background-color: hsla(220,4%,58%,.5);transition: background-color .3s;}
 ::-webkit-scrollbar-thumb:hover{background-color: rgb(107, 105, 105);}
 ::-webkit-scrollbar-track{background-color: transparent;}
+
 table{color: #b3d4e4;border-collapse:collapse;margin-top: 10px;width: 100%;border: 1px solid #2149c2;}
 th,td{text-align: center;padding: 15px 0;}
 tr:nth-child(even){background: #202f94;}
@@ -42,6 +43,7 @@ tr:nth-child(odd){background: #1f2681;}
 .jump-input:hover{border-color: #94969e;}
 .jump-input:focus{border: #409eff 1px solid;}
 .more-pre,.more-next{line-height: 20px;}
+
 .zc_btn{
     display: inline-block;
     line-height: 1;
@@ -285,5 +287,9 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-input-number-inner:hover{border-color: #ccc;}
 .zc-input-number-inner:focus{border-color: #ccc;}
 .zc_input_number_decrease{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;left: 0px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
-.zc_input_number_increase{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;right: 0px;border-radius: 4px 0 0 4px;border: 1px solid #dcdfe6;font-size: 14px;}
+.zc_input_number_increase{position: absolute;z-index: 1;top: 0px;width: 40px;height: 40px;text-align: center;background: #f5f7fa;color: #606266;cursor: pointer;right: 0px;border-radius: 0 4px 4px 0;border: 1px solid #dcdfe6;font-size: 14px;}
 .zc_input_number_disabled{color: #c0c4cc;cursor: not-allowed;}
+.zc_input_number[medium]{width: 49px;height: 37px;}
+.zc_input_number[medium] .zc_input_number_decrease{width: 35px;height: 35px;}
+.zc_input_number[medium] .zc-input-number-inner{width: 43px;height: 35px;left: -13px;top: -3px;}
+.zc_input_number[medium] .zc_input_number_increase{width: 35px;height: 35px;right: 0px;}
