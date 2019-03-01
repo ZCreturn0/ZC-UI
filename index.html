@@ -182,6 +182,13 @@
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
     <br><br>
+    <div class="zc_input_number value_demo">
+        <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+        <input type="text" class="zc-input zc-input-number-inner">
+        <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+    </div>
+    <div class="zc_btn zc_btn_primary" onclick="showValue()">获取计数器的值</div>
+    <br><br>
     <div class="zc-select">
         <div class="zc-input-content zc-select-area">
             <input class="zc-input" placeholder="请输入" type="text" sufIcon/>
@@ -318,6 +325,11 @@
         }
         function showConfirm(type){
             $notice.$confirm('标题','内容',{ type: type, cancelFirst:false}, confirmCallback, cancelCallback, closeCallback);
+        }
+        function showValue(){
+            let el = document.getElementsByClassName('value_demo')[0];
+            let value = el.value;
+            $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
         }
     </script>
 </body>
