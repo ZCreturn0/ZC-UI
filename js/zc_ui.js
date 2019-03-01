@@ -420,7 +420,7 @@ function ZC_UI(){
                 }
             }
             target.parentNode.setAttribute('value',target.value);
-            target.parentNode.value = target.value;
+            target.parentNode.value = target.value || '';
         }
     }, false);
 }
