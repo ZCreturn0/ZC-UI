@@ -222,8 +222,13 @@ function ZC_UI(){
         var e = e || window.event;
         var target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
-            target.parentNode.getElementsByClassName('zc-input')[0].value = '';
-            target.parentNode.getElementsByClassName('zc-input')[0].focus();
+            let input = target.parentNode.getElementsByClassName('zc-input')[0];
+            input.value = '';
+            input.focus();
+            let required = input.getAttribute('required');
+            if (required != null){
+                input.setAttribute('validate', 'failed');
+            }
         }
         else if(target.classList && tools.inArr(target.classList, 'zc_input_number_decrease') || tools.inArr(target.parentNode.classList, 'zc_input_number_decrease')){
             var numberNode;
