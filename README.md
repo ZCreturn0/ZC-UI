@@ -2,7 +2,7 @@
 ## 一.介绍
 用于快捷搭建页面的一套UI插件,所有实例可访问[https://zcreturn0.github.io/ZC-UI/](https://zcreturn0.github.io/ZC-UI/)查看
 ## 二.开始使用
-引入css(zc_ui.css)和js(zc_ui.js)
+引入css(zc_ui.css)和js(zc_ui.js);如需引用图标,引入iconfont.css
 ## 三.具体配置
 创建ZC_UI对象
 ```
