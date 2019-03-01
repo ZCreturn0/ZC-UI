@@ -2,7 +2,7 @@
 ## 一.介绍
 用于快捷搭建页面的一套UI插件,所有实例可访问[https://zcreturn0.github.io/ZC-UI/](https://zcreturn0.github.io/ZC-UI/)查看
 ## 二.开始使用
-引入css(zc_ui.css)和js(zc_ui.js)
+引入css(zc_ui.css)和js(zc_ui.js);如需引用图标,引入iconfont.css
 ## 三.具体配置
 创建ZC_UI对象
 ```
@@ -134,7 +134,7 @@ table.update(table_data);
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/round.png)
 
 #### 3.2.4 图标按钮
-图标参考 [图标](https://zcreturn0.github.io/ZC-UI/font_608239_92bsv2a958/demo_fontclass.html)  
+图标参考 [图标](https://zcreturn0.github.io/ZC-UI/font_608239_92bsv2a958/demo_index.html)  
 创建一个图标按钮,需添加'zc_btn_icon'类,可创建基本按钮或朴素按钮,内容为icon:
 ```
 <div class="zc_btn zc_btn_primary zc_btn_icon">
