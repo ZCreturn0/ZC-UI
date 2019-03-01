@@ -134,6 +134,11 @@
         <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
     </div>
     <br><br>
+    <div class="zc-input-content inputValue">
+        <input class="zc-input" placeholder="请输入" type="text"/>
+    </div>
+    <div class="zc_btn zc_btn_primary" onclick="showInputValue()">获取输入框的值</div>
+    <br><br>
     <div class="zc_tag">普通标签</div>
     <div class="zc_tag zc_tag_success zc_tooltip" tooltip-text='标签必须含有zc_tag类' placement='top'>成功标签</div>
     <div class="zc_tag zc_tag_info">信息标签</div>
@@ -187,7 +192,7 @@
         <input type="text" class="zc-input zc-input-number-inner">
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
-    <div class="zc_btn zc_btn_primary" onclick="showValue()">获取计数器的值</div>
+    <div class="zc_btn zc_btn_primary" onclick="showNumberValue()">获取计数器的值</div>
     <br><br>
     <div class="zc-select">
         <div class="zc-input-content zc-select-area">
@@ -326,8 +331,13 @@
         function showConfirm(type){
             $notice.$confirm('标题','内容',{ type: type, cancelFirst:false}, confirmCallback, cancelCallback, closeCallback);
         }
-        function showValue(){
+        function showNumberValue(){
             let el = document.getElementsByClassName('value_demo')[0];
+            let value = el.value;
+            $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
+        }
+        function showInputValue(){
+            let el = document.getElementsByClassName('inputValue')[0];
             let value = el.value;
             $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
         }
