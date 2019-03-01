@@ -34,7 +34,7 @@ ZC_Tools.prototype.hasClass = function(el,className){
         return false;
     }
     else{
-        var classList = el.className.split(' ');
+        let classList = el.className.split(' ');
         return classList.some((item) => {
             return item == className
         });
@@ -74,9 +74,9 @@ ZC_Tools.prototype.removeClass = function(el,className){
         return;
     }
     else{
-        var classList = el.className.split(' ');
-        var classStr = '';
-        for (var i=0;i<classList.length;i++){
+        let classList = el.className.split(' ');
+        let classStr = '';
+        for (let i=0;i<classList.length;i++){
             if (className !== classList[i]){
                 classStr += classList[i] + ' ';
             }
@@ -114,8 +114,8 @@ ZC_Tools.prototype.judgeInt = function(num){
  */
 
 ZC_Tools.prototype.judgeNumber = function(num){
-    var regPos = /^\d+(\.\d+)?$/; 
-    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; 
+    let regPos = /^\d+(\.\d+)?$/; 
+    let regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; 
     if (regPos.test(num) || regNeg.test(num)) {
         return true;
     } 
@@ -133,7 +133,7 @@ ZC_Tools.prototype.judgeNumber = function(num){
  * 
  */
 ZC_Tools.prototype.inArr = function(arr,ele){
-    for(var item of arr){
+    for(let item of arr){
         if(item === ele){
             return true;
         }
@@ -147,15 +147,15 @@ ZC_Tools.prototype.inArr = function(arr,ele){
  *  
  */
 function ZC_UI(){
-    var tools = new ZC_Tools();
+    let tools = new ZC_Tools();
     // fill number into zc-input-number-inner using value or default
-    var numberList = document.getElementsByClassName('zc_input_number');
-    for (var item of numberList){
-        var val = item.getAttribute('value') - 0 || 0;
-        var min = item.getAttribute('min') - 0;
-        var max = item.getAttribute('max') - 0;
-        var step = item.getAttribute("step") - 0 || 1;
-        var disabled = item.getAttribute("disabled");
+    let numberList = document.getElementsByClassName('zc_input_number');
+    for (let item of numberList){
+        let val = item.getAttribute('value') - 0 || 0;
+        let min = item.getAttribute('min') - 0;
+        let max = item.getAttribute('max') - 0;
+        let step = item.getAttribute("step") - 0 || 1;
+        let disabled = item.getAttribute("disabled");
         // init value out of ranger
         if(min && min > val){
             if (ENV === "development"){
@@ -204,23 +204,23 @@ function ZC_UI(){
             item.getElementsByClassName('zc-input-number-inner')[0].setAttribute('disabled','disabled');
         }
     }
-    document.addEventListener('mouseover',function(e){
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.addEventListener('mouseover',function(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
             target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'block';
         }
     },false);
-    document.addEventListener('mouseout', function (e) {
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.addEventListener('mouseout', function (event) {
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
             target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'none';
         }
     }, false);
-    document.addEventListener('click',function(e){
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.addEventListener('click', function (event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
             let input = target.parentNode.getElementsByClassName('zc-input')[0];
             input.value = '';
@@ -231,7 +231,7 @@ function ZC_UI(){
             }
         }
         else if(target.classList && tools.inArr(target.classList, 'zc_input_number_decrease') || tools.inArr(target.parentNode.classList, 'zc_input_number_decrease')){
-            var numberNode;
+            let numberNode;
             if(tools.inArr(target.classList, 'zc_input_number_decrease')){
                 numberNode = target.parentNode;
             }
@@ -239,11 +239,11 @@ function ZC_UI(){
                 numberNode = target.parentNode.parentNode;
             }
             // step default 1
-            var step = numberNode.getAttribute("step") - 0 || 1;
-            var min = numberNode.getAttribute("min") - 0;
-            var max = numberNode.getAttribute("max") - 0;
-            var disabled = numberNode.getAttribute("disabled");
-            var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
+            let step = numberNode.getAttribute("step") - 0 || 1;
+            let min = numberNode.getAttribute("min") - 0;
+            let max = numberNode.getAttribute("max") - 0;
+            let disabled = numberNode.getAttribute("disabled");
+            let currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
             if (disabled == null){
                 // less than one step, disabled, pass
                 if (min && currentValue - step < min) {
@@ -277,18 +277,18 @@ function ZC_UI(){
             }
         }
         else if (target.classList && tools.inArr(target.classList, 'zc_input_number_increase') || tools.inArr(target.parentNode.classList, 'zc_input_number_increase')) {
-            var numberNode;
+            let numberNode;
             if (tools.inArr(target.classList, 'zc_input_number_increase')) {
                 numberNode = target.parentNode;
             }
             else if (tools.inArr(target.parentNode.classList, 'zc_input_number_increase')) {
                 numberNode = target.parentNode.parentNode;
             }
-            var step = numberNode.getAttribute("step") - 0 || 1;
-            var min = numberNode.getAttribute("min") - 0;
-            var max = numberNode.getAttribute("max") - 0;
-            var disabled = numberNode.getAttribute("disabled");
-            var currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
+            let step = numberNode.getAttribute("step") - 0 || 1;
+            let min = numberNode.getAttribute("min") - 0;
+            let max = numberNode.getAttribute("max") - 0;
+            let disabled = numberNode.getAttribute("disabled");
+            let currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
             if (disabled == null){
                 if (max && currentValue + step > max) {
                     return;
@@ -318,26 +318,26 @@ function ZC_UI(){
             }
         }
     },true);
-    var numberBefore = "";
-    document.addEventListener('focus', function (e) {
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    let numberBefore = "";
+    document.addEventListener('focus', function (event) {
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
             numberBefore = target.value;
         }
     }, true);
-    document.addEventListener('blur', function (e) {
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.addEventListener('blur', function (event) {
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
             if (!tools.judgeNumber(target.value)){
                 target.value = numberBefore;
             }
-            var currentValue = target.value - 0;
-            var numberNode = target.parentNode;
-            var step = numberNode.getAttribute("step") - 0 || 1;
-            var min = numberNode.getAttribute("min") - 0;
-            var max = numberNode.getAttribute("max") - 0;
+            let currentValue = target.value - 0;
+            let numberNode = target.parentNode;
+            let step = numberNode.getAttribute("step") - 0 || 1;
+            let min = numberNode.getAttribute("min") - 0;
+            let max = numberNode.getAttribute("max") - 0;
             if (min && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
@@ -359,16 +359,16 @@ function ZC_UI(){
             numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
         }
     }, true);
-    document.addEventListener('keyup', function (e) {
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.addEventListener('keyup', function (event) {
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input')) {
             if (target.getAttribute('required') != null && target.value == ''){
                 target.setAttribute('validate','failed');
                 const nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';
                 //to prevent add more than one 'nullmsg'
                 if (!target.parentNode.getElementsByClassName('zc-validate-failed')[0]){
-                    var result = document.createElement('div');
+                    let result = document.createElement('div');
                     result.className = 'zc-validate-failed';
                     result.innerText = nullmsg;
                     target.parentNode.appendChild(result);
@@ -378,15 +378,15 @@ function ZC_UI(){
                 }
             }
             else if (target.getAttribute('required') != null && target.value != ''){
-                var reg = eval(target.getAttribute('regex'));
+                let reg = eval(target.getAttribute('regex'));
                 if (reg != null && !!new RegExp(reg)){
                     //to prevent add more than one 'nullmsg'
                     if (!(new RegExp(reg).test(target.value))){
                         target.setAttribute('validate', 'failed');
-                        var errorMsg = target.getAttribute('errormsg');
+                        let errorMsg = target.getAttribute('errormsg');
                         errorMsg = errorMsg ? errorMsg : '格式错误';
                         if (!target.parentNode.getElementsByClassName('zc-validate-failed')[0]) {
-                            var result = document.createElement('div');
+                            let result = document.createElement('div');
                             result.className = 'zc-validate-failed';
                             result.innerText = errorMsg;
                             target.parentNode.appendChild(result);
@@ -480,8 +480,8 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     this.el.innerHTML = '';
     this.table.innerHTML = '';
 
-    var zc_index = this.el.getAttribute('zc_index');
-    var tr = document.createElement('tr');
+    let zc_index = this.el.getAttribute('zc_index');
+    let tr = document.createElement('tr');
     if (zc_index || zc_index == '') {
         tr.innerHTML += `<th class="zc_th">${zc_index}</th>`;
     }
@@ -496,7 +496,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     // index
     let n = 1;
     for(let item of table_data.list){
-        var tr = document.createElement('tr');
+        let tr = document.createElement('tr');
         if (zc_index || zc_index == ''){
             tr.innerHTML += `<td class="zc_td">${n}</td>`;
         }
@@ -508,12 +508,12 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     }
     this.el.appendChild(this.table);
 
-    var zc_border = this.el.getAttribute('zc_border');
+    let zc_border = this.el.getAttribute('zc_border');
     if (zc_border != null) {
-        for (var item of document.querySelectorAll('.zc_th')){
+        for (let item of document.querySelectorAll('.zc_th')){
             this.tools.addClass(item, 'zc_border');
         }
-        for (var item of document.querySelectorAll('.zc_td')) {
+        for (let item of document.querySelectorAll('.zc_td')) {
             this.tools.addClass(item, 'zc_border');
         }
     }
@@ -530,7 +530,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
  * 
  */
 ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
-    var _this = this;
+    let _this = this;
 
     //make sure params are correct
     if (!this.tools.judgeInt(page) || !this.tools.judgeInt(pageSize)){
@@ -541,32 +541,32 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
         throw 'total must be integer';
     }
     
-    var pageNum = Math.ceil(total / pageSize);
+    let pageNum = Math.ceil(total / pageSize);
     if(page > pageNum){
         throw 'out of pageNum';
     }
 
     //init pager,the container of pager-node
-    var pager = document.createElement('div');
+    let pager = document.createElement('div');
     pager.innerHTML = '';
     pager.className = 'pager';
 
     //total records
-    var zc_total = this.el.getAttribute('zc_total');
+    let zc_total = this.el.getAttribute('zc_total');
     if (zc_total && zc_total.indexOf('{total}') < 0){
         throw 'zc_total must contain "{total}"';
     }
     if (zc_total != null){
-        var total_el = document.createElement('div');
+        let total_el = document.createElement('div');
         total_el.className = 'total';
         total_el.innerText = zc_total ? (zc_total.replace('{total}',total)) : `共 ${total} 条`;
         pager.appendChild(total_el);
     }
 
     //first page
-    var zc_first = this.el.getAttribute('zc_first');
+    let zc_first = this.el.getAttribute('zc_first');
     if (zc_first != null) {
-        var first = document.createElement('div');
+        let first = document.createElement('div');
         first.className = 'pager-node';
         first.innerText = zc_first ? zc_first : '首页';
         pager.appendChild(first);
@@ -576,9 +576,9 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //preview page
-    var zc_pre = this.el.getAttribute('zc_pre');
+    let zc_pre = this.el.getAttribute('zc_pre');
     if (zc_pre != null){
-        var pre = document.createElement('div');
+        let pre = document.createElement('div');
         pre.className = 'pre pager-node';
         pre.innerText = zc_pre ? zc_pre : '<';
         if (page == 1) {
@@ -590,8 +590,8 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     //different pageNum conditions
     if(pageNum <= 7){
         //add all pages to pager
-        for(var i=1;i<=pageNum;i++){
-            var pgNode = document.createElement('div');
+        for(let i=1;i<=pageNum;i++){
+            let pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
             pgNode.innerText = i;
             if(i == page){
@@ -602,13 +602,13 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
     else if (pageNum > 7){
         //show 2 before and 2 after current page,and first,last page
-        var iconNormalClass = 'icon iconfont el-icon-erp-gengduo2';
-        var iconNextClass = 'icon iconfont el-icon-erp-arrow-right-double';
-        var iconPreClass = 'icon iconfont el-icon-erp-double_arrow';
+        let iconNormalClass = 'icon iconfont el-icon-erp-gengduo2';
+        let iconNextClass = 'icon iconfont el-icon-erp-arrow-right-double';
+        let iconPreClass = 'icon iconfont el-icon-erp-double_arrow';
         if(page <= 4){
             //add number page
-            for (var i = 1; i <= 6; i++){
-                var pgNode = document.createElement('div');
+            for (let i = 1; i <= 6; i++){
+                let pgNode = document.createElement('div');
                 pgNode.className = 'pager-node';
                 pgNode.innerText = i;
                 if (i == page) {
@@ -617,8 +617,8 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
                 pager.appendChild(pgNode);
             }
             //add 'more-next' to pager
-            var pgNode = document.createElement('div');
-            var iconNext = document.createElement('i');
+            let pgNode = document.createElement('div');
+            let iconNext = document.createElement('i');
             pgNode.className = 'pager-node more-next';
             iconNext.className = iconNormalClass;
             pgNode.appendChild(iconNext);
@@ -630,20 +630,20 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             pager.appendChild(pgNode);
             //add last page to pager
-            var pgNode = document.createElement('div');
+            pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
             pgNode.innerText = pageNum;
             pager.appendChild(pgNode);
         }
         else if (page >= pageNum - 3){
             //add first page to pager
-            var pgNode = document.createElement('div');
+            let pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
             pgNode.innerText = 1;
             pager.appendChild(pgNode);
             //add 'more-pre' to pager
-            var pgNode = document.createElement('div');
-            var iconPre = document.createElement('i');
+            pgNode = document.createElement('div');
+            let iconPre = document.createElement('i');
             pgNode.className = 'pager-node more-pre';
             iconPre.className = iconNormalClass;
             pgNode.appendChild(iconPre);
@@ -655,8 +655,8 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             pager.appendChild(pgNode);
             //add number page
-            for (var i = pageNum - 4; i <= pageNum; i++) {
-                var pgNode = document.createElement('div');
+            for (let i = pageNum - 4; i <= pageNum; i++) {
+                let pgNode = document.createElement('div');
                 pgNode.className = 'pager-node';
                 pgNode.innerText = i;
                 if (i == page) {
@@ -667,13 +667,13 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
         }
         else{
             //add first page to pager
-            var pgNode = document.createElement('div');
+            let pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
             pgNode.innerText = 1;
             pager.appendChild(pgNode);
             //add 'more-pre' to pager
-            var pgNode = document.createElement('div');
-            var iconPre = document.createElement('i');
+            pgNode = document.createElement('div');
+            let iconPre = document.createElement('i');
             pgNode.className = 'pager-node more-pre';
             iconPre.className = iconNormalClass;
             pgNode.appendChild(iconPre);
@@ -685,8 +685,8 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             pager.appendChild(pgNode);
             //add number page
-            for (var i = page - 2; i <= page+2; i++) {
-                var pgNode = document.createElement('div');
+            for (let i = page - 2; i <= page+2; i++) {
+                let pgNode = document.createElement('div');
                 pgNode.className = 'pager-node';
                 pgNode.innerText = i;
                 if (i == page) {
@@ -695,8 +695,8 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
                 pager.appendChild(pgNode);
             }
             //add 'more-next' to pager
-            var pgNode = document.createElement('div');
-            var iconNext = document.createElement('i');
+            pgNode = document.createElement('div');
+            let iconNext = document.createElement('i');
             pgNode.className = 'pager-node more-next';
             iconNext.className = iconNormalClass;
             pgNode.appendChild(iconNext);
@@ -708,7 +708,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
             }
             pager.appendChild(pgNode);
             //add last page to pager
-            var pgNode = document.createElement('div');
+            pgNode = document.createElement('div');
             pgNode.className = 'pager-node';
             pgNode.innerText = pageNum;
             pager.appendChild(pgNode);
@@ -716,9 +716,9 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //next page
-    var zc_next = this.el.getAttribute('zc_next');
+    let zc_next = this.el.getAttribute('zc_next');
     if (zc_next != null){
-        var next = document.createElement('div');
+        let next = document.createElement('div');
         next.className = 'next pager-node';
         next.innerText = zc_next ? zc_next : '>';
         if (page == pageNum) {
@@ -728,9 +728,9 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //last page
-    var zc_last = this.el.getAttribute('zc_last');
+    let zc_last = this.el.getAttribute('zc_last');
     if (zc_last != null) {
-        var last = document.createElement('div');
+        let last = document.createElement('div');
         last.className = 'pager-node';
         last.innerText = zc_last ? zc_last : '尾页';
         pager.appendChild(last);
@@ -740,13 +740,13 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //jump
-    var zc_jump = this.el.getAttribute('zc_jump');
+    let zc_jump = this.el.getAttribute('zc_jump');
     if (zc_jump && zc_jump.indexOf('{input}') < 0) {
         throw 'zc_jump must contain "{input}"';
     }
-    var jump_input = `<input type="input" class="jump-input" value="${page}">`;
+    let jump_input = `<input type="input" class="jump-input" value="${page}">`;
     if (zc_jump != null) {
-        var jump = document.createElement('div');
+        let jump = document.createElement('div');
         jump.className = 'jump';
         jump.innerHTML = zc_jump ? zc_jump.replace("{input}", jump_input) : `跳转 ${jump_input} 页`;
         pager.appendChild(jump);
@@ -757,7 +757,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     if (document.querySelectorAll('.jump-input')[0]){
         document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function (e) {
             if (e.which == 13) {
-                var jumpPage = this.value;
+                let jumpPage = this.value;
                 if (!_this.tools.judgeInt(jumpPage - 0)) {
                     alert('请输入正确的数字');
                     throw 'wrong number';
@@ -792,27 +792,25 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //add event to page-node
-    for (var i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
-        (function(i){
-            var innerText = document.querySelectorAll('.pager-node')[i].innerText;
-            if (/^\d+$/.test(innerText)){
-                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(innerText - 0);}, false);
+    for (let i = 0; i < document.querySelectorAll('.pager-node').length; i++) {
+        let innerText = document.querySelectorAll('.pager-node')[i].innerText;
+        if (/^\d+$/.test(innerText)){
+            document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(innerText - 0);}, false);
+        }
+        else{
+            if (((zc_pre && innerText == zc_pre) || (zc_pre == '' && innerText == '<')) && page > 1){
+                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page - 1); }, false);
             }
-            else{
-                if (((zc_pre && innerText == zc_pre) || (zc_pre == '' && innerText == '<')) && page > 1){
-                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page - 1); }, false);
-                }
-                else if (((zc_next && innerText == zc_next) || (zc_next == '' && innerText == '>')) && page < pageNum){
-                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page + 1); }, false);
-                }
-                else if (((zc_first && innerText == zc_first) || (zc_first == '' && innerText == '首页')) && page > 1){
-                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(1 - 0); }, false);
-                }
-                else if (((zc_last && innerText == zc_last) || (zc_last == '' && innerText == '尾页')) && page < pageNum) {
-                    document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(pageNum - 0); }, false);
-                }
+            else if (((zc_next && innerText == zc_next) || (zc_next == '' && innerText == '>')) && page < pageNum){
+                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(page + 1); }, false);
             }
-        })(i);
+            else if (((zc_first && innerText == zc_first) || (zc_first == '' && innerText == '首页')) && page > 1){
+                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(1 - 0); }, false);
+            }
+            else if (((zc_last && innerText == zc_last) || (zc_last == '' && innerText == '尾页')) && page < pageNum) {
+                document.querySelectorAll('.pager-node')[i].addEventListener('click', () => { _this.paginationCallback(pageNum - 0); }, false);
+            }
+        }
     }
 }
 
@@ -842,10 +840,10 @@ ZC_UI.prototype.createLoading = function () {
  * 
  */
 ZC_UI.prototype.ZC_Loading.prototype.showLoading = function(text){
-    var loading = document.createElement('div');
-    var loadingContent = document.createElement('div');
-    var loadingIcon = document.createElement('div');
-    var loadingText = document.createElement('div');
+    let loading = document.createElement('div');
+    let loadingContent = document.createElement('div');
+    let loadingIcon = document.createElement('div');
+    let loadingText = document.createElement('div');
     loadingIcon.style.display = 'inline-block';
     loadingIcon.className = 'zc_icon_rotate';
     loadingIcon.innerHTML = '<i class="icon iconfont el-icon-erp-jiazai"></i>';
@@ -865,7 +863,7 @@ ZC_UI.prototype.ZC_Loading.prototype.showLoading = function(text){
  * 
  */
 ZC_UI.prototype.ZC_Loading.prototype.hideLoading = function () {
-    var loading = document.querySelectorAll('.zc_loading')[0];
+    let loading = document.querySelectorAll('.zc_loading')[0];
     document.body.style.overflow = 'scroll';
     document.body.removeChild(loading);
 }
@@ -903,9 +901,9 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
     if(!msg || !msg.text){
         throw 'no text available';
     }
-    var types = ['success', 'warning', 'info', 'error'];
+    let types = ['success', 'warning', 'info', 'error'];
     //default
-    var type = 'info';
+    let type = 'info';
     this.tools = new ZC_Tools();
     if (msg.type && this.tools.inArr(types, msg.type)){
         type = msg.type;
@@ -913,11 +911,11 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
     else if (msg.type && !this.tools.inArr(types, msg.type)){
         throw 'msg type not exsists';
     }
-    var message = document.createElement('div');
-    var messageIcon = document.createElement('i');
-    var messageContent = document.createElement('p');
-    var messageClose = document.createElement('i');
-    var icon = '';
+    let message = document.createElement('div');
+    let messageIcon = document.createElement('i');
+    let messageContent = document.createElement('p');
+    let messageClose = document.createElement('i');
+    let icon = '';
     switch (type){
         case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_message_icon';break;
         case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_message_icon';break;
@@ -934,14 +932,14 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
         message.appendChild(messageClose);
     }
     document.body.appendChild(message);
-    var duration = 3000;
+    let duration = 3000;
     if (msg.duration && this.tools.judgeInt(msg.duration)){
         duration = msg.duration;
     }
     else if (msg.duration && !this.tools.judgeInt(msg.duration)){
         throw 'duration must be a number';
     }
-    var timerOuter,timerInner;
+    let timerOuter,timerInner;
     timerOuter = setTimeout(() => {
         this.tools.removeClass(message,'zc_message');
         this.tools.addClass(message,'zc_message_disappear');
@@ -976,45 +974,45 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     if (!title || !content){
         throw 'title and content is necessary';
     }
-    var tools = new ZC_Tools();
+    let tools = new ZC_Tools();
     //hide scroll bar
     document.body.style.overflow = 'hidden';
 
     //cover and box
-    var zc_cover = document.createElement('div');
+    let zc_cover = document.createElement('div');
     zc_cover.className = 'zc_cover';
-    var zc_alert_box = document.createElement('div');
+    let zc_alert_box = document.createElement('div');
     zc_alert_box.className = 'zc_alert_box';
 
     //header
-    var zc_alert_header = document.createElement('div');
+    let zc_alert_header = document.createElement('div');
     zc_alert_header.className = 'zc_alert_header';
-    var zc_alert_title = document.createElement('div');
+    let zc_alert_title = document.createElement('div');
     zc_alert_title.className = 'zc_alert_title';
-    var zc_alert_title_text = document.createElement('span');
+    let zc_alert_title_text = document.createElement('span');
     zc_alert_title_text.innerText = title;
     zc_alert_title.appendChild(zc_alert_title_text);
-    var closeIcon = document.createElement('i');
+    let closeIcon = document.createElement('i');
     closeIcon.className = 'icon iconfont el-icon-erp-guanbi zc_btn_close';
-    var zc_alert_close_icon = document.createElement('button');
+    let zc_alert_close_icon = document.createElement('button');
     zc_alert_close_icon.className = 'zc_alert_close_icon zc_btn_close';
     zc_alert_close_icon.appendChild(closeIcon);
     zc_alert_header.appendChild(zc_alert_title);
     zc_alert_header.appendChild(zc_alert_close_icon);
 
     //content
-    var zc_alert_content = document.createElement('div');
+    let zc_alert_content = document.createElement('div');
     zc_alert_content.className = 'zc_alert_content';
-    var zc_alert_content_text = document.createElement('span');
+    let zc_alert_content_text = document.createElement('span');
     if (option.type){
-        var icon = '';
+        let icon = '';
         switch (option.type) {
             case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_success_icon'; break;
             case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_warning_icon'; break;
             case 'info': icon = 'icon iconfont el-icon-erp-xinxi1 zc_info_icon'; break;
             case 'error': icon = 'icon iconfont el-icon-erp-chucuo zc_error_icon'; break;
         }
-        var zc_alert_type_icon = document.createElement('i');
+        let zc_alert_type_icon = document.createElement('i');
         zc_alert_type_icon.className = icon;
         zc_alert_content.appendChild(zc_alert_type_icon);
     }
@@ -1022,9 +1020,9 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     zc_alert_content.appendChild(zc_alert_content_text);
 
     //btns
-    var zc_alert_btns = document.createElement('div');
+    let zc_alert_btns = document.createElement('div');
     zc_alert_btns.className = 'zc_alert_btns zc_btn_confirm';
-    var zc_btn = document.createElement('div');
+    let zc_btn = document.createElement('div');
     zc_btn.className = 'zc_btn zc_btn_primary zc_btn_confirm';
     zc_btn.setAttribute('medium', '');
     zc_btn.innerText = option.confirmButtonText ? option.confirmButtonText : '确定';
@@ -1038,13 +1036,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
     document.body.appendChild(zc_cover);
 
     //add event to zc_alert_box,when alert shown,zc_cover has no event
-    document.getElementsByClassName('zc_alert_box')[0].addEventListener('click',function(e){
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.getElementsByClassName('zc_alert_box')[0].addEventListener('click',function(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.className.indexOf('zc_btn_confirm') >= 0){
             tools.removeClass(zc_alert_box, 'zc_alert_box');
             tools.addClass(zc_alert_box, 'zc_alert_box_disAppear');
-            timerInner = setTimeout(() => {
+            setTimeout(() => {
                 document.body.removeChild(zc_cover);
                 document.body.style.overflow = 'scroll';
                 if (confirmCallback) {
@@ -1055,7 +1053,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
         else if (target.className.indexOf('zc_btn_close') >= 0){
             tools.removeClass(zc_alert_box, 'zc_alert_box');
             tools.addClass(zc_alert_box, 'zc_alert_box_disAppear');
-            timerInner = setTimeout(() => {
+            setTimeout(() => {
                 document.body.removeChild(zc_cover);
                 document.body.style.overflow = 'scroll';
                 if (closeCallback) {
@@ -1084,46 +1082,46 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
     if (!title || !content) {
         throw 'title and content is necessary';
     }
-    var tools = new ZC_Tools();
+    let tools = new ZC_Tools();
 
     //hide scroll bar
     document.body.style.overflow = 'hidden';
 
     //cover and box
-    var zc_cover = document.createElement('div');
+    let zc_cover = document.createElement('div');
     zc_cover.className = 'zc_cover';
-    var zc_confirm_box = document.createElement('div');
+    let zc_confirm_box = document.createElement('div');
     zc_confirm_box.className = 'zc_confirm_box';
 
     //header
-    var zc_confirm_header = document.createElement('div');
+    let zc_confirm_header = document.createElement('div');
     zc_confirm_header.className = 'zc_confirm_header';
-    var zc_confirm_title = document.createElement('div');
+    let zc_confirm_title = document.createElement('div');
     zc_confirm_title.className = 'zc_confirm_title';
-    var zc_confirm_title_text = document.createElement('span');
+    let zc_confirm_title_text = document.createElement('span');
     zc_confirm_title_text.innerText = title;
     zc_confirm_title.appendChild(zc_confirm_title_text);
-    var closeIcon = document.createElement('i');
+    let closeIcon = document.createElement('i');
     closeIcon.className = 'icon iconfont el-icon-erp-guanbi zc_btn_close';
-    var zc_confirm_close_icon = document.createElement('button');
+    let zc_confirm_close_icon = document.createElement('button');
     zc_confirm_close_icon.className = 'zc_confirm_close_icon zc_btn_close';
     zc_confirm_close_icon.appendChild(closeIcon);
     zc_confirm_header.appendChild(zc_confirm_title);
     zc_confirm_header.appendChild(zc_confirm_close_icon);
 
     //content
-    var zc_confirm_content = document.createElement('div');
+    let zc_confirm_content = document.createElement('div');
     zc_confirm_content.className = 'zc_confirm_content';
-    var zc_confirm_content_text = document.createElement('span');
+    let zc_confirm_content_text = document.createElement('span');
     if (option.type) {
-        var icon = '';
+        let icon = '';
         switch (option.type) {
             case 'success': icon = 'icon iconfont el-icon-erp-chenggong zc_success_icon'; break;
             case 'warning': icon = 'icon iconfont el-icon-erp-tixingshixin zc_warning_icon'; break;
             case 'info': icon = 'icon iconfont el-icon-erp-xinxi1 zc_info_icon'; break;
             case 'error': icon = 'icon iconfont el-icon-erp-chucuo zc_error_icon'; break;
         }
-        var zc_confirm_type_icon = document.createElement('i');
+        let zc_confirm_type_icon = document.createElement('i');
         zc_confirm_type_icon.className = icon;
         zc_confirm_content.appendChild(zc_confirm_type_icon);
     }
@@ -1131,10 +1129,10 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
     zc_confirm_content.appendChild(zc_confirm_content_text);
 
     //btns
-    var zc_confirm_btns = document.createElement('div');
+    let zc_confirm_btns = document.createElement('div');
     zc_confirm_btns.className = 'zc_confirm_btns';
-    var zc_btn_confirm = document.createElement('div');
-    var zc_btn_cancel = document.createElement('div');
+    let zc_btn_confirm = document.createElement('div');
+    let zc_btn_cancel = document.createElement('div');
     zc_btn_confirm.className = 'zc_btn zc_btn_primary zc_btn_confirm';
     zc_btn_cancel.className = 'zc_btn zc_btn_default zc_btn_cancel';
     zc_btn_confirm.setAttribute('medium','');
@@ -1158,13 +1156,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
     document.body.appendChild(zc_cover);
 
     //add event to zc_confirm_box,when confirm shown,zc_cover has no event
-    document.getElementsByClassName('zc_confirm_box')[0].addEventListener('click', function (e) {
-        var e = e || window.event;
-        var target = e.target || e.srcElement;
+    document.getElementsByClassName('zc_confirm_box')[0].addEventListener('click', function (event) {
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
         if (target.className.indexOf('zc_btn_confirm') >= 0) {
             tools.removeClass(zc_confirm_box, 'zc_confirm_box');
             tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
-            timerInner = setTimeout(() => {
+            setTimeout(() => {
                 document.body.removeChild(zc_cover);
                 document.body.style.overflow = 'scroll';
                 if (confirmCallback) {
@@ -1175,7 +1173,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
         else if (target.className.indexOf('zc_btn_close') >= 0) {
             tools.removeClass(zc_confirm_box, 'zc_confirm_box');
             tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
-            timerInner = setTimeout(() => {
+            setTimeout(() => {
                 document.body.removeChild(zc_cover);
                 document.body.style.overflow = 'scroll';
                 if (closeCallback) {
@@ -1186,7 +1184,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
         else if (target.className.indexOf('zc_btn_cancel') >= 0){
             tools.removeClass(zc_confirm_box, 'zc_confirm_box');
             tools.addClass(zc_confirm_box, 'zc_confirm_box_disAppear');
-            timerInner = setTimeout(() => {
+            setTimeout(() => {
                 document.body.removeChild(zc_cover);
                 document.body.style.overflow = 'scroll';
                 if (cancelCallback) {
