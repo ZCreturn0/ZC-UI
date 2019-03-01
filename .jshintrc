@@ -1,6 +1,18 @@
 {
+    "globals":{
+        "document": true,
+        "console": true,
+        "window": true,
+        "setTimeout": true,
+        "clearTimeout": true,
+        "alert": true
+    },
     "asi": true,
     "curly": true,
     "esversion": 6,
-    "undef": true
+    "undef": true,
+    "indent": 4,
+    "evil": true,
+    "unused": true,
+    "loopfunc": true
 }
