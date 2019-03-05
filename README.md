@@ -408,4 +408,5 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
     <input class="zc-input" placeholder="请输入" type="text"/>
 </div>
 ```
-
+所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input.png)<br><br>
