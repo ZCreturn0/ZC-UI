@@ -398,3 +398,14 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 |confirmCallback|按确认按钮后回调|function|-|可选|
 |cancelCallback|按取消按钮后回调|function|-|可选|
 |closeCallback|按关闭后回调|function|-|可选|
+
+### 3.7 输入框
+基本结构:外层div需含有zc-input-content类,内层input需含有zc-input类
+
+#### 3.7.1 基本用法
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text"/>
+</div>
+```
+
