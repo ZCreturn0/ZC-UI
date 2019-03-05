@@ -386,6 +386,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 所生成的$confirm样式如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/confirm.png)<br><br>
 参数列表:<br>
+
 |属性名|描述|数据类型|属性默认值|是否必需
 |:---|:---|:---|:---|:---|
 |title|$confirm标题|string|-|必需|
