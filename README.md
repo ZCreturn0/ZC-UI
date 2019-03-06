@@ -421,3 +421,14 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-disabled.png)<br><br>
+
+#### 3.7.3 claerable 内容可清除
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text" clearable/>
+    <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
+</div>
+```
+所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-clearable.png)<br><br>
+
