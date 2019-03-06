@@ -432,4 +432,6 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-clearable.png)<br><br>
 
-icon可自定义,但必须含有`clearIcon`类
+icon可自定义,但必须含有`clearIcon`类<br><br>
+
+点击清除icon会清空输入框内的内容,如果输入框含有验证(nullmsg,validate),会触发验证<br><br>
