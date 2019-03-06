@@ -456,3 +456,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-sufIcon.png)<br><br>
+
+注(已图标在前举例,图标在后同理):
+1. input需含有sufIcon`属性`,icon需含有sufIcon`类`
+2. input与icon位置不影响表现,只与属性名及类名有关
