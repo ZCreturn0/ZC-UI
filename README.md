@@ -432,3 +432,4 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-clearable.png)<br><br>
 
+icon可自定义,但必须含有`clearIcon`类
