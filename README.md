@@ -435,3 +435,24 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 icon可自定义,但必须含有`clearIcon`类<br><br>
 
 点击清除icon会清空输入框内的内容,如果输入框含有验证(nullmsg,validate),会触发验证<br><br>
+
+#### 3.7.4 添加图标
+图标在前:
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text" preIcon/>
+    <i class="icon iconfont el-icon-erp-sousuo preIcon"></i>
+</div>
+```
+所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-preIcon.png)<br><br>
+
+图标在后:
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text" sufIcon/>
+    <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
+</div>
+```
+所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-sufIcon.png)<br><br>
