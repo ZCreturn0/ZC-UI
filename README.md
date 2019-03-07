@@ -512,4 +512,12 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 #### 3.7.6 验证及错误提示
 
 ##### 3.7.6.1 非空验证
-在input上添加required即可添加非空验证,nullmsg可自定义错误提示,默认为`此项不能为空`
+在input上添加required即可添加非空验证,nullmsg可自定义错误提示,默认为`此项不能为空`:
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text" required/>
+    <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
+</div>
+```
+输入框触发blur后所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-nullmsg.png)<br><br>
