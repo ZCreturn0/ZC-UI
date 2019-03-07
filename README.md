@@ -520,4 +520,4 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 </div>
 ```
 输入框触发blur后所生成的效果如下:<br><br>
-![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-nullmsg.png)<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-null.png)<br><br>
