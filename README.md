@@ -1,15 +1,24 @@
 # ZC-UI
+
 ## 一.介绍
+
 用于快捷搭建页面的一套UI插件,所有实例可访问[https://zcreturn0.github.io/ZC-UI/](https://zcreturn0.github.io/ZC-UI/)查看
+
 ## 二.开始使用
+
 引入css(zc_ui.css)和js(zc_ui.js);如需引用图标,引入iconfont.css
+
 ## 三.具体配置
+
 创建ZC_UI对象
 ```
 var ui = new ZC_UI();
 ```
+
 ### 3.1 表格插件
+
 #### 3.1.1 准备表格容器
+
 在页面放一个元素,设置基本属性:
 ```
 <div id="zc_table"></div>
@@ -18,7 +27,9 @@ var ui = new ZC_UI();
     margin: 0 auto;
 }
 ```
+
 #### 3.1.2 准备表格配置
+
 表格配置对象有三个必需参数:<br>
 * el:表格容器(HTMLElement)<br>
 * captain:表头名称(Array)<br>
@@ -33,7 +44,9 @@ var table_setting = {
     field:['name','age','score','addr']
 }
 ```
+
 #### 3.1.3 准备翻页回调函数
+
 用户选择页码后会产生一个回调函数,这个回调函数带一个参数,表示用户选择的页码
 示例:
 ```
@@ -42,13 +55,17 @@ function paginationCallback(n){
     //Do something...
 }
 ```
+
 #### 3.1.4 创建表格对象
+
 通过ZC_UI对象的createTable方法创建`ZC_Table`对象;然后需初始化,传入`table_setting`和`paginationCallback`
 ```
 var table = ui.createTable();
 table.init(table_setting, paginationCallback);
 ```
+
 #### 3.1.5 往表格传入数据
+
 完成以上步骤就建立了表格对象,接下来建立数据对象,往表格填入数据<br>
 数据对象有四个必需参数:<br>
 * page:当前页码(number)<br>
@@ -83,7 +100,9 @@ var table_data = {
 ```
 table.update(table_data);
 ```
+
 #### 3.1.6 表格可选属性
+
 表格容器中可添加属性完成个性化配置,如:<br>
 ```
 <div id="zc_table" zc_border></div>
@@ -102,8 +121,11 @@ table.update(table_data);
 |zc_index|为表格添加`序号`|值可选,值为空时序号表头空白;不为空则显示为传入的值|
 
 ### 3.2 按钮
+
 按钮需要添加zc_btn类
+
 #### 3.2.1 基本按钮
+
 在有zc_btn类的前提下添加不同的类显示不同类型的按钮:
 
 |类名|描述|图例|
@@ -127,6 +149,7 @@ table.update(table_data);
 |zc_btn_danger_plain|危险按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/danger_plain.png)|
 
 #### 3.2.3 圆角
+
 给按钮增加'round'属性:
 ```
 <div class="zc_btn zc_btn_primary" round>主要按钮</div>
@@ -134,6 +157,7 @@ table.update(table_data);
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/round.png)
 
 #### 3.2.4 图标按钮
+
 图标参考 [图标](https://zcreturn0.github.io/ZC-UI/font_608239_92bsv2a958/demo_index.html)  
 创建一个图标按钮,需添加'zc_btn_icon'类,可创建基本按钮或朴素按钮,内容为icon:
 ```
@@ -216,6 +240,7 @@ table.update(table_data);
 ```
 
 #### 3.2.5 文字图标结合
+
 示例1,图标在前:<br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/pre_icon_btn.png)<br>
 ```
@@ -233,6 +258,7 @@ table.update(table_data);
 ```
 
 #### 3.2.6 按钮禁用
+
 按钮禁用只需加上`disabled`属性即可,按钮禁用后`hover`效果及按钮上的事件都会失效
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/disabled_btn.png)<br>
 ```
@@ -255,6 +281,7 @@ table.update(table_data);
 ```
 
 #### 3.2.7 按钮尺寸
+
 按钮可选择不同尺寸大小,只需加上`medium`,`small`,或`mini`属性,默认为最大尺寸<br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/btn-size.png)<br>
 ```
@@ -271,12 +298,14 @@ table.update(table_data);
 ```
 
 #### 3.2.8 为按钮加上tooltip
+
 为按钮加上`tooltip-text`和`placement`属性,这两个属性是成对存在的<br>
 `tooltip-text`:tooltip中显示的文字<br>
 `placement`:tooltip的方向<br>
 `placement`可取值:`top`,`bottom`,`left`,`right`;分别代表四个方向
 
 ### 3.3 加载中
+
 在页面上显示`加载中`效果:全屏半透明背景,正中间显示加载中与图标<br>
 步骤:<br>
 1.创建UI对象:
@@ -300,6 +329,7 @@ loading.hideLoading();
 `hideLoading()`会从DOM移除loading
 
 ### 3.4 $message
+
 在页面顶部显示简短的提示信息<br>
 步骤:<br>
 1.创建UI对象:
@@ -332,6 +362,7 @@ $notice.$message({ text: '啊啊啊啊啊啊', type: 'success', showClose: true,
 创建一个message,3s后关闭,也可手动关闭
 
 ### 3.5 $alert提示框
+
 代替原生alert<br>
 $alert也是$notice下的组件,可通过$notice.$alert()来调用,参数形式为:<br>
 ```
@@ -378,6 +409,7 @@ $notice.$alert('提示','内容',{ confirmButtonText:'确定',type: 'success'}, 
 ```
 
 ### 3.6 $confirm确认框
+
 替代原生confirm<br>
 与$alert类似,同为$notice下的组件,可通过$notice.$alert()来调用,参数形式为:<br>
 ```
@@ -400,9 +432,11 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 |closeCallback|按关闭后回调|function|-|可选|
 
 ### 3.7 输入框
+
 基本结构:外层div需含有zc-input-content类,内层input需含有zc-input类
 
 #### 3.7.1 基本用法
+
 ```
 <div class="zc-input-content">
     <input class="zc-input" placeholder="请输入" type="text"/>
@@ -412,6 +446,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input.png)<br><br>
 
 #### 3.7.2 disabled状态
+
 为input添加disabled属性即可生成disabled输入框;disabled状态下输入框显灰色,不可选中;去除disabled属性则恢复成正常的输入框<br><br>
 例子:
 ```
@@ -423,6 +458,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-disabled.png)<br><br>
 
 #### 3.7.3 claerable 内容可清除
+
 ```
 <div class="zc-input-content">
     <input class="zc-input" placeholder="请输入" type="text" clearable/>
@@ -437,6 +473,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 点击清除icon会清空输入框内的内容,如果输入框含有验证(nullmsg,validate),会触发验证<br><br>
 
 #### 3.7.4 添加图标
+
 图标在前:
 ```
 <div class="zc-input-content">
@@ -462,6 +499,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 2. input与icon位置不影响表现,只与属性名及类名有关
 
 #### 3.7.5 不同尺寸
+
 和按钮一样只需添加`medium`,`small`,`mini`属性即可生成不同大小的输入框<br>
 如果有图标,图标也需加上相同的属性:
 ```
@@ -470,3 +508,8 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
     <i class="icon iconfont el-icon-erp-yanjing sufIcon" medium></i>
 </div>
 ```
+
+#### 3.7.6 验证及错误提示
+
+##### 3.7.6.1 非空验证
+在input上添加required即可添加非空验证,nullmsg可自定义错误提示,默认为`此项不能为空`
