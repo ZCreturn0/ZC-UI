@@ -515,7 +515,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 在input上添加required即可添加非空验证,nullmsg可自定义错误提示,默认为`此项不能为空`:
 ```
 <div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" type="text" required/>
+    <input class="zc-input" placeholder="请输入" type="text" required clearable/>
     <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
 </div>
 ```
