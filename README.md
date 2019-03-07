@@ -460,3 +460,13 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 注(以图标在前举例,图标在后同理):
 1. input需含有sufIcon`属性`,icon需含有sufIcon`类`
 2. input与icon位置不影响表现,只与属性名及类名有关
+
+#### 3.7.5 不同尺寸
+和按钮一样只需添加`medium`,`small`,`mini`属性即可生成不同大小的输入框<br>
+如果有图标,图标也需加上相同的属性:
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入" type="text" sufIcon medium/>
+    <i class="icon iconfont el-icon-erp-yanjing sufIcon" medium></i>
+</div>
+```
