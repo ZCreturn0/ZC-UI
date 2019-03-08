@@ -330,14 +330,15 @@ function ZC_UI(){
         let e = event || window.event;
         let target = e.target || e.srcElement;
         if (target.classList && tools.inArr(target.classList, 'zc-input-number-inner')) {
-            if (!tools.judgeNumber(target.value)){
-                target.value = numberBefore;
-            }
             let currentValue = target.value - 0;
             let numberNode = target.parentNode;
             let step = numberNode.getAttribute("step") - 0 || 1;
             let min = numberNode.getAttribute("min") - 0;
             let max = numberNode.getAttribute("max") - 0;
+            if (!tools.judgeNumber(target.value) || target.value < min || target.value > max){
+                target.value = numberBefore;
+                return;
+            }
             if (min && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
