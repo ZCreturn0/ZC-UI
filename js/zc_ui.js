@@ -335,6 +335,7 @@ function ZC_UI(){
             let step = numberNode.getAttribute("step") - 0 || 1;
             let min = numberNode.getAttribute("min") - 0;
             let max = numberNode.getAttribute("max") - 0;
+            // not number,out of range,reset value
             if (!tools.judgeNumber(target.value) || target.value < min || target.value > max){
                 target.value = numberBefore;
                 return;
