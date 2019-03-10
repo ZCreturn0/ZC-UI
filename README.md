@@ -523,4 +523,12 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-null.png)<br><br>
 
 ##### 3.7.6.2 正则验证
-给input的regex赋值一个正则,对输入内容进行验证
+给input的regex赋值一个正则,对输入内容进行验证,errormsg可指定错误提示:
+```
+<div class="zc-input-content">
+    <input class="zc-input" placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" type="text" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"/>
+    <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
+</div>
+```
+输入框触发blur后所生成的效果如下:<br><br>
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-nullmsg.png)<br><br>
