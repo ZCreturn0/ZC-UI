@@ -199,13 +199,15 @@
             <input class="zc-input" placeholder="请输入" type="text" readonly="readonly" sufIcon/>
             <i class="icon iconfont el-icon-erp-xiangxiajiantouxiao sufIcon" sufIcon></i>
         </div>
-        <ul>
-            <li class="zc-option" value="1"><span>1111111</span></li>
-            <li class="zc-option" value="2"><span>2222222</span></li>
-            <li class="zc-option" value="3"><span>3333333</span></li>
-            <li class="zc-option" value="4"><span>4444444</span></li>
-            <li class="zc-option" value="5"><span>5555555</span></li>
-        </ul>
+        <div class="zc_option_wrapper">
+            <ul>
+                <li class="zc-option" value="1"><span>1111111</span></li>
+                <li class="zc-option" value="2"><span>2222222</span></li>
+                <li class="zc-option" value="3"><span>3333333</span></li>
+                <li class="zc-option" value="4"><span>4444444</span></li>
+                <li class="zc-option" value="5"><span>5555555</span></li>
+            </ul>
+        </div>
     </div>
     <!-- raw $message html -->
     <!--
@@ -306,7 +308,7 @@
         var loading = ui.createLoading();
 
         function showLoading(){
-            loading.showLoading('加载中...');
+            loading.showLoading('加载中...','el-icon-erp-jiazai1');
             setTimeout(() => {
                 loading.hideLoading();
             },3 * 1000);
