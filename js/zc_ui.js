@@ -903,16 +903,17 @@ ZC_UI.prototype.createLoading = function () {
  * 
  * @description show a fullscreen loading
  * @param {string} text text shown in loading
+ * @param {string} icon icon shown before text
  * 
  */
-ZC_UI.prototype.ZC_Loading.prototype.showLoading = function(text){
+ZC_UI.prototype.ZC_Loading.prototype.showLoading = function (text, icon ="el-icon-erp-jiazai"){
     let loading = document.createElement('div');
     let loadingContent = document.createElement('div');
     let loadingIcon = document.createElement('div');
     let loadingText = document.createElement('div');
     loadingIcon.style.display = 'inline-block';
     loadingIcon.className = 'zc_icon_rotate';
-    loadingIcon.innerHTML = '<i class="icon iconfont el-icon-erp-jiazai"></i>';
+    loadingIcon.innerHTML = `<i class="icon iconfont ${icon}"></i>`;
     loadingText.innerText = text;
     loadingText.style.display = 'inline-block';
     loadingContent.appendChild(loadingIcon);
