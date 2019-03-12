@@ -221,7 +221,6 @@ function ZC_UI(){
     document.addEventListener('click', function (event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
-        console.log(target)
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
             let input = target.parentNode.getElementsByClassName('zc-input')[0];
             input.value = '';
@@ -318,8 +317,8 @@ function ZC_UI(){
                 }
             }
         }
-        else if (target.classList && tools.inArr(target.classList, 'zc-select')){
-            console.log(target)
+        else if (target.classList && tools.inArr(target.classList, 'zc-select-input') || tools.inArr(target.classList, 'zc-select-icon')){
+            target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
         }
     },true);
     let numberBefore = "";
