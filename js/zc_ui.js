@@ -221,6 +221,7 @@ function ZC_UI(){
     document.addEventListener('click', function (event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
+        console.log(target)
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
             let input = target.parentNode.getElementsByClassName('zc-input')[0];
             input.value = '';
@@ -316,6 +317,9 @@ function ZC_UI(){
                     numberNode.getElementsByClassName('zc_input_number_increase')[0].removeAttribute('disabled');
                 }
             }
+        }
+        else if (target.classList && tools.inArr(target.classList, 'zc-select')){
+            console.log(target)
         }
     },true);
     let numberBefore = "";
