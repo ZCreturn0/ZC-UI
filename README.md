@@ -532,3 +532,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 ```
 输入框触发blur后所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-nullmsg.png)<br><br>
+
+#### 3.7.6 获取输入框的值
+
+获取对应元素,直接读取该元素的value属性即可:<br><br>
