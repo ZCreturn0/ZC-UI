@@ -227,8 +227,7 @@ function ZC_UI(){
         // set all 'open' select to off
         let zc_select = document.getElementsByClassName('zc-select');
         for (let item of zc_select){
-            if (item != target.parentNode.parentNode){
-                console.log(1)
+            if (item != target.parentNode.parentNode && item.getElementsByClassName('zc-select-icon')[0]){
                 item.setAttribute('open', 'off');
                 item.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
                 item.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
@@ -333,13 +332,11 @@ function ZC_UI(){
         }
         else if (target.classList && tools.inArr(target.classList, 'zc-select-input') || tools.inArr(target.classList, 'zc-select-icon')){
             if (target.parentNode.parentNode.getAttribute('open') != 'on'){
-                console.log(2)
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
                 target.parentNode.parentNode.setAttribute('open','on');
                 target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '200px';
             }
             else{
-                console.log(3)
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
                 target.parentNode.parentNode.setAttribute('open', 'off');
                 target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
@@ -1288,4 +1285,22 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
             }, 200);
         }
     }, true);
+}
+
+/**
+ * 
+ * @description add a select in el
+ * @param {object} el element object
+ * 
+ */
+ZC_UI.prototype.createSelect = function(el){
+    let tools = new ZC_Tools();
+    if (!tools.hasClass(el,'zc-select')){
+        if(ENV === 'development'){
+            console.error(`To create select,el must have class 'zc-select'.`);
+        }
+        else{
+            throw new TypeError(`To create select,el must have class 'zc-select'.`);
+        }
+    }
 }
