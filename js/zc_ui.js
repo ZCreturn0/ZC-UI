@@ -133,9 +133,11 @@ ZC_Tools.prototype.judgeNumber = function(num){
  * 
  */
 ZC_Tools.prototype.inArr = function(arr,ele){
-    for(let item of arr){
-        if(item === ele){
-            return true;
+    if (typeof arr === 'object'){
+        for (let item of arr) {
+            if (item === ele) {
+                return true;
+            }
         }
     }
     return false;
@@ -226,8 +228,10 @@ function ZC_UI(){
         let zc_select = document.getElementsByClassName('zc-select');
         for (let item of zc_select){
             if (item != target.parentNode.parentNode){
+                console.log(1)
                 item.setAttribute('open', 'off');
                 item.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
+                item.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
             }
         }
 
@@ -329,13 +333,16 @@ function ZC_UI(){
         }
         else if (target.classList && tools.inArr(target.classList, 'zc-select-input') || tools.inArr(target.classList, 'zc-select-icon')){
             if (target.parentNode.parentNode.getAttribute('open') != 'on'){
+                console.log(2)
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
                 target.parentNode.parentNode.setAttribute('open','on');
+                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '200px';
             }
             else{
-                console.log(111)
+                console.log(3)
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
                 target.parentNode.parentNode.setAttribute('open', 'off');
+                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
             }
         }
     },true);
