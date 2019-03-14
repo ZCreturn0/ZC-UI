@@ -304,7 +304,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_input_number[mini] .zc_input_number_increase{width: 25px;height: 25px;right: 0px;}
 
 .zc-select-area{margin-bottom: 0;}
-.zc-select{display: inline-block;}
+.zc-select{display: inline-block;position: relative;vertical-align: top;}
 .zc-select .el-icon-erp-xiangxiajiantouxiao{transform: rotate(-180deg);transition: transform .5s;}
 .zc-select input{cursor: pointer;}
 .zc-select ul{width: 180px;padding: 5px 0px;border: 1px solid #e4e7ed;list-style-type: none;border-radius: 7px;box-shadow: 0px 0px 20px 2px rgba(0,0,0,.1);position: relative;margin-top: 12px;margin-left: 20px;box-sizing: border-box;}
@@ -312,4 +312,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-option{height: 34px;line-height: 34px;cursor: pointer;}
 .zc-option:hover{background: #f5f7fa;}
 .zc-option span{padding: 0 15px;}
-.zc_option_wrapper{width: 220px;height: 0px;overflow: hidden;margin-left: -20px;}
+.zc_option_wrapper{width: 220px;max-height: 0;overflow: hidden;margin-left: -20px;position: absolute;}
