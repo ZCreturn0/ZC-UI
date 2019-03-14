@@ -540,9 +540,9 @@ ZC_UI.prototype.ZC_Table.prototype.init = function (table_setting, paginationCal
  * 
  * @description set data into table and make pagination
  * @param {object} table_data info shown in table
- *      @param {number} page current page
- *      @param {number} pageSize number of info shown in one page
- *      @param {number} total number of all info
+ *      @param {number} table_data.page current page
+ *      @param {number} table_data.pageSize number of info shown in one page
+ *      @param {number} table_data.total number of all info
  * 
  */
 ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
