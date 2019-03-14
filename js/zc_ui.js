@@ -221,6 +221,16 @@ function ZC_UI(){
     document.addEventListener('click', function (event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
+
+        // set all 'open' select to off
+        let zc_select = document.getElementsByClassName('zc-select');
+        for (let item of zc_select){
+            if (item != target.parentNode.parentNode){
+                item.setAttribute('open', 'off');
+                item.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
+            }
+        }
+
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
             let input = target.parentNode.getElementsByClassName('zc-input')[0];
             input.value = '';
@@ -318,7 +328,15 @@ function ZC_UI(){
             }
         }
         else if (target.classList && tools.inArr(target.classList, 'zc-select-input') || tools.inArr(target.classList, 'zc-select-icon')){
-            target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
+            if (target.parentNode.parentNode.getAttribute('open') != 'on'){
+                target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
+                target.parentNode.parentNode.setAttribute('open','on');
+            }
+            else{
+                console.log(111)
+                target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
+                target.parentNode.parentNode.setAttribute('open', 'off');
+            }
         }
     },true);
     let numberBefore = "";
