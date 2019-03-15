@@ -1291,10 +1291,13 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  * 
  * @description add a select in el
  * @param {object} el element object
+ * @param {Array} initOption datas in zc_select
+ *      @param {object} initOption[i] key-value of option
+ *          @param {string} initOption[i].value option value
+ *          @param {string} initOption[i].text text shown in option
  * @param {string} placeholder placeholder in input
- * 
  */
-ZC_UI.prototype.createSelect = function (el, placeholder = '请选择'){
+ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选择'){
     let tools = new ZC_Tools();
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
@@ -1306,17 +1309,55 @@ ZC_UI.prototype.createSelect = function (el, placeholder = '请选择'){
         return false;
     }
     let zc_select_area = document.createElement('div');
-    zc_select_area.classList = 'zc-input-content zc-select-area';
     let zc_select_input = document.createElement('input');
+    let zc_select_icon = document.createElement('i');
+    zc_select_area.classList = 'zc-input-content zc-select-area';
     zc_select_input.classList = 'zc-input zc-select-input';
     zc_select_input.setAttribute('placeholder',placeholder);
     zc_select_input.setAttribute('type','text');
     zc_select_input.setAttribute('readonly','readonly');
     zc_select_input.setAttribute('sufIcon','');
-    let zc_select_icon = document.createElement('i');
     zc_select_icon.classList = 'icon iconfont el-icon-erp-xiangxiajiantouxiao sufIcon zc-select-icon';
     zc_select_icon.setAttribute('sufIcon','');
     zc_select_area.append(zc_select_input);
     zc_select_area.append(zc_select_icon);
     el.append(zc_select_area);
+
+    let zc_option_wrapper = document.createElement('div');
+    let ul = document.createElement('ul');
+    zc_option_wrapper.classList = 'zc_option_wrapper';
+    zc_option_wrapper.append(ul);
+    el.append(zc_option_wrapper);
+
+    el.setOption = function(option){
+        if (option && option.length) {
+            this.clear();
+            for (let item of option) {
+                let li = document.createElement('li');
+                li.classList = 'zc-option';
+                li.setAttribute('value', item.value);
+                li.setAttribute('text', item.text);
+                let span = document.createElement('span');
+                span.innerText = item.text;
+                li.append(span);
+                this.getElementsByTagName('ul')[0].append(li);
+            }
+        }
+        else{
+            if (ENV === 'development') {
+                console.error(`option can't be empty`);
+            }
+            else {
+                throw new TypeError(`option can't be empty`);
+            }
+        }
+    }
+
+    el.clear = function(){
+        this.getElementsByTagName('ul')[0].innerHTML = [];
+    }
+
+    el.setOption(initOption);
+
+    return el;
 }
