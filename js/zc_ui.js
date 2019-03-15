@@ -1296,6 +1296,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  *          @param {string} initOption[i].value option value
  *          @param {string} initOption[i].text text shown in option
  * @param {string} placeholder placeholder in input
+ * @returns {object} zc_select object or false if something wrong
  */
 ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选择'){
     let tools = new ZC_Tools();
@@ -1332,16 +1333,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     el.setOption = function(option){
         if (option && option.length) {
             this.clear();
-            for (let item of option) {
-                let li = document.createElement('li');
-                li.classList = 'zc-option';
-                li.setAttribute('value', item.value);
-                li.setAttribute('text', item.text);
-                let span = document.createElement('span');
-                span.innerText = item.text;
-                li.append(span);
-                this.getElementsByTagName('ul')[0].append(li);
-            }
+            this.addOptions(option);
         }
         else{
             if (ENV === 'development') {
@@ -1354,7 +1346,22 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     }
 
     el.clear = function(){
-        this.getElementsByTagName('ul')[0].innerHTML = [];
+        this.getElementsByTagName('ul')[0].innerHTML = '';
+    }
+
+    el.addOptions = function (option){
+        if (option && option.length) {
+            for (let item of option) {
+                let li = document.createElement('li');
+                li.classList = 'zc-option';
+                li.setAttribute('value', item.value);
+                li.setAttribute('text', item.text);
+                let span = document.createElement('span');
+                span.innerText = item.text;
+                li.append(span);
+                this.getElementsByTagName('ul')[0].append(li);
+            }
+        }
     }
 
     el.setOption(initOption);
