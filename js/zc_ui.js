@@ -1291,11 +1291,10 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  * 
  * @description add a select in el
  * @param {object} el element object
- * @param {object} option
- *      @param {string} placeholder placeholder in input
+ * @param {string} placeholder placeholder in input
  * 
  */
-ZC_UI.prototype.createSelect = function(el,option){
+ZC_UI.prototype.createSelect = function (el, placeholder = '请选择'){
     let tools = new ZC_Tools();
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
@@ -1309,7 +1308,6 @@ ZC_UI.prototype.createSelect = function(el,option){
     let zc_select_area = document.createElement('div');
     zc_select_area.classList = 'zc-input-content zc-select-area';
     let zc_select_input = document.createElement('input');
-    let placeholder = option && option.placeholder || '请选择';
     zc_select_input.classList = 'zc-input zc-select-input';
     zc_select_input.setAttribute('placeholder',placeholder);
     zc_select_input.setAttribute('type','text');
