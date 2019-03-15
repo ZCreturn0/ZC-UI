@@ -1,9 +1,9 @@
 /**
  * 
- * @Author: zc 
- * @Date: 2018-09-25 14:25:47 
- * @Email: 237350543@qq.com 
- * @Github: https://github.com/ZCreturn0/ZC-UI 
+ * @Author zc 
+ * @Date 2018-09-25 14:25:47 
+ * @Email 237350543@qq.com 
+ * @Github https://github.com/ZCreturn0/ZC-UI 
  * 
  */
 
@@ -1291,9 +1291,11 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  * 
  * @description add a select in el
  * @param {object} el element object
+ * @param {object} option
+ *      @param {string} placeholder placeholder in input
  * 
  */
-ZC_UI.prototype.createSelect = function(el){
+ZC_UI.prototype.createSelect = function(el,option){
     let tools = new ZC_Tools();
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
@@ -1302,5 +1304,21 @@ ZC_UI.prototype.createSelect = function(el){
         else{
             throw new TypeError(`To create select,el must have class 'zc-select'.`);
         }
+        return false;
     }
+    let zc_select_area = document.createElement('div');
+    zc_select_area.classList = 'zc-input-content zc-select-area';
+    let zc_select_input = document.createElement('input');
+    let placeholder = option && option.placeholder || '请选择';
+    zc_select_input.classList = 'zc-input zc-select-input';
+    zc_select_input.setAttribute('placeholder',placeholder);
+    zc_select_input.setAttribute('type','text');
+    zc_select_input.setAttribute('readonly','readonly');
+    zc_select_input.setAttribute('sufIcon','');
+    let zc_select_icon = document.createElement('i');
+    zc_select_icon.classList = 'icon iconfont el-icon-erp-xiangxiajiantouxiao sufIcon zc-select-icon';
+    zc_select_icon.setAttribute('sufIcon','');
+    zc_select_area.append(zc_select_input);
+    zc_select_area.append(zc_select_icon);
+    el.append(zc_select_area);
 }
