@@ -344,6 +344,13 @@ function ZC_UI(){
         }
         else if(target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
             console.log(1111)
+            let liNode;
+            if(tools.inArr(target.classList, 'zc-option')){
+                liNode = target;
+            }
+            else if(tools.inArr(target.parentNode.classList, 'zc-option')){
+                liNode = target.parentNode;
+            }
         }
     },true);
     let numberBefore = "";
