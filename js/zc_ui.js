@@ -342,6 +342,9 @@ function ZC_UI(){
                 target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
             }
         }
+        else if(target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
+            console.log(1111)
+        }
     },true);
     let numberBefore = "";
     document.addEventListener('focus', function (event) {
