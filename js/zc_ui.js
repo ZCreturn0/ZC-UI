@@ -357,6 +357,7 @@ function ZC_UI(){
             selectNode.setAttribute('text',text);
             selectNode.setAttribute('value',value);
             selectNode.value = value;
+            selectNode.getElementsByClassName('zc-select-input')[0].value = text;
         }
     },true);
     let numberBefore = "";
