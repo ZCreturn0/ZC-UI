@@ -351,6 +351,12 @@ function ZC_UI(){
             else if(tools.inArr(target.parentNode.classList, 'zc-option')){
                 liNode = target.parentNode;
             }
+            let text = liNode.getAttribute('text');
+            let value = liNode.getAttribute('value');
+            let selectNode = liNode.parentNode.parentNode.parentNode;
+            selectNode.setAttribute('text',text);
+            selectNode.setAttribute('value',value);
+            selectNode.value = value;
         }
     },true);
     let numberBefore = "";
