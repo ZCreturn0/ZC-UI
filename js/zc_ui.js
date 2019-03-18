@@ -221,6 +221,7 @@ function ZC_UI(){
         }
     }, false);
     document.addEventListener('click', function (event){
+        console.log(11111)
         let e = event || window.event;
         let target = e.target || e.srcElement;
 
@@ -861,15 +862,17 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //pager appendTo el
-    let $ui = new ZC_UI();
-    let $notice = $ui.createNotice();
+    // let $ui = ZC_UI.getInstance()();
+    // let $notice = $ui.createNotice();
+    // ***fixed***
     this.el.appendChild(pager);
     if (document.querySelectorAll('.jump-input')[0]){
         document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function (e) {
             if (e.which == 13) {
                 let jumpPage = this.value;
                 if (!_this.tools.judgeInt(jumpPage - 0)) {
-                    $notice.$alert('输入错误', '请输入正确的数字', {type:'error'});
+                    // $notice.$alert('输入错误', '请输入正确的数字', {type:'error'});
+                    alert('请输入正确的数字');
                     throw new TypeError('wrong number');
                 }
                 else {

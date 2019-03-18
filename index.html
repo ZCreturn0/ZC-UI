@@ -309,6 +309,7 @@
         }
 
         var ui = new ZC_UI();
+        // var ui = ZC_UI.getInstance()();
         var table = ui.createTable();
         table.init(table_setting, paginationCallback);
         table.update(table_data1);
@@ -353,10 +354,10 @@
         }
 
         let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
-        mySelect.setOption([{value:1,text:'11111'}, { value: 2, text: '22222' }, { value: 3, text: '33333' }, { value: 4, text: '44444' }, { value: 5, text: '55555' }, { value: 6, text: '66666' }]);
-        mySelect.addOptions([{value:7,text:'77777'}, { value: 8, text: '88888' }, { value: 9, text: '99999' }, { value: 10, text: '101010' }]);
-        mySelect.removeOptionsByValue(2);
-        mySelect.removeOptionsByText('11111');
+        // mySelect.setOption([{value:1,text:'11111'}, { value: 2, text: '22222' }, { value: 3, text: '33333' }, { value: 4, text: '44444' }, { value: 5, text: '55555' }, { value: 6, text: '66666' }]);
+        // mySelect.addOptions([{value:7,text:'77777'}, { value: 8, text: '88888' }, { value: 9, text: '99999' }, { value: 10, text: '101010' }]);
+        // mySelect.removeOptionsByValue(2);
+        // mySelect.removeOptionsByText('11111');
     </script>
 </body>
 </html>
