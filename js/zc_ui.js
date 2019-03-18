@@ -861,13 +861,15 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     }
 
     //pager appendTo el
+    let $ui = new ZC_UI();
+    let $notice = $ui.createNotice();
     this.el.appendChild(pager);
     if (document.querySelectorAll('.jump-input')[0]){
         document.querySelectorAll('.jump-input')[0].addEventListener('keyup', function (e) {
             if (e.which == 13) {
                 let jumpPage = this.value;
                 if (!_this.tools.judgeInt(jumpPage - 0)) {
-                    alert('请输入正确的数字');
+                    $notice.$alert('输入错误', '请输入正确的数字', {type:'error'});
                     throw 'wrong number';
                 }
                 else {
