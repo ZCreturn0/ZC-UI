@@ -342,6 +342,23 @@ function ZC_UI(){
                 target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
             }
         }
+        else if(target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
+            console.log(1111)
+            let liNode;
+            if(tools.inArr(target.classList, 'zc-option')){
+                liNode = target;
+            }
+            else if(tools.inArr(target.parentNode.classList, 'zc-option')){
+                liNode = target.parentNode;
+            }
+            let text = liNode.getAttribute('text');
+            let value = liNode.getAttribute('value');
+            let selectNode = liNode.parentNode.parentNode.parentNode;
+            selectNode.setAttribute('text',text);
+            selectNode.setAttribute('value',value);
+            selectNode.value = value;
+            selectNode.getElementsByClassName('zc-select-input')[0].value = text;
+        }
     },true);
     let numberBefore = "";
     document.addEventListener('focus', function (event) {

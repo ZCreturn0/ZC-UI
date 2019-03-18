@@ -539,3 +539,23 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 
 示例:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/get_input_value_demo.png)<br><br>
+
+创建输入框和按钮,并绑定事件:
+```
+<div class="zc-input-content inputValue">
+    <input class="zc-input" placeholder="请输入" type="text"/>
+</div>
+<div class="zc_btn zc_btn_primary" onclick="showInputValue()">获取输入框的值</div>
+```
+在事件函数获取值:
+```
+function showInputValue(){
+    let el = document.getElementsByClassName('inputValue')[0];
+    let value = el.value;
+    $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
+}
+```
+总结:
+获取输入框的值步骤:
+1.获取输入框元素
+2.获取这个元素的`value`属性
