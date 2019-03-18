@@ -10,4 +10,5 @@ window
 setTimeout
 eval
 alert
+Construct
 循环定义方法

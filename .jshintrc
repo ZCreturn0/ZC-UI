@@ -5,7 +5,8 @@
         "window": true,
         "setTimeout": true,
         "clearTimeout": true,
-        "alert": true
+        "alert": true,
+        "Construct": true
     },
     "asi": true,
     "curly": true,
