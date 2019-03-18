@@ -870,7 +870,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
                 let jumpPage = this.value;
                 if (!_this.tools.judgeInt(jumpPage - 0)) {
                     $notice.$alert('输入错误', '请输入正确的数字', {type:'error'});
-                    throw 'wrong number';
+                    throw new TypeError('wrong number');
                 }
                 else {
                     if (jumpPage > pageNum) {
