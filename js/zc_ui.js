@@ -1053,8 +1053,8 @@ ZC_UI.prototype.ZC_Notice.prototype.$message = function(msg){
 /**
  * 
  * @description show an alert which have one confirm btn only
- * @param {any} title title shown in $alert top
- * @param {any} content content shown in $alert middle
+ * @param {string} title title shown in $alert top
+ * @param {string} content content shown in $alert middle
  * @param {object} option
  *      @param {string} option.confirmButtonText text shown in confirm btn
  *      @param {enum} option.icon icon type
@@ -1159,8 +1159,8 @@ ZC_UI.prototype.ZC_Notice.prototype.$alert = function (title,content,option,conf
 /**
  * 
  * @description show a confirm which have one confirm btn and one cancel btn
- * @param {any} title title shown in $confirm top
- * @param {any} content content shown in $confirm middle
+ * @param {string} title title shown in $confirm top
+ * @param {string} content content shown in $confirm middle
  * @param {object} option
  *      @param {string} option.confirmButtonText text shown in confirm btn
  *      @param {string} option.cancelButtonText text shown in cancel btn
@@ -1330,6 +1330,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     zc_option_wrapper.append(ul);
     el.append(zc_option_wrapper);
 
+    // reset option
     el.setOption = function(option){
         if (option && option.length) {
             this.clear();
@@ -1345,10 +1346,12 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         }
     }
 
+    // clear all option
     el.clear = function(){
         this.getElementsByTagName('ul')[0].innerHTML = '';
     }
 
+    // add option
     el.addOptions = function (option){
         if (option && option.length) {
             for (let item of option) {
@@ -1360,6 +1363,17 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
                 span.innerText = item.text;
                 li.append(span);
                 this.getElementsByTagName('ul')[0].append(li);
+            }
+        }
+    }
+
+    // remove option by value
+    el.removeOptionsByValue = function(value){
+        let ul = this.getElementsByTagName('ul')[0];
+        let li = ul.getElementsByTagName('li');
+        for(let item of li){
+            if(item.getAttribute('value') == value){
+                ul.removeChild(item);
             }
         }
     }
