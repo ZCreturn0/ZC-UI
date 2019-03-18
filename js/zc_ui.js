@@ -1395,6 +1395,17 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         }
     }
 
+    // remove option by text
+    el.removeOptionsByText = function (text) {
+        let ul = this.getElementsByTagName('ul')[0];
+        let li = ul.getElementsByTagName('li');
+        for (let item of li) {
+            if (item.getAttribute('text') == text) {
+                ul.removeChild(item);
+            }
+        }
+    }
+
     el.setOption(initOption);
 
     return el;
