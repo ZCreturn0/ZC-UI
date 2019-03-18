@@ -355,6 +355,7 @@
         let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
         mySelect.setOption([{value:1,text:'11111'}, { value: 2, text: '22222' }, { value: 3, text: '33333' }]);
         mySelect.removeOptionsByValue(2);
+        mySelect.removeOptionsByText('11111');
     </script>
 </body>
 </html>
