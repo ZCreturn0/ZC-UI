@@ -312,7 +312,7 @@ table.update(table_data);
 步骤:<br>
 1.创建UI对象:
 ```
-var ui = new ZC_UI();
+var ui = ZC_UI.getInstance();
 ```
 2.通过UI对象创建loading对象
 ```
@@ -336,7 +336,7 @@ loading.hideLoading();
 步骤:<br>
 1.创建UI对象:
 ```
-var ui = new ZC_UI();
+var ui = ZC_UI.getInstance();
 ```
 2.通过UI对象创建notice对象
 ```
@@ -355,7 +355,7 @@ $message方法参数为一个对象,对象属性为:<br>
 
 例子:
 ```
-var ui = new ZC_UI();
+var ui = ZC_UI.getInstance();
 var $notice = ui.createNotice();
 $notice.$message({ text: '啊啊啊啊啊啊', type: 'success', showClose: true, duration: 3 * 1000 });
 ```
@@ -389,7 +389,7 @@ $notice.$alert(title,content,{confirmButtonText,type},confirmCallback,closeCallb
 1.创建UI对象:<br>
 
 ```
-var ui = new ZC_UI();
+var ui = ZC_UI.getInstance();
 ```
 
 2.通过UI对象创建$notice:<br>
