@@ -308,8 +308,7 @@
             table.update(table_data);
         }
 
-        var ui = new ZC_UI();
-        // var ui = ZC_UI.getInstance()();
+        var ui = ZC_UI.getInstance();
         var table = ui.createTable();
         table.init(table_setting, paginationCallback);
         table.update(table_data1);
