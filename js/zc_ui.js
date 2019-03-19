@@ -1415,3 +1415,13 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
 
     return el;
 }
+
+ZC_UI.getInstance = (function(){
+    let instance;
+    if (instance == undefined){
+        instance = new ZC_UI();
+    }
+    return function(){
+        return instance;
+    }
+})();
