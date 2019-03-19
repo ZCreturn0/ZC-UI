@@ -343,7 +343,6 @@ function ZC_UI(){
             }
         }
         else if(target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
-            console.log(1111)
             let liNode;
             if(tools.inArr(target.classList, 'zc-option')){
                 liNode = target;
@@ -1413,6 +1412,12 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     return el;
 }
 
+/**
+ * 
+ * @description create only one ZC_UI object using singleton
+ * @returns {object} return ZC_UI object
+ * 
+ */
 ZC_UI.getInstance = (function(){
     let instance;
     if (instance == undefined){
