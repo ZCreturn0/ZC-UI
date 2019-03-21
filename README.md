@@ -575,3 +575,7 @@ function showInputValue(){
 |zc_tag_danger|危险标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_danger.png)|
 
 不同尺寸:类似的,加`medium`,`small`,`mini`属性
+
+### 3.9 计数器
+
+计数器用于显示数字,暂不支持显示小数
