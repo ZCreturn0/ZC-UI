@@ -573,3 +573,5 @@ function showInputValue(){
 |zc_tag_info|信息标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_info.png)|
 |zc_tag_warning|警告标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_warning.png)|
 |zc_tag_danger|危险标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_danger.png)|
+
+不同尺寸:类似的,加`medium`,`small`,`mini`属性
