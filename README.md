@@ -561,3 +561,15 @@ function showInputValue(){
 获取输入框的值步骤:
 1.获取输入框元素
 2.获取这个元素的`value`属性
+
+### 3.8 标签
+
+和按钮相似,标签必须含有`zc_tag`类:<br><br>
+
+|类名|描述|图例|
+|:---|:---|:---|
+|-|默认标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_default.png)|
+|zc_tag_success|成功标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_success.png)|
+|zc_tag_info|信息标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_info.png)|
+|zc_tag_warning|警告标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_warning.png)|
+|zc_tag_danger|危险标签| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/tag_danger.png)|
