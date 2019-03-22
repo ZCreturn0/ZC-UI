@@ -606,3 +606,10 @@ function showInputValue(){
 效果:<br><br>
 
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input-with-value.png)
+
+|属性|描述|
+|:---|:---|
+|value|初始值|
+|step|每次增加或减少的数值|
+|min|最小值|
+|max|最大值|
