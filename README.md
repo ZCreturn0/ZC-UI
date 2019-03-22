@@ -578,4 +578,15 @@ function showInputValue(){
 
 ### 3.9 计数器
 
-计数器用于显示数字,暂不支持显示小数
+计数器用于显示数字,暂不支持显示小数<br><br>
+
+#### 3.9.1 基本用法
+```
+<div class="zc_input_number">
+    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+    <input type="text" class="zc-input zc-input-number-inner">
+    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+</div>
+```
+效果:
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input.png)
