@@ -588,5 +588,6 @@ function showInputValue(){
     <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
 </div>
 ```
-效果:
+效果:<br><br>
+
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input.png)
