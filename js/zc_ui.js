@@ -334,7 +334,7 @@ function ZC_UI(){
             if (target.parentNode.parentNode.getAttribute('open') != 'on'){
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
                 target.parentNode.parentNode.setAttribute('open','on');
-                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '200px';
+                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '220px';
             }
             else{
                 target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
