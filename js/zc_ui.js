@@ -340,22 +340,6 @@ function ZC_UI(){
                 target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
             }
         }
-        else if(target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
-            let liNode;
-            if(tools.inArr(target.classList, 'zc-option')){
-                liNode = target;
-            }
-            else if(tools.inArr(target.parentNode.classList, 'zc-option')){
-                liNode = target.parentNode;
-            }
-            let text = liNode.getAttribute('text');
-            let value = liNode.getAttribute('value');
-            let selectNode = liNode.parentNode.parentNode.parentNode;
-            selectNode.setAttribute('text',text);
-            selectNode.setAttribute('value',value);
-            selectNode.value = value;
-            selectNode.getElementsByClassName('zc-select-input')[0].value = text;
-        }
     },true);
     let numberBefore = "";
     document.addEventListener('focus', function (event) {
@@ -1414,6 +1398,27 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     el.getText = function () {
         return this.getAttribute('text');
     }
+
+    el.addEventListener('click',function(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
+        if (target.classList && tools.inArr(target.classList, 'zc-option') || target.classList && tools.inArr(target.parentNode.classList, 'zc-option')){
+            let liNode;
+            if (tools.inArr(target.classList, 'zc-option')) {
+                liNode = target;
+            }
+            else if (tools.inArr(target.parentNode.classList, 'zc-option')) {
+                liNode = target.parentNode;
+            }
+            let text = liNode.getAttribute('text');
+            let value = liNode.getAttribute('value');
+            let selectNode = liNode.parentNode.parentNode.parentNode;
+            selectNode.setAttribute('text', text);
+            selectNode.setAttribute('value', value);
+            selectNode.value = value;
+            selectNode.getElementsByClassName('zc-select-input')[0].value = text;
+        }
+    });
 
     el.setOption(initOption);
 
