@@ -7,8 +7,6 @@
  * 
  */
 
- /*jshint esversion: 6 */
-
  // choose environment:'development' or 'production'
  const ENV = "development";
 
@@ -1405,6 +1403,16 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
                 ul.removeChild(item);
             }
         }
+    }
+
+    // get current value
+    el.getValue = function(){
+        return this.getAttribute('value');
+    }
+
+    // get current text
+    el.getText = function () {
+        return this.getAttribute('text');
     }
 
     el.setOption(initOption);
