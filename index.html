@@ -358,6 +358,10 @@
         // mySelect.addOptions([{ value: 7, text: '77777' }, { value: 8, text: '88888' }, { value: 9, text: '99999' }, { value: 10, text: '101010' }]);
         // mySelect.removeOptionsByValue(2);
         // mySelect.removeOptionsByText('11111');
+        function selectCallback(){
+            console.log('11111');
+        }
+        mySelect.setSelectCallback(selectCallback);
     </script>
 </body>
 </html>

@@ -1399,6 +1399,11 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         return this.getAttribute('text');
     }
 
+    // set select callback
+    el.setSelectCallback = function(callback){
+        el.callback = callback;
+    }
+
     el.addEventListener('click',function(event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
@@ -1417,6 +1422,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
             selectNode.setAttribute('value', value);
             selectNode.value = value;
             selectNode.getElementsByClassName('zc-select-input')[0].value = text;
+            this.callback && this.callback();       // jshint ignore:line
         }
     });
 
