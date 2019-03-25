@@ -6,7 +6,8 @@
         "setTimeout": true,
         "clearTimeout": true,
         "alert": true,
-        "Construct": true
+        "Construct": true,
+        "Event": true
     },
     "asi": true,
     "curly": true,

@@ -4,6 +4,7 @@ ES6
 变量未定义
 变量未使用
 4空格缩进
+
 document
 console
 window
@@ -11,4 +12,6 @@ setTimeout
 eval
 alert
 Construct
+Event
+
 循环定义方法
