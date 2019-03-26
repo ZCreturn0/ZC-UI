@@ -148,6 +148,7 @@ ZC_Tools.prototype.inArr = function(arr,ele){
  */
 function ZC_UI(){
     let tools = new ZC_Tools();
+
     // fill number into zc-input-number-inner using value or default
     let numberList = document.getElementsByClassName('zc_input_number');
     for (let item of numberList){
@@ -203,6 +204,16 @@ function ZC_UI(){
             tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
             item.getElementsByClassName('zc-input-number-inner')[0].setAttribute('disabled','disabled');
         }
+    }
+
+    // progress
+    let progressList = document.getElementsByClassName('zc_progress');
+    for (let item of progressList){
+        let percentage = 100 - item.getAttribute('percentage');
+        let zc_progress_inner = document.createElement('div');
+        zc_progress_inner.classList = 'zc_progress_inner';
+        zc_progress_inner.style.right = percentage + '%';
+        item.append(zc_progress_inner);
     }
     document.addEventListener('mouseover',function(event){
         let e = event || window.event;
