@@ -137,7 +137,7 @@ tr:nth-child(odd){background: #1f2681;}
 }
 .zc_message_icon{margin-right: 10px;font-size: 20px;}
 .zc_message_content{margin: 0 20px 0 0;font-size: 14px;line-height: 1;word-break:break-all;white-space:pre-warp;word-wrap:break-word;}
-.zc_message{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: 20px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 5px 40px 5px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageAppear 0.5s ease-in-out;}
+.zc_message{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: 20px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 15px 40px 15px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageAppear 0.5s ease-in-out;}
 .zc_message_disappear{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: -100px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 5px 40px 5px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageDisappear 0.5s ease-in-out;}
 .zc_message_close{position: absolute;font-size: 12px;right: 14px;color: #c0c4cc;cursor: pointer;}
 .zc_message_success{background-color: #f0f9eb;border-color: #e1f3d8;color: #67c23a;}
@@ -315,3 +315,6 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-option span{padding: 0 15px;}
 .zc_option_wrapper{width: 220px;max-height: 0;overflow: hidden;margin-left: -20px;position: absolute;z-index: 999;transition: max-height cubic-bezier(0.63, -0.07, 0.92, 0.49) .2s;}
 .zc_option_wrapper::before{width: 0;height: 0;border: 10px solid #fff;content: '';position: absolute;z-index: 999;top: 3px;left: 38px;border-top: none;border-left-color: transparent;border-right-color: transparent;}
+
+.zc_progress{width: 300px;height: 6px;background-color: #ebeef5;border-radius: 3px;overflow: hidden;}
+.zc_progress_inner{display: block; width: 100%;height: 100%;border-radius: 3px;background-color: #409eff;position: relative; z-index: 999; right: 100%;transition: right .5s;}
