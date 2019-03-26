@@ -212,7 +212,8 @@ function ZC_UI(){
     let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
     let observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
-            console.log(mutation.target.getAttribute('percentage'));
+            let percentage = (100 - mutation.target.getAttribute('percentage'));
+            mutation.target.getElementsByClassName('zc_progress_inner')[0].style.right = percentage + '%';
         });
     });
     for (let item of progressList){
