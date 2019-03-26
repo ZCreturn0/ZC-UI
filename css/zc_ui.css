@@ -44,7 +44,7 @@ tr:nth-child(odd){background: #1f2681;}
 }
 .jump-input:hover{border-color: #94969e;}
 .jump-input:focus{border: #409eff 1px solid;}
-.more-pre,.more-next{line-height: 20px;}
+.more-pre,.more-next{line-height: 20px;position: relative;top: 2px;}
 
 .zc_btn{
     display: inline-block;
@@ -138,7 +138,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_message_icon{margin-right: 10px;font-size: 20px;}
 .zc_message_content{margin: 0 20px 0 0;font-size: 14px;line-height: 1;word-break:break-all;white-space:pre-warp;word-wrap:break-word;}
 .zc_message{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: 20px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 15px 40px 15px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageAppear 0.5s ease-in-out;}
-.zc_message_disappear{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: -100px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 5px 40px 5px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageDisappear 0.5s ease-in-out;}
+.zc_message_disappear{position: fixed;width: 380px;z-index:99999;font-size: 14px;left: 50%;top: -100px;box-sizing: border-box;border-width: 1px;border-style: solid;transform: translateX(-50%);transition: opacity .3s,transform .4s,-webkit-transform .4s;padding: 15px 40px 15px 20px;display: flex;-webkit-box-align: center;align-items: center;border-radius: 4px;animation: messageDisappear 0.5s ease-in-out;}
 .zc_message_close{position: absolute;font-size: 12px;right: 14px;color: #c0c4cc;cursor: pointer;}
 .zc_message_success{background-color: #f0f9eb;border-color: #e1f3d8;color: #67c23a;}
 .zc_message_warning{background-color: #fdf6ec;border-color: #faecd8;color: #e6a23c;}
@@ -322,3 +322,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_progress_info > .zc_progress_inner{background-color: #909399;}
 .zc_progress_warning > .zc_progress_inner{background-color: #e6a23c;}
 .zc_progress_danger > .zc_progress_inner{background-color: #f56c6c;}
+.zc_percentage{}
