@@ -224,11 +224,15 @@ function ZC_UI(){
         let zc_progress_inner = document.createElement('div');
         let zc_percentage = document.createElement('div');
         let zc_progress_bar = document.createElement('div');
+        let color = item.getAttribute('color');
         zc_progress_inner.classList = 'zc_progress_inner';
         zc_percentage.classList = 'zc_percentage';
         zc_progress_bar.classList = 'zc_progress_bar';
         zc_progress_inner.style.right = percentage + '%';
         zc_percentage.innerText = (100 - percentage) + '%';
+        if(color){
+            zc_progress_inner.style.backgroundColor = color;
+        }
         zc_progress_bar.append(zc_progress_inner);
         item.append(zc_progress_bar);
         item.append(zc_percentage);
