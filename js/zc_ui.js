@@ -206,22 +206,33 @@ function ZC_UI(){
         }
     }
 
-    // progress
+    // progress list
     let progressList = document.getElementsByClassName('zc_progress');
     // observer
     let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
     let observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
             let percentage = (100 - mutation.target.getAttribute('percentage'));
+            // when percentage changed,reset progress
             mutation.target.getElementsByClassName('zc_progress_inner')[0].style.right = percentage + '%';
+            mutation.target.getElementsByClassName('zc_percentage')[0].innerText = (100 - percentage) + '%';
         });
     });
+    // add progress to progress wrapper
     for (let item of progressList){
         let percentage = 100 - item.getAttribute('percentage');
         let zc_progress_inner = document.createElement('div');
+        let zc_percentage = document.createElement('div');
+        let zc_progress_bar = document.createElement('div');
         zc_progress_inner.classList = 'zc_progress_inner';
+        zc_percentage.classList = 'zc_percentage';
+        zc_progress_bar.classList = 'zc_progress_bar';
         zc_progress_inner.style.right = percentage + '%';
-        item.append(zc_progress_inner);
+        zc_percentage.innerText = (100 - percentage) + '%';
+        zc_progress_bar.append(zc_progress_inner);
+        item.append(zc_progress_bar);
+        item.append(zc_percentage);
+        // observe every progress
         observer.observe(item, {
             attributes: true
         });
