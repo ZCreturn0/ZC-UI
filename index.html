@@ -204,6 +204,14 @@
     <div class="zc_progress zc_progress_info" percentage="55"></div>
     <div class="zc_progress zc_progress_danger" percentage="65"></div>
     <div class="zc_progress zc_progress_danger" percentage="65" color="black"></div>
+    <br><br><br>
+    <p>DEMO:使用计数器控制进度条,实现数据双向绑定</p>
+    <div class="zc_progress zc_progress_success zc_tooltip progress_demo" percentage="45" tooltip-text='通过js设置进度条的值' placement='top'></div>
+    <div class="zc_input_number setting_progress" style="bottom:18px;" step="1" value="45" min="0" max="100">
+        <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+        <input type="text" class="zc-input zc-input-number-inner">
+        <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+    </div>
     <!-- raw $message html -->
     <!--
     <div class="zc_message zc_message_error">
@@ -277,13 +285,13 @@
    
     <script src="./js/zc_ui.js"></script>
     <script>
-        var tableElement = document.getElementById('zc_table');
-        var table_setting = {
+        let tableElement = document.getElementById('zc_table');
+        let table_setting = {
             el: tableElement,
             captain: ['姓名','年龄','分数','地址'],
             field:['name','age','score','addr']
         }
-        var table_data1 = {
+        let table_data1 = {
             page: 1,
             pageSize: 10,
             total: 165,
@@ -302,32 +310,32 @@
         }
 
         function paginationCallback(n){
-            var table_data = {
+            let table_data = {
                 page: n,
                 pageSize: 10,
                 total: 165
             }
-            var size;
+            let size;
             if(n * table_data.pageSize <= table_data.total){
                 size = 10;
             }
             else{
                 size = table_data.total - ((n - 1) * table_data.pageSize);
             }
-            var list = [];
-            for(var i=0;i< size;i++){
+            let list = [];
+            for(let i=0;i< size;i++){
                 list.push({name:n+''+n,age: (n + '' + n) - 0,score: (n + '' + n) - 0,addr:''+n+n+n+n});
             }
             table_data.list = list;
             table.update(table_data);
         }
 
-        var ui = ZC_UI.getInstance();
-        var table = ui.createTable();
+        let ui = ZC_UI.getInstance();
+        let table = ui.createTable();
         table.init(table_setting, paginationCallback);
         table.update(table_data1);
 
-        var loading = ui.createLoading();
+        let loading = ui.createLoading();
 
         function showLoading(){
             loading.showLoading('加载中...','el-icon-erp-jiazai1');
@@ -336,7 +344,7 @@
             },3 * 1000);
         }
     
-        var $notice = ui.createNotice();
+        let $notice = ui.createNotice();
         function showMessage(type){
             $notice.$message({ text: '啊啊啊啊啊啊', type: type, showClose: true, duration: 3 * 1000 });
         }
@@ -376,6 +384,23 @@
             console.log('11111');
         }
         mySelect.setSelectCallback(selectCallback);
+
+        // progress demo
+        // 1.get element
+        let progress = document.getElementsByClassName('progress_demo')[0];
+        let progressValue = document.getElementsByClassName('setting_progress')[0];
+        // 2.set observer
+        let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                let value = mutation.target.value;
+                progress.setAttribute('percentage', value);
+            });
+        });
+        // 3 observe changes
+        observer.observe(progressValue, {
+            attributes: true
+        });
     </script>
 </body>
 </html>
