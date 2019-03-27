@@ -544,9 +544,10 @@ function ZC_UI(){
                     }
                 }
             }
-            target.parentNode.setAttribute('value',target.value);
+            // delete code:set value when blur,not in keyup
+            // target.parentNode.setAttribute('value',target.value);
             // default ''
-            target.parentNode.value = target.value || '';
+            // target.parentNode.value = target.value || '';
         }
     }, false);
 }
