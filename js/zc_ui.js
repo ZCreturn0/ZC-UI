@@ -398,9 +398,11 @@ function ZC_UI(){
             // not number,out of range,reset value
             if (!tools.judgeNumber(target.value) || target.value < min || target.value > max){
                 target.value = numberBefore;
+                numberNode.value = numberBefore;
+                numberNode.setAttribute('value', numberBefore);
                 return;
             }
-            if (min && currentValue - step < min) {
+            if (typeof min && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
             }
@@ -408,7 +410,7 @@ function ZC_UI(){
                 tools.removeClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = '';
             }
-            if (max && currentValue + step > max) {
+            if (typeof max && currentValue + step > max) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_increase')[0].disabled = 'disabled';
             }
