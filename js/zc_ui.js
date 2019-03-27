@@ -294,7 +294,7 @@ function ZC_UI(){
             let currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
             if (disabled == null){
                 // less than one step, disabled, pass
-                if (min && currentValue - step < min) {
+                if (typeof min && currentValue - step < min) {
                     return;
                 }
                 // at least one step, currentValue decrease one step
@@ -306,7 +306,7 @@ function ZC_UI(){
                 numberNode.setAttribute('value', currentValue);
                 numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
                 // less than one step,set disabled;or opposite
-                if (min && currentValue - step < min) {
+                if (typeof min && currentValue - step < min) {
                     tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                     numberNode.getElementsByClassName('zc_input_number_decrease')[0].setAttribute('disabled', 'disabled');
                 }
