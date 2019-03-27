@@ -323,4 +323,4 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_progress_info .zc_progress_inner{background-color: #909399;}
 .zc_progress_warning .zc_progress_inner{background-color: #e6a23c;}
 .zc_progress_danger .zc_progress_inner{background-color: #f56c6c;}
-.zc_percentage{display: inline-block;position: relative;right: -10px;bottom: 19px;}
+.zc_percentage{display: inline-block;position: relative;right: -10px;bottom: 19px;width: 50px;}
