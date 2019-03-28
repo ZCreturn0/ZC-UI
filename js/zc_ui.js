@@ -554,6 +554,32 @@ function ZC_UI(){
 
 /**
  * 
+ * @description init setting
+ * 
+ */
+ZC_UI._setting = {
+    progress_complete_icon: 'el-icon-erp-zhengque',
+    progress_progressing_icon: 'el-icon-erp-chucuo'
+};
+
+/**
+ * 
+ * @description config settings in ZC-UI
+ * @param {object} setting attr names and values
+ * 
+ */
+ZC_UI.configSetting = function(settings){
+    console.log(ZC_UI._setting);
+    for (let [key, value] of Object.entries(settings)){
+        if (typeof ZC_UI._setting[key]){
+            ZC_UI._setting[key] = value;
+        }
+    }
+    console.log(ZC_UI._setting);
+}
+
+/**
+ * 
  * @description table
  * 
  */
