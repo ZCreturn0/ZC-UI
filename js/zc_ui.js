@@ -227,6 +227,7 @@ function ZC_UI(){
                 textNode.style.bottom = '1px';
                 if (percentage >= 9) {
                     textNode.style.right = '3px';
+                    textNode.style.left = '';
                 }
                 else if (percentage < 9) {
                     textNode.style.right = '';
@@ -269,6 +270,7 @@ function ZC_UI(){
                 zc_percentage.style.bottom = '1px';
                 if (percentage >= 9){
                     zc_percentage.style.right = '3px';
+                    zc_percentage.style.left = '';
                 }
                 else if (percentage < 9){
                     zc_percentage.style.right = '';
