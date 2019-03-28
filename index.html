@@ -204,6 +204,10 @@
     <div class="zc_progress zc_progress_info" percentage="55"></div>
     <div class="zc_progress zc_progress_danger" percentage="65"></div>
     <div class="zc_progress zc_progress_danger" percentage="65" color="black"></div>
+    <br>
+    <div class="zc_progress zc_progress_success" percentage="45" statusIcon></div>
+    <br>
+    <div class="zc_progress zc_progress_success" percentage="100" statusIcon></div>
     <br><br><br>
     <p>DEMO:使用计数器控制进度条,实现数据双向绑定</p>
     <div class="zc_progress zc_progress_success zc_tooltip progress_demo" percentage="45" tooltip-text='通过js设置进度条的值' placement='top'></div>
@@ -282,6 +286,16 @@
         <div class="zc_percentage">55%</div>
     </div>
     -->
+    <!-- raw zc_progress text inner html -->
+    <!--
+    <div class="zc_progress statusIcon" percentage="45" color="#67c23a">
+        <div class="zc_progress_bar">
+            <div class="zc_progress_inner" style="right:55%;">
+                <div class="zc_percentage">55%</div>
+            </div>
+        </div>
+    </div>
+    -->
    
     <script src="./js/zc_ui.js"></script>
     <script>
@@ -330,7 +344,13 @@
             table.update(table_data);
         }
 
-        // ZC_UI.configSetting({ progress_complete_icon: 'aaaaa'});
+        // 自定义进度条颜色,图标
+        ZC_UI.configSetting({ 
+            progress_progressing_icon: 'el-icon-erp-xingji_', 
+            progress_complete_icon: 'el-icon-erp-zhinengchazuo', 
+            progress_progressing_color: 'red', 
+            progress_complete_color: 'lime'
+        });
         let ui = ZC_UI.getInstance();
         let table = ui.createTable();
         table.init(table_setting, paginationCallback);
