@@ -210,12 +210,29 @@ function ZC_UI(){
     let progressList = document.getElementsByClassName('zc_progress');
     // observer
     let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-    let observer = new MutationObserver(function (mutations) {
+    let progressObserver = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
-            let percentage = (100 - mutation.target.getAttribute('percentage'));
+            let percentage = mutation.target.getAttribute('percentage');
+            let right = 100 - percentage;
             // when percentage changed,reset progress
-            mutation.target.getElementsByClassName('zc_progress_inner')[0].style.right = percentage + '%';
-            mutation.target.getElementsByClassName('zc_percentage')[0].innerText = (100 - percentage) + '%';
+            if (!tools.hasClass(mutation.target,'zc_progress_wide')){
+                mutation.target.getElementsByClassName('zc_progress_inner')[0].style.right = right + '%';
+                mutation.target.getElementsByClassName('zc_percentage')[0].innerText = (100 - right) + '%';
+            }
+            else{
+                let textNode = mutation.target.getElementsByClassName('zc_percentage')[0];
+                mutation.target.getElementsByClassName('zc_progress_inner')[0].style.right = right + '%';
+                textNode.innerText = (100 - right) + '%';
+                textNode.style.position = 'absolute';
+                textNode.style.bottom = '1px';
+                if (percentage >= 9) {
+                    textNode.style.right = '3px';
+                }
+                else if (percentage < 9) {
+                    textNode.style.right = '';
+                    textNode.style.left = (100 - percentage + 1) + '%';
+                }
+            }
         });
     });
     // add progress to progress wrapper
@@ -247,10 +264,24 @@ function ZC_UI(){
             zc_progress_inner.style.backgroundColor = statusColor;
         }
         else{
-            item.append(zc_percentage);
+            if (tools.hasClass(item,'zc_progress_wide')){
+                zc_percentage.style.position = 'absolute';
+                zc_percentage.style.bottom = '1px';
+                if (percentage >= 9){
+                    zc_percentage.style.right = '3px';
+                }
+                else if (percentage < 9){
+                    zc_percentage.style.right = '';
+                    zc_percentage.style.left = (100 - percentage + 1) + '%';
+                }
+                zc_progress_inner.append(zc_percentage);
+            }
+            else{
+                item.append(zc_percentage);
+            }
         }
         // observe every progress
-        observer.observe(item, {
+        progressObserver.observe(item, {
             attributes: true
         });
     }
