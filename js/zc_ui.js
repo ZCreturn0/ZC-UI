@@ -220,22 +220,35 @@ function ZC_UI(){
     });
     // add progress to progress wrapper
     for (let item of progressList){
-        let percentage = 100 - item.getAttribute('percentage');
+        let percentage = item.getAttribute('percentage');
+        let right = 100 - percentage;
         let zc_progress_inner = document.createElement('div');
         let zc_percentage = document.createElement('div');
         let zc_progress_bar = document.createElement('div');
         let color = item.getAttribute('color');
+        // when has statusIcon attr,the below 2 var is used
+        let icon = document.createElement('i');
+        icon.setAttribute('percentage', percentage);
+        let statusColor = percentage != 100 ? ZC_UI._setting['progress_progressing_color'] : ZC_UI._setting['progress_complete_color'];
+        icon.classList = percentage != 100 ? `icon iconfont ${ZC_UI._setting['progress_progressing_icon']} zc_progress_icon` : `icon iconfont ${ZC_UI._setting['progress_complete_icon']} zc_progress_icon`;
+        icon.style.color = statusColor;
         zc_progress_inner.classList = 'zc_progress_inner';
         zc_percentage.classList = 'zc_percentage';
         zc_progress_bar.classList = 'zc_progress_bar';
-        zc_progress_inner.style.right = percentage + '%';
-        zc_percentage.innerText = (100 - percentage) + '%';
+        zc_progress_inner.style.right = right + '%';
+        zc_percentage.innerText = percentage + '%';
         if(color){
             zc_progress_inner.style.backgroundColor = color;
         }
         zc_progress_bar.append(zc_progress_inner);
         item.append(zc_progress_bar);
-        item.append(zc_percentage);
+        if (item.getAttribute('statusIcon') != null){
+            item.append(icon);
+            zc_progress_inner.style.backgroundColor = statusColor;
+        }
+        else{
+            item.append(zc_percentage);
+        }
         // observe every progress
         observer.observe(item, {
             attributes: true
@@ -558,9 +571,47 @@ function ZC_UI(){
  * 
  */
 ZC_UI._setting = {
+    progress_progressing_icon: 'el-icon-erp-chucuo',
     progress_complete_icon: 'el-icon-erp-zhengque',
-    progress_progressing_icon: 'el-icon-erp-chucuo'
+    progress_progressing_color: '#f56c6c',
+    progress_complete_color: '#67c23a'
 };
+
+let settingProxy = new Proxy(ZC_UI._setting, {
+    set: (obj, prop, value) => {
+        obj[prop] = value;
+        let zc_progress_icon = document.getElementsByClassName('zc_progress_icon');
+        for (let item of zc_progress_icon) {
+            switch (prop) {
+                case 'progress_progressing_icon':
+                    if (item.getAttribute('percentage') < 100) {
+                        item.classList = `icon iconfont ${value} zc_progress_icon`;
+                    }
+                    break;
+                case 'progress_complete_icon':
+                    if (item.getAttribute('percentage') == 100) {
+                        item.classList = `icon iconfont ${value} zc_progress_icon`;
+                    }
+                    break;
+                case 'progress_progressing_color':
+                    if (item.getAttribute('percentage') < 100) {
+                        item.style.color = value;
+                        item.parentNode.getElementsByClassName('zc_progress_inner')[0].style.backgroundColor = value;
+                    }
+                    break;
+                case 'progress_complete_color':
+                    if (item.getAttribute('percentage') == 100) {
+                        item.style.color = value;
+                        item.parentNode.getElementsByClassName('zc_progress_inner')[0].style.backgroundColor = value;
+                    }
+                    break;
+            }
+        }
+    },
+    get: ((obj, prop) => {
+        return obj[prop];
+    })
+});
 
 /**
  * 
@@ -569,13 +620,11 @@ ZC_UI._setting = {
  * 
  */
 ZC_UI.configSetting = function(settings){
-    console.log(ZC_UI._setting);
     for (let [key, value] of Object.entries(settings)){
-        if (typeof ZC_UI._setting[key]){
-            ZC_UI._setting[key] = value;
+        if (typeof settingProxy){
+            settingProxy[key] = value;
         }
     }
-    console.log(ZC_UI._setting);
 }
 
 /**
