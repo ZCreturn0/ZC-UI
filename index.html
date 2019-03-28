@@ -219,6 +219,13 @@
         <input type="text" class="zc-input zc-input-number-inner">
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
+    <br><br><br>
+    <div class="zc_progress zc_progress_success zc_progress_wide progress_demo" percentage="45"></div>
+    <div class="zc_input_number setting_progress" style="bottom:18px;" step="1" value="45" min="0" max="100">
+        <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+        <input type="text" class="zc-input zc-input-number-inner">
+        <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+    </div>
     <!-- raw $message html -->
     <!--
     <div class="zc_message zc_message_error">
@@ -423,6 +430,18 @@
         });
         // 3 observe changes
         observer.observe(progressValue, {
+            attributes: true
+        });
+
+        let progress1 = document.getElementsByClassName('progress_demo')[1];
+        let progressValue1 = document.getElementsByClassName('setting_progress')[1];
+        let observer1 = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                let value = mutation.target.value;
+                progress1.setAttribute('percentage', value);
+            });
+        });
+        observer1.observe(progressValue1, {
             attributes: true
         });
     </script>
