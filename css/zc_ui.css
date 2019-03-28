@@ -325,3 +325,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_progress_danger .zc_progress_inner{background-color: #f56c6c;}
 .zc_percentage{display: inline-block;position: relative;right: -10px;bottom: 19px;width: 50px;}
 .zc_progress_icon{position: relative;bottom: 18px;left: 13px;}
+
+.zc_progress_wide .zc_progress_bar{height: 18px;border-radius: 9px;}
+.zc_progress_wide .zc_progress_inner{border-radius: 9px;}
+.zc_progress_wide .zc_percentage{font-size: 12px;width: auto;bottom: 24px;z-index: 999;}
