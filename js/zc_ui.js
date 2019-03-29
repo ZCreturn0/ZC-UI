@@ -723,7 +723,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
         tr.innerHTML += `<th class="zc_th">${zc_index}</th>`;
     }
     for(let item of this.captain){
-        tr.innerHTML += `<th class="zc_th">${item}</th>`;
+        tr.innerHTML += `<th class="zc_td">${item}</th>`;
     }
 
     this.tools.addClass(tr,'zc_caption_tr');
@@ -794,7 +794,12 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     
     let pageNum = Math.ceil(total / pageSize);
     if(page > pageNum){
-        throw 'out of pageNum';
+        if(ENV === 'development'){
+            throw 'out of pageNum';
+        }
+        else if (ENV === 'production'){
+            console.error('out of pageNum');
+        }
     }
 
     //init pager,the container of pager-node
