@@ -732,16 +732,30 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
 
     // index
     let n = 1;
-    for(let item of table_data.list){
+    if (table_data.list.length == 0){
         let tr = document.createElement('tr');
         if (zc_index || zc_index == ''){
-            tr.innerHTML += `<td class="zc_td">${n}</td>`;
+            tr.innerHTML += `<td class="zc_td">1</td>`;
+            tr.innerHTML += `<td class="zc_td" colspan="${this.captain.length}">暂无数据</td>`;
         }
-        for(let attr of this.field){
-            tr.innerHTML += `<td class="zc_td">${item[attr]}</td>`;
+        else{
+            tr.innerHTML += `<td class="zc_td" colspan="${this.captain.length}">暂无数据</td>`;
         }
         this.table.appendChild(tr);
-        n++;
+    }
+    else{
+        for (let item of table_data.list) {
+            let tr = document.createElement('tr');
+            if (zc_index || zc_index == '') {
+                tr.innerHTML += `<td class="zc_td">${n}</td>`;
+            }
+            // add data
+            for (let attr of this.field) {
+                tr.innerHTML += `<td class="zc_td">${item[attr]}</td>`;
+            }
+            this.table.appendChild(tr);
+            n++;
+        }
     }
     this.el.appendChild(this.table);
 
