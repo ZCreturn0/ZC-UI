@@ -613,3 +613,8 @@ function showInputValue(){
 |step|每次增加或减少的数值|
 |min|最小值|
 |max|最大值|
+
+<br><br>
+
+说明:
+当 value - step < min 或 value + step > max 时,对应的加减按钮会变为disabled状态
