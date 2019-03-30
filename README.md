@@ -619,6 +619,15 @@ function showInputValue(){
 
 #### 3.9.3 disabled
 
-显示数字,并且不可改变值(可通过js调用方法修改值)
+显示数字,并且不可改变值(可通过js调用方法修改值),在`zc_input_number`上加上`disabled`属性即可
 
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input-disabled.png)
+
+```
+<div class="zc_input_number" step="10" value="75" min="30" max="100" disabled>
+    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+    <input type="text" class="zc-input zc-input-number-inner">
+    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+</div>
+```
 
