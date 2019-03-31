@@ -641,4 +641,10 @@ function showInputValue(){
 
 在`zc_input_number`上添加`medium`,`small`,`mini`即可让显示不同尺寸
 
+#### 3.9.5 获取计数器的值
 
+与输入框相同,获取对应元素,直接读取该元素的value属性即可<br><br>
+
+示例:
+
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input-disabled.png)
