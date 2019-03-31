@@ -647,4 +647,27 @@ function showInputValue(){
 
 示例:
 
-![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/number-input-disabled.png)
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/get_number_input_value.png)
+
+创建输入框和按钮,并绑定事件:
+
+```
+<div class="zc_input_number value_demo">
+    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
+    <input type="text" class="zc-input zc-input-number-inner">
+    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
+</div>
+<div class="zc_btn zc_btn_primary" onclick="showNumberValue()">获取计数器的值</div>
+```
+
+在事件函数获取值:
+
+```
+function showNumberValue(){
+    let el = document.getElementsByClassName('value_demo')[0];
+    let value = el.value;
+    $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
+}
+```
+
+
