@@ -636,3 +636,9 @@ function showInputValue(){
 </div>
 
 ```
+
+#### 3.9.4 尺寸
+
+在`zc_input_number`上添加`medium`,`small`,`mini`即可让显示不同尺寸
+
+
