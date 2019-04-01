@@ -292,7 +292,9 @@ function ZC_UI(){
     let zc_progress_circle = document.getElementsByClassName('zc_progress_circle');
     for (let circle of zc_progress_circle){
         let svg = document.createElement('svg');
-        
+        let circle_outer = document.createElement('circle');
+        svg.setAttribute('width', '126px');
+        svg.setAttribute('height', '126px');
         circle.append(svg);
     }
 
