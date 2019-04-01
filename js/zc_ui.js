@@ -309,15 +309,31 @@ function ZC_UI(){
         circle_inner.setAttribute('r', '53px');
         circle_inner.setAttribute('stroke', 'rgb(142, 113, 199)');
         circle_inner.setAttribute('stroke-width', '10');
+        circle_inner.setAttribute('stroke-linecap', 'round');
         circle_inner.setAttribute('fill', 'none');
         circle_inner.setAttribute('transform', 'matrix(0,-1,1,0,0,126)');
-        circle_inner.setAttribute('stroke-dasharray', '100 378');
+        circle_inner.setAttribute('stroke-dasharray', '0 378');
         inner_text.innerText = '0%';
 
         svg.append(circle_outer);
         svg.append(circle_inner);
         circle.append(svg);
         circle.append(inner_text);
+
+        circle.setProgress = function(percentage){
+            if (!tools.judgeNumber(percentage)){
+                if (ENV === 'production'){
+                    console.log('percentage must be number');
+                }
+                else if (ENV === 'development'){
+                    throw new TypeError('percentage must be number');
+                }
+            }
+            inner_text.innerText = percentage + '%';
+            let r = circle_inner.getAttribute('r').replace(/[^0-9]/ig, "");
+            let progress_length = Math.PI * 2 * r * percentage / 100;
+            circle_inner.setAttribute('stroke-dasharray', `${progress_length} 378`);
+        }
     }
 
     document.addEventListener('mouseover',function(event){
