@@ -287,6 +287,15 @@ function ZC_UI(){
             attributes: true
         });
     }
+
+    // progress circle
+    let zc_progress_circle = document.getElementsByClassName('zc_progress_circle');
+    for (let circle of zc_progress_circle){
+        let svg = document.createElement('svg');
+        
+        circle.append(svg);
+    }
+
     document.addEventListener('mouseover',function(event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
