@@ -291,11 +291,33 @@ function ZC_UI(){
     // progress circle
     let zc_progress_circle = document.getElementsByClassName('zc_progress_circle');
     for (let circle of zc_progress_circle){
-        let svg = document.createElement('svg');
-        let circle_outer = document.createElement('circle');
+        let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        let circle_outer = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        let circle_inner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        let inner_text = document.createElement('div');
+        inner_text.classList = 'inner_text';
         svg.setAttribute('width', '126px');
         svg.setAttribute('height', '126px');
+        circle_outer.setAttribute('cx', '63px');
+        circle_outer.setAttribute('cy', '63px');
+        circle_outer.setAttribute('r', '53px');
+        circle_outer.setAttribute('stroke', 'rgb(229, 233, 242)');
+        circle_outer.setAttribute('stroke-width', '10');
+        circle_outer.setAttribute('fill', 'none');
+        circle_inner.setAttribute('cx', '63px');
+        circle_inner.setAttribute('cy', '63px');
+        circle_inner.setAttribute('r', '53px');
+        circle_inner.setAttribute('stroke', 'rgb(142, 113, 199)');
+        circle_inner.setAttribute('stroke-width', '10');
+        circle_inner.setAttribute('fill', 'none');
+        circle_inner.setAttribute('transform', 'matrix(0,-1,1,0,0,126)');
+        circle_inner.setAttribute('stroke-dasharray', '100 378');
+        inner_text.innerText = '0%';
+
+        svg.append(circle_outer);
+        svg.append(circle_inner);
         circle.append(svg);
+        circle.append(inner_text);
     }
 
     document.addEventListener('mouseover',function(event){
