@@ -295,7 +295,7 @@ function ZC_UI(){
         let circle_outer = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         let circle_inner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         let inner_text = document.createElement('div');
-        let percentage = circle.getAttribute('percentage') - 0;
+        let percentage = (circle.getAttribute('percentage') - 0) || 0;
         inner_text.classList = 'inner_text';
         svg.setAttribute('width', '126px');
         svg.setAttribute('height', '126px');
@@ -316,27 +316,39 @@ function ZC_UI(){
         let r = circle_inner.getAttribute('r').replace(/[^0-9]/ig,'') - 0;
         let progress_length = Math.PI * 2 * r * percentage / 100;
         circle_inner.setAttribute('stroke-dasharray', `${progress_length} 378`);
-        inner_text.innerText = '0%';
+        inner_text.innerText = `${percentage}%`;
 
         svg.append(circle_outer);
         svg.append(circle_inner);
         circle.append(svg);
         circle.append(inner_text);
 
+        let circleProgressObserver = new MutationObserver(function(mutations){
+            mutations.forEach(function (mutation) {
+                let percentage = mutation.target.getAttribute('percentage');
+                if (!tools.judgeNumber(percentage)) {
+                    if (ENV === 'production') {
+                        console.log('percentage must be number');
+                    }
+                    else if (ENV === 'development') {
+                        throw new TypeError('percentage must be number');
+                    }
+                }
+                let r = mutation.target.getElementsByTagName('circle')[0].getAttribute('r').replace(/[^0-9]/ig, '') - 0;
+                let progress_length = Math.PI * 2 * r * percentage / 100;
+                mutation.target.getElementsByTagName('circle')[1].setAttribute('stroke-dasharray', `${progress_length} 378`);
+                mutation.target.getElementsByClassName('inner_text')[0].innerText = `${percentage}%`;
+            })
+        });
+        circleProgressObserver.observe(circle,{
+            attributes: true
+        });
+
         circle.setProgress = function(percentage){
-            if (!tools.judgeNumber(percentage)){
-                if (ENV === 'production'){
-                    console.log('percentage must be number');
-                }
-                else if (ENV === 'development'){
-                    throw new TypeError('percentage must be number');
-                }
-            }
-            inner_text.innerText = percentage + '%';
-            let r = circle_inner.getAttribute('r').replace(/[^0-9]/ig, "");
-            let progress_length = Math.PI * 2 * r * percentage / 100;
-            circle_inner.setAttribute('stroke-dasharray', `${progress_length} 378`);
+            this.setAttribute('percentage', percentage);
         }
+
+
     }
 
     document.addEventListener('mouseover',function(event){
