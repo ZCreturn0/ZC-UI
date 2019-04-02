@@ -393,6 +393,10 @@ function ZC_UI(){
         circle.setProgressChange = function(changeCallback){
             this.progressChange = changeCallback;
         }
+
+        circle.setTextArea = function(html){
+            this.getElementsByClassName('inner_text')[0].innerHTML = html;
+        }
     }
 
     document.addEventListener('mouseover',function(event){
