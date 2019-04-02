@@ -308,7 +308,7 @@ function ZC_UI(){
         circle_inner.setAttribute('cx', '63px');
         circle_inner.setAttribute('cy', '63px');
         circle_inner.setAttribute('r', '53px');
-        circle_inner.setAttribute('stroke', 'rgb(142, 113, 199)');
+        circle_inner.setAttribute('stroke', ZC_UI._setting.circle_progress_inner_color);
         circle_inner.setAttribute('stroke-width', '10');
         circle_inner.setAttribute('stroke-linecap', 'round');
         circle_inner.setAttribute('fill', 'none');
@@ -719,38 +719,51 @@ ZC_UI._setting = {
     progress_progressing_icon: 'el-icon-erp-chucuo',
     progress_complete_icon: 'el-icon-erp-zhengque',
     progress_progressing_color: '#f56c6c',
-    progress_complete_color: '#67c23a'
+    progress_complete_color: '#67c23a',
+    circle_progress_inner_color: 'rgb(142, 113, 199)'
 };
 
 let settingProxy = new Proxy(ZC_UI._setting, {
     set: (obj, prop, value) => {
         obj[prop] = value;
         let zc_progress_icon = document.getElementsByClassName('zc_progress_icon');
-        for (let item of zc_progress_icon) {
-            switch (prop) {
-                case 'progress_progressing_icon':
+        let circle_progress = document.getElementsByClassName('zc_progress_circle');
+        switch (prop) {
+            case 'progress_progressing_icon':
+                for (let item of zc_progress_icon) {
                     if (item.getAttribute('percentage') < 100) {
                         item.classList = `icon iconfont ${value} zc_progress_icon`;
                     }
-                    break;
-                case 'progress_complete_icon':
+                }
+                break;
+            case 'progress_complete_icon':
+                for (let item of zc_progress_icon) {
                     if (item.getAttribute('percentage') == 100) {
                         item.classList = `icon iconfont ${value} zc_progress_icon`;
                     }
-                    break;
-                case 'progress_progressing_color':
+                }
+                break;
+            case 'progress_progressing_color':
+                for (let item of zc_progress_icon) {
                     if (item.getAttribute('percentage') < 100) {
                         item.style.color = value;
                         item.parentNode.getElementsByClassName('zc_progress_inner')[0].style.backgroundColor = value;
                     }
-                    break;
-                case 'progress_complete_color':
+                }
+                break;
+            case 'progress_complete_color':
+                for (let item of zc_progress_icon) {
                     if (item.getAttribute('percentage') == 100) {
                         item.style.color = value;
                         item.parentNode.getElementsByClassName('zc_progress_inner')[0].style.backgroundColor = value;
                     }
-                    break;
-            }
+                }
+                break;
+            case 'circle_progress_inner_color':
+                for (let item of circle_progress) {
+                    item.getElementsByTagName('circle')[1].setAttribute('stroke',value)
+                }
+                break;
         }
     },
     get: ((obj, prop) => {
