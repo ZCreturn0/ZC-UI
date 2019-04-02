@@ -344,11 +344,46 @@ function ZC_UI(){
             attributes: true
         });
 
+        // set percentage
         circle.setProgress = function(percentage){
             this.setAttribute('percentage', percentage);
         }
 
+        circle.setProgressColor = function(color){
+            circle_inner.setAttribute('stroke',color);
+        }
 
+        /**
+         * 
+         * @description set circle size
+         * @param {number} length width and height of svg,twice of radius
+         * @param {number} strokeWidth width of progress stroke
+         * 
+         */
+        circle.setSize = function (length, strokeWidth){
+            if (!tools.judgeNumber(length) || !tools.judgeNumber(strokeWidth)){
+                if (ENV === 'production') {
+                    console.log('length and strokeWidth must be number');
+                }
+                else if (ENV === 'development') {
+                    throw new TypeError('length and strokeWidth must be number');
+                }
+            }
+            svg.setAttribute('width', length+'px');
+            svg.setAttribute('height', length + 'px');
+            circle_outer.setAttribute('cx', (length / 2) + 'px');
+            circle_outer.setAttribute('cy', (length / 2) + 'px');
+            circle_outer.setAttribute('r', (length / 2 - strokeWidth) + 'px');
+            circle_outer.setAttribute('stroke-width', strokeWidth);
+            circle_inner.setAttribute('cx', (length / 2) + 'px');
+            circle_inner.setAttribute('cy', (length / 2) + 'px');
+            circle_inner.setAttribute('r', (length / 2 - strokeWidth) + 'px');
+            circle_inner.setAttribute('stroke-width', strokeWidth);
+        }
+
+        circle.setIcon = function(){
+            
+        }
     }
 
     document.addEventListener('mouseover',function(event){
