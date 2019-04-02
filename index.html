@@ -461,6 +461,10 @@
         circleProgress.setProgress(22);
         circleProgress.setProgressColor('rgb(32, 160, 255)');
         // circleProgress.setSize(126,5);
+        function changeCallback(percentage){
+            console.log(percentage);
+        }
+        circleProgress.setProgressChange(changeCallback);
     </script>
 </body>
 </html>
