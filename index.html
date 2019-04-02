@@ -457,7 +457,10 @@
             attributes: true
         });
     
-        document.getElementsByClassName('zc_progress_circle')[0].setProgress(50);
+        let circleProgress = document.getElementsByClassName('zc_progress_circle')[0];
+        circleProgress.setProgress(22);
+        circleProgress.setProgressColor('rgb(32, 160, 255)');
+        // circleProgress.setSize(126,5);
     </script>
 </body>
 </html>
