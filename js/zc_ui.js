@@ -338,6 +338,9 @@ function ZC_UI(){
                 let progress_length = Math.PI * 2 * r * percentage / 100;
                 mutation.target.getElementsByTagName('circle')[1].setAttribute('stroke-dasharray', `${progress_length} 378`);
                 mutation.target.getElementsByClassName('inner_text')[0].innerText = `${percentage}%`;
+                if (mutation.target.progressChange){
+                    mutation.target.progressChange(percentage);
+                }
             })
         });
         circleProgressObserver.observe(circle,{
@@ -381,8 +384,14 @@ function ZC_UI(){
             circle_inner.setAttribute('stroke-width', strokeWidth);
         }
 
-        circle.setIcon = function(){
-            
+        /**
+         * 
+         * @description add event function with one param(percentage) called when percentage changed
+         * @param {function} changeCallback
+         * 
+         */
+        circle.setProgressChange = function(changeCallback){
+            this.progressChange = changeCallback;
         }
     }
 
