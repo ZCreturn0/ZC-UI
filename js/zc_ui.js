@@ -295,6 +295,7 @@ function ZC_UI(){
         let circle_outer = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         let circle_inner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         let inner_text = document.createElement('div');
+        let percentage = circle.getAttribute('percentage') - 0;
         inner_text.classList = 'inner_text';
         svg.setAttribute('width', '126px');
         svg.setAttribute('height', '126px');
@@ -312,7 +313,9 @@ function ZC_UI(){
         circle_inner.setAttribute('stroke-linecap', 'round');
         circle_inner.setAttribute('fill', 'none');
         circle_inner.setAttribute('transform', 'matrix(0,-1,1,0,0,126)');
-        circle_inner.setAttribute('stroke-dasharray', '0 378');
+        let r = circle_inner.getAttribute('r').replace(/[^0-9]/ig,'') - 0;
+        let progress_length = Math.PI * 2 * r * percentage / 100;
+        circle_inner.setAttribute('stroke-dasharray', `${progress_length} 378`);
         inner_text.innerText = '0%';
 
         svg.append(circle_outer);
