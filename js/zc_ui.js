@@ -1686,6 +1686,26 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         return this.getAttribute('value');
     }
 
+    // get text by value
+    el.getTextByValue = function(value){
+        let li = this.getElementsByClassName('zc_option_wrapper')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+        for(let item of li){
+            if (item.getAttribute('value') == value){
+                return item.getAttribute('text');
+            }
+        }
+        return false;
+    }
+
+    // set current value
+    el.setValue = function (value){
+        let text = this.getTextByValue(value);
+        this.setAttribute('text', text);
+        this.setAttribute('value', value);
+        this.value = value;
+        this.getElementsByClassName('zc-select-input')[0].value = text;
+    }
+
     // get current text
     el.getText = function () {
         return this.getAttribute('text');
