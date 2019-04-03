@@ -551,16 +551,16 @@ function ZC_UI(){
             let currentValue = target.value - 0;
             let numberNode = target.parentNode;
             let step = numberNode.getAttribute("step") - 0 || 1;
-            let min = numberNode.getAttribute("min") - 0;
-            let max = numberNode.getAttribute("max") - 0;
+            let min = numberNode.getAttribute("min") == null ? null : numberNode.getAttribute("min") - 0;
+            let max = numberNode.getAttribute("max") == null ? null : numberNode.getAttribute("max") - 0;
             // not number,out of range,reset value
-            if (!tools.judgeNumber(target.value) || target.value < min || target.value > max){
+            if (!tools.judgeNumber(target.value) || (min != null && target.value < min) || (max != null && target.value > max)) {
                 target.value = numberBefore;
                 numberNode.value = numberBefore;
                 numberNode.setAttribute('value', numberBefore);
                 return;
             }
-            if (typeof min && currentValue - step < min) {
+            if (min != null && currentValue - step < min) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = 'disabled';
             }
@@ -568,7 +568,7 @@ function ZC_UI(){
                 tools.removeClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_decrease')[0].disabled = '';
             }
-            if (typeof max && currentValue + step > max) {
+            if (max != null && currentValue + step > max) {
                 tools.addClass(numberNode.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
                 numberNode.getElementsByClassName('zc_input_number_increase')[0].disabled = 'disabled';
             }
