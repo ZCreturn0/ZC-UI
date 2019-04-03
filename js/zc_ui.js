@@ -153,8 +153,8 @@ function ZC_UI(){
     let numberList = document.getElementsByClassName('zc_input_number');
     for (let item of numberList){
         let val = item.getAttribute('value') - 0 || 0;
-        let min = item.getAttribute('min') - 0;
-        let max = item.getAttribute('max') - 0;
+        let min = item.getAttribute("min") == null ? null : item.getAttribute("min") - 0;
+        let max = item.getAttribute("max") == null ? null : item.getAttribute("max") - 0;
         let step = item.getAttribute("step") - 0 || 1;
         let disabled = item.getAttribute("disabled");
         // init value out of ranger
@@ -593,6 +593,10 @@ function ZC_UI(){
                 }
                 else {
                     target.parentNode.getElementsByClassName('zc-validate-failed')[0].innerText = nullmsg;
+                }
+                target.reset = function () {
+                    this.removeAttribute('validate');
+                    this.parentNode.getElementsByClassName('zc-validate-failed')[0].innerText = '';
                 }
             }
             else if (target.getAttribute('required') != null && target.value != '') {
