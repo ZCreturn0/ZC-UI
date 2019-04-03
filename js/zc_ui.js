@@ -1706,6 +1706,14 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         this.getElementsByClassName('zc-select-input')[0].value = text;
     }
 
+    // reset zc_select,options ramained,value and text set to null
+    el.reset = function(){
+        this.removeAttribute('text');
+        this.removeAttribute('value');
+        this.value = null;
+        this.getElementsByClassName('zc-select-input')[0].value = '';
+    }
+
     // get current text
     el.getText = function () {
         return this.getAttribute('text');
