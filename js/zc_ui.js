@@ -1756,6 +1756,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         this.setAttribute('disabled', '');
     }
 
+    el.setAbled = function(){
+        this.removeAttribute('disabled');
+    }
+
     el.setOption(initOption);
 
     return el;
