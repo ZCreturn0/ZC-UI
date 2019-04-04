@@ -211,6 +211,7 @@
         <input type="text" class="zc-input zc-input-number-inner">
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
+    <br><br><br>
     <!-- raw $message html -->
     <!--
     <div class="zc_message zc_message_error">
@@ -479,6 +480,14 @@
         demo2ProgressChange(percentage2);
         circle_demo1.setProgressChange(demo1ProgressChange);
         circle_demo2.setProgressChange(demo2ProgressChange);
+
+        // add zc-input by using js
+        setTimeout(() => {
+            let addedInput = document.createElement('div');
+            addedInput.classList = 'zc-input';
+            addedInput.setAttribute('placeholder', 'js动态添加输入框');
+            document.body.append(addedInput);
+        }, 3000);
     </script>
 </body>
 </html>

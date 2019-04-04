@@ -307,7 +307,11 @@ function ZC_UI(){
     // document observer
     let documentObserver = new MutationObserver(function (mutations){
         mutations.forEach(function(mutation){
-            console.log(mutation)
+            for (let node of mutation.addedNodes){
+                if (node.classList && node.classList.length && tools.hasClass(node,'zc-input')){
+                    initInput(node);
+                }
+            }
         });
     });
     // observe all elements' changes in body
