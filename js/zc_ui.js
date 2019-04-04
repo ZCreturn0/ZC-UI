@@ -524,15 +524,17 @@ function ZC_UI(){
             }
         }
         else if (target.classList && tools.inArr(target.classList, 'zc-select-input') || tools.inArr(target.classList, 'zc-select-icon')){
-            if (target.parentNode.parentNode.getAttribute('open') != 'on'){
-                target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
-                target.parentNode.parentNode.setAttribute('open','on');
-                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '220px';
-            }
-            else{
-                target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
-                target.parentNode.parentNode.setAttribute('open', 'off');
-                target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
+            if (target.parentNode.parentNode.getAttribute('disabled') === null){
+                if (target.parentNode.parentNode.getAttribute('open') != 'on') {
+                    target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(0deg)';
+                    target.parentNode.parentNode.setAttribute('open', 'on');
+                    target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '220px';
+                }
+                else {
+                    target.parentNode.getElementsByClassName('zc-select-icon')[0].style.transform = 'rotate(-180deg)';
+                    target.parentNode.parentNode.setAttribute('open', 'off');
+                    target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
+                }
             }
         }
     },true);
@@ -1749,6 +1751,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
             this.callback && this.callback();       // jshint ignore:line
         }
     });
+
+    el.setDisabled = function () {
+        this.setAttribute('disabled', '');
+    }
 
     el.setOption(initOption);
 
