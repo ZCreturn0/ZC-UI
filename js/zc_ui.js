@@ -236,6 +236,19 @@ function ZC_UI(){
             }
         });
     });
+
+    // document observer
+    let documentObserver = new MutationObserver(function (mutations){
+        mutations.forEach(function(mutation){
+            console.log(mutation)
+        });
+    });
+    // observe all elements' changes in body
+    documentObserver.observe(document.body,{
+        childList: true,
+        subtree: true
+    })
+
     // add progress to progress wrapper
     for (let item of progressList){
         let percentage = item.getAttribute('percentage');
