@@ -92,45 +92,29 @@
     <div class="zc_btn zc_btn_default" round small>small</div>
     <div class="zc_btn zc_btn_default" round mini>mini</div>
     <br><br>
+    <p>基本用法,disabled:</p><br>
     <div class="zc_tooltip zc-input" placeholder="请输入" tooltip-text='基本用法' placement='top'></div>
     <div class="zc_tooltip zc-input" placeholder="请输入" tooltip-text='disabled状态' placement='top' disabled></div>
     <br><br>
+    <p>clearable,required:</p><br>
     <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top' clearable placeholder="请输入"></div>
-    <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" clearable required/>
-        <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
-    </div>
+    <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top' clearable required></div>
     <br><br>
-    <div class="zc_tooltip zc-input" tooltip-text='preIcon' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" preIcon/>
-        <i class="icon iconfont el-icon-erp-sousuo preIcon"></i>
-    </div>
-    <div class="zc_tooltip zc-input" tooltip-text='sufIcon' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon/>
-        <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
-    </div>
+    <p>preIcon,sufIcon:</p><br>
+    <div class="zc_tooltip zc-input" tooltip-text='preIcon' placement='top' preIcon="el-icon-erp-sousuo" placeholder="请输入"></div>
+    <div class="zc_tooltip zc-input" tooltip-text='sufIcon' placement='top' sufIcon="el-icon-erp-yanjing" placeholder="请输入"></div>
     <br><br>
-    <div class="zc_tooltip zc-input" tooltip-text='medium' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon medium/>
-        <i class="icon iconfont el-icon-erp-yanjing sufIcon" medium></i>
-    </div>
-    <div class="zc_tooltip zc-input" tooltip-text='small' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" preIcon small/>
-        <i class="icon iconfont el-icon-erp-yanjing preIcon" small></i>
-    </div>
-    <div class="zc_tooltip zc-input" tooltip-text='mini' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon mini required/>
-        <i class="icon iconfont el-icon-erp-yanjing sufIcon" mini></i>
-    </div>
+    <p>size:</p><br>
+    <div class="zc_tooltip zc-input" tooltip-text='medium' placement='top' sufIcon='el-icon-erp-yanjing' medium placeholder="请输入"></div>
+    <div class="zc_tooltip zc-input" tooltip-text='small' placement='top' preIcon='el-icon-erp-yanjing' small></div>
+    <div class="zc_tooltip zc-input" tooltip-text='mini' placement='top' sufIcon='el-icon-erp-yanjing' mini></div>
+    <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top' clearable mini></div>
     <br><br>
-    <div class="zc_tooltip zc-input" tooltip-text='validate' placement='top'>
-        <input class="zc-input__inner" placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" type="text" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"/>
-        <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
-    </div>
+    <p>验证:</p><br>
+    <div class="zc_tooltip zc-input" tooltip-text='validate' placement='top' sufIcon='el-icon-erp-yanjing' placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"></div>
     <br><br>
-    <div class="zc-input inputValue">
-        <input class="zc-input__inner" placeholder="请输入" type="text"/>
-    </div>
+    <p>获取值:</p><br>
+    <div class="zc-input inputValue"></div>
     <div class="zc_btn zc_btn_primary" onclick="showInputValue()">获取输入框的值</div>
     <br><br>
     <div class="zc_tag">普通标签</div>

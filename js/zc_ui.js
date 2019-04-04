@@ -252,8 +252,50 @@ function ZC_UI(){
         if (el.getAttribute('clearable') != null){
             input.setAttribute('clearable', '');
             let clearIcon = document.createElement('i');
-            clearIcon.classList = 'icon iconfont el-icon-erp-chucuo clearIcon';
+            clearIcon.classList = 'icon iconfont el-icon-erp-chucuo clearIcon sufIcon';
             el.append(clearIcon);
+        }
+        if (el.getAttribute('required') != null) {
+            input.setAttribute('required', '');
+        }
+        if (el.getAttribute('preIcon') != null) {
+            input.setAttribute('preIcon', '');
+            let preicon = el.getAttribute('preicon');
+            let icon = document.createElement('i');
+            icon.classList = `icon iconfont ${preicon} preIcon`;
+            el.append(icon);
+        }
+        if (el.getAttribute('sufIcon') != null) {
+            input.setAttribute('suficon', '');
+            let suficon = el.getAttribute('suficon');
+            let icon = document.createElement('i');
+            icon.classList = `icon iconfont ${suficon} sufIcon`;
+            el.append(icon);
+        }
+        if (el.getAttribute('medium') != null || el.getAttribute('small') != null || el.getAttribute('mini') != null){
+            let size;
+            if (el.getAttribute('medium') != null){
+                size = 'medium';
+            }
+            else if (el.getAttribute('small') != null){
+                size = 'small';
+            }
+            else if (el.getAttribute('mini') != null) {
+                size = 'mini';
+            }
+            if(el.getElementsByTagName('i').length != 0){
+                el.getElementsByTagName('i')[0].setAttribute(size,'');
+            }
+            input.setAttribute(size, '');
+        }
+        if (el.getAttribute('nullmsg') != null){
+            input.setAttribute('nullmsg', el.getAttribute('nullmsg'));
+        }
+        if (el.getAttribute('errormsg') != null) {
+            input.setAttribute('errormsg', el.getAttribute('errormsg'));
+        }
+        if (el.getAttribute('regex') != null) {
+            input.setAttribute('regex', el.getAttribute('regex'));
         }
         el.append(input);
     }
