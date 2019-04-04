@@ -237,6 +237,31 @@ function ZC_UI(){
         });
     });
 
+    // create zc-input
+    function initInput(el){
+        if(!tools.hasClass(el,'zc-input')){
+            return;
+        }
+        let input = document.createElement('input');
+        input.classList = 'zc-input__inner';
+        input.setAttribute('type','text');
+        input.setAttribute('placeholder', el.getAttribute('placeholder') != null ? el.getAttribute('placeholder') : '');
+        if (el.getAttribute('disabled') != null){
+            input.setAttribute('disabled', '');
+        }
+        if (el.getAttribute('clearable') != null){
+            input.setAttribute('clearable', '');
+            let clearIcon = document.createElement('i');
+            clearIcon.classList = 'icon iconfont el-icon-erp-chucuo clearIcon';
+            el.append(clearIcon);
+        }
+        el.append(input);
+    }
+    let zc_input = document.getElementsByClassName('zc-input');
+    for(let item of zc_input){
+        initInput(item);
+    }
+
     // document observer
     let documentObserver = new MutationObserver(function (mutations){
         mutations.forEach(function(mutation){
@@ -415,14 +440,14 @@ function ZC_UI(){
     document.addEventListener('mouseover',function(event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
-        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
+        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
             target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'block';
         }
     },false);
     document.addEventListener('mouseout', function (event) {
         let e = event || window.event;
         let target = e.target || e.srcElement;
-        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input-content') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
+        if (target.parentNode.classList && tools.inArr(target.parentNode.classList, 'zc-input') && target.parentNode.getElementsByClassName('clearIcon')[0]) {
             target.parentNode.getElementsByClassName('clearIcon')[0].style.display = 'none';
         }
     }, false);
@@ -441,7 +466,7 @@ function ZC_UI(){
         }
 
         if (target.classList && tools.inArr(target.classList, 'clearIcon')) {
-            let input = target.parentNode.getElementsByClassName('zc-input')[0];
+            let input = target.parentNode.getElementsByClassName('zc-input__inner')[0];
             input.value = '';
             input.focus();
             let required = input.getAttribute('required');
@@ -595,7 +620,7 @@ function ZC_UI(){
             numberNode.setAttribute('value', currentValue);
             numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
         }
-        else if (target.classList && tools.inArr(target.classList, 'zc-input')) {
+        else if (target.classList && tools.inArr(target.classList, 'zc-input__inner')) {
             if (target.getAttribute('required') != null && target.value == '') {
                 target.setAttribute('validate', 'failed');
                 const nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';
@@ -664,7 +689,7 @@ function ZC_UI(){
     document.addEventListener('keyup', function (event) {
         let e = event || window.event;
         let target = e.target || e.srcElement;
-        if (target.classList && tools.inArr(target.classList, 'zc-input')) {
+        if (target.classList && tools.inArr(target.classList, 'zc-input__inner')) {
             if (target.getAttribute('required') != null && target.value == ''){
                 target.setAttribute('validate','failed');
                 const nullmsg = target.getAttribute('nullmsg') ? target.getAttribute('nullmsg') : '此项不能为空';

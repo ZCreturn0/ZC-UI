@@ -92,50 +92,44 @@
     <div class="zc_btn zc_btn_default" round small>small</div>
     <div class="zc_btn zc_btn_default" round mini>mini</div>
     <br><br>
-    <div class="zc_tooltip zc-input-content" tooltip-text='input要加tooltip必须被包含在position:relative的元素中' placement='right'>
-        <input class="zc-input" placeholder="请输入" type="text"/>
-    </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='disabled状态' placement='top'>
-        <input class="zc-input" placeholder="请输入" disabled type="text"/>
-    </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='clearable' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" clearable/>
-        <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
-    </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='clearable' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" clearable required/>
+    <div class="zc_tooltip zc-input" placeholder="请输入" tooltip-text='基本用法' placement='top'></div>
+    <div class="zc_tooltip zc-input" placeholder="请输入" tooltip-text='disabled状态' placement='top' disabled></div>
+    <br><br>
+    <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top' clearable placeholder="请输入"></div>
+    <div class="zc_tooltip zc-input" tooltip-text='clearable' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" clearable required/>
         <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
     </div>
     <br><br>
-    <div class="zc_tooltip zc-input-content" tooltip-text='preIcon' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" preIcon/>
+    <div class="zc_tooltip zc-input" tooltip-text='preIcon' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" preIcon/>
         <i class="icon iconfont el-icon-erp-sousuo preIcon"></i>
     </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='sufIcon' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" sufIcon/>
+    <div class="zc_tooltip zc-input" tooltip-text='sufIcon' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon/>
         <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
     </div>
     <br><br>
-    <div class="zc_tooltip zc-input-content" tooltip-text='medium' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" sufIcon medium/>
+    <div class="zc_tooltip zc-input" tooltip-text='medium' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon medium/>
         <i class="icon iconfont el-icon-erp-yanjing sufIcon" medium></i>
     </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='small' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" preIcon small/>
+    <div class="zc_tooltip zc-input" tooltip-text='small' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" preIcon small/>
         <i class="icon iconfont el-icon-erp-yanjing preIcon" small></i>
     </div>
-    <div class="zc_tooltip zc-input-content" tooltip-text='mini' placement='top'>
-        <input class="zc-input" placeholder="请输入" type="text" sufIcon mini required/>
+    <div class="zc_tooltip zc-input" tooltip-text='mini' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入" type="text" sufIcon mini required/>
         <i class="icon iconfont el-icon-erp-yanjing sufIcon" mini></i>
     </div>
     <br><br>
-    <div class="zc_tooltip zc-input-content" tooltip-text='validate' placement='top'>
-        <input class="zc-input" placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" type="text" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"/>
+    <div class="zc_tooltip zc-input" tooltip-text='validate' placement='top'>
+        <input class="zc-input__inner" placeholder="请输入邮箱" nullmsg="请输入邮箱" errormsg="邮箱格式错误" type="text" required regex="/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/"/>
         <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
     </div>
     <br><br>
-    <div class="zc-input-content inputValue">
-        <input class="zc-input" placeholder="请输入" type="text"/>
+    <div class="zc-input inputValue">
+        <input class="zc-input__inner" placeholder="请输入" type="text"/>
     </div>
     <div class="zc_btn zc_btn_primary" onclick="showInputValue()">获取输入框的值</div>
     <br><br>
