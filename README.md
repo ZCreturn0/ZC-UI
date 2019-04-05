@@ -672,6 +672,8 @@ function showNumberValue(){
 
 ### 3.10 下拉框
 
+#### 3.10.1 基本用法
+
 1.准备一个元素,必须含有`zc-select`类:
 
 ```
@@ -686,3 +688,16 @@ ui.createSelect(el,option);
 
 el:创建select的元素<br>
 option:option数组,数组元素格式为{value:v,text:t},其中value为选中后select的值,text为选中后显示的文本<br>
+
+示例:
+
+```
+<div class="zc-select mySelect"></div>
+```
+
+```
+let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
+```
+
+
+createSelect()方法创建select对象后会放回select对象
