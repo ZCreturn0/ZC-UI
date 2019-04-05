@@ -702,4 +702,7 @@ js:
 let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
 ```
 
-createSelect()方法创建select对象后会放回select对象
+createSelect()方法创建select对象后会放回select对象,效果如下:<br>
+
+![image](https://github.com/ZCreturn0/ZC-UI/blob/zc_input/readme/zc_select_basic.png)
+
