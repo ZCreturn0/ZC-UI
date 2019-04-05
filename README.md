@@ -684,5 +684,5 @@ function showNumberValue(){
 ui.createSelect(el,option);
 ```
 
-el:创建select的元素
-option:option数组,数组元素格式为{value:v,text:t},其中value为选中后select的值,text为选中后显示的文本
+el:创建select的元素<br>
+option:option数组,数组元素格式为{value:v,text:t},其中value为选中后select的值,text为选中后显示的文本<br>
