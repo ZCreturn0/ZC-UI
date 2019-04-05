@@ -691,13 +691,15 @@ option:option数组,数组元素格式为{value:v,text:t},其中value为选中�
 
 示例:
 
+html:
+
 ```
 <div class="zc-select mySelect"></div>
 ```
+js:
 
 ```
 let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
 ```
-
 
 createSelect()方法创建select对象后会放回select对象
