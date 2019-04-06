@@ -706,3 +706,16 @@ createSelect()方法创建select对象后会放回select对象,效果如下:<br>
 
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/zc_input/readme/zc_select_basic.png)
 
+#### 3.10.2 select对象的方法
+
+createSelect()方法返回的select对象(以下用mySelect代替)中有一系列方法对select进行操作<br><br>
+
+1.clear()<br>
+清空所有的option
+
+2.setOption()<br>
+清空所有option并重新设置
+
+3.addOptions()<br>
+在原有的option上添加option
+
