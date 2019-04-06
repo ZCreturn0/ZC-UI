@@ -752,6 +752,11 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 
 #### 3.11.1 基础进度条
 
+基础进度条除了设置`zc_progress`类外,只需指定`percentage`属性即可,`percentage`为进度条百分比
 
+示例:
 
+```
+<div class="zc_progress" percentage="35"></div>
+```
 
