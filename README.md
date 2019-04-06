@@ -737,3 +737,12 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 9.reset()<br>
 恢复到默认状态(保留option,选中的option重置为空)
 
+10.setSelectCallback()<br>
+设置option选中后的回调(即使option没改变也会触发)
+
+11.setDisabled()<br>
+禁用mySelect
+
+12.setAbled()<br>
+取消禁用mySelect
+
