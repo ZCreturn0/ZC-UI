@@ -1695,7 +1695,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     let zc_select_input = document.createElement('input');
     let zc_select_icon = document.createElement('i');
     zc_select_area.classList = 'zc-input-content zc-select-area';
-    zc_select_input.classList = 'zc-input zc-select-input';
+    zc_select_input.classList = 'zc-input__inner zc-select-input';
     zc_select_input.setAttribute('placeholder',placeholder);
     zc_select_input.setAttribute('type','text');
     zc_select_input.setAttribute('readonly','readonly');
