@@ -719,3 +719,9 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 3.addOptions()<br>
 在原有的option上添加option
 
+4.removeOptionsByValue()<br>
+通过传入的value删除对应的option
+
+5.removeOptionsByText()<br>
+通过传入的text删除对应的option
+
