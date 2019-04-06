@@ -201,14 +201,14 @@
     <div class="zc_progress zc_progress_success zc_tooltip progress_demo" percentage="45" tooltip-text='通过js设置进度条的值' placement='top'></div>
     <div class="zc_input_number setting_progress" style="bottom:18px;" step="1" value="45" min="0" max="100">
         <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-        <input type="text" class="zc-input zc-input-number-inner">
+        <input type="text" class="zc-input__inner zc-input-number-inner">
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
     <br><br><br>
     <div class="zc_progress zc_progress_success zc_progress_wide progress_demo" percentage="45"></div>
     <div class="zc_input_number setting_progress" style="bottom:18px;" step="1" value="45" min="0" max="100">
         <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-        <input type="text" class="zc-input zc-input-number-inner">
+        <input type="text" class="zc-input__inner zc-input-number-inner">
         <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
     </div>
     <br><br><br>
@@ -411,7 +411,7 @@
             console.log('11111');
         }
         mySelect.setSelectCallback(selectCallback);
-        mySelect.setDisabled();
+        // mySelect.setDisabled();
 
         // progress demo
         // 1.get element
