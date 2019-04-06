@@ -725,3 +725,15 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 5.removeOptionsByText()<br>
 通过传入的text删除对应的option
 
+6.getValue()<br>
+获取当前的value
+
+7.getText()<br>
+获取当前的text
+
+8.setValue()<br>
+通过value选中option
+
+9.reset()<br>
+恢复到默认状态(保留option,选中的option重置为空)
+
