@@ -784,3 +784,7 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_set_color.png)
 
+<br>
+
+`color`属性会覆盖`zc_progress_success`的颜色
+
