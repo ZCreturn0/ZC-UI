@@ -771,3 +771,15 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 |zc_progress_success|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_success.png)|
 |zc_progress_info|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_info.png)|
 |zc_progress_danger|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_danger.png)|
+
+#### 3.11.2 自定义进度条颜色
+
+除为进度条添加`zc_progress_success`,`zc_progress_info`等类改变进度条颜色外,还能通过`color`属性自定义进度条颜色:
+
+```
+<div class="zc_progress zc_progress_success" color="purple" percentage="45"></div>
+```
+
+效果:
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_set_color.png)
+
