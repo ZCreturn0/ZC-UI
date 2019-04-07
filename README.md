@@ -763,3 +763,11 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 效果:
 
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_default.png)
+
+同时可添加`zc_progress_success`,`zc_progress_info`等类改变进度条颜色,使进度条有倾向性<br>
+
+|类名|样式|
+|:---|:---|
+|zc_progress_success|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_success.png)|
+|zc_progress_info|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_info.png)|
+|zc_progress_danger|![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_danger.png)|
