@@ -760,3 +760,6 @@ createSelect()方法返回的select对象(以下用mySelect代替)中有一系�
 <div class="zc_progress" percentage="35"></div>
 ```
 
+效果:
+
+![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc_progress_default.png)
