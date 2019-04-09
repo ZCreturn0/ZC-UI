@@ -482,12 +482,10 @@
         circle_demo2.setProgressChange(demo2ProgressChange);
 
         // add zc-input by using js
-        setTimeout(() => {
-            let addedInput = document.createElement('div');
-            addedInput.classList = 'zc-input';
-            addedInput.setAttribute('placeholder', 'js动态添加输入框');
-            document.body.append(addedInput);
-        }, 3000);
+        let addedInput = document.createElement('div');
+        addedInput.classList = 'zc-input';
+        addedInput.setAttribute('placeholder', 'js动态添加输入框');
+        document.body.append(addedInput);
     </script>
 </body>
 </html>
