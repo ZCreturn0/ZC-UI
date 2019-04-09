@@ -1747,23 +1747,15 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
             for (let item of option) {
                 let li = document.createElement('li');
                 li.classList = 'zc-option';
-                if (typeof item.value === undefined){
-                    if (ENV === 'development') {
-                        throw new ReferenceError(`option items must have 'value' attribute`);
+                for (let attr of attributes){
+                    if (typeof item[attr] === 'undefined') {
+                        if (ENV === 'development') {
+                            throw new ReferenceError(`option items must have '${attr}' attribute according to attributes param`);
+                        }
+                        else {
+                            console.error(`option items must have '${attr}' attribute according to attributes param`);
+                        }
                     }
-                    else {
-                        console.error(`option items must have 'value' attribute`);
-                    }
-                }
-                else if (typeof item.text === undefined){
-                    if (ENV === 'development') {
-                        throw new ReferenceError(`option items must have 'text' attribute`);
-                    }
-                    else {
-                        console.error(`option items must have 'text' attribute`);
-                    }
-                }
-                for(let attr in item){
                     li.setAttribute(attr, item[attr]);
                 }
                 let span = document.createElement('span');
