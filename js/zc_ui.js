@@ -1010,7 +1010,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
     let pageNum = Math.ceil(total / pageSize);
     if(page > pageNum){
         if(ENV === 'development'){
-            throw 'out of pageNum';
+            throw new RangeError('out of pageNum');
         }
         else if (ENV === 'production'){
             console.error('out of pageNum');
@@ -1684,10 +1684,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     let tools = new ZC_Tools();
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
-            console.error(`To create select,el must have class 'zc-select'.`);
+            throw new ReferenceError(`To create select,el must have class 'zc-select'.`);
         }
         else{
-            throw new TypeError(`To create select,el must have class 'zc-select'.`);
+            console.error(`To create select,el must have class 'zc-select'.`);
         }
         return false;
     }
@@ -1720,10 +1720,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         }
         else{
             if (ENV === 'development') {
-                console.error(`option can't be empty`);
+                throw new TypeError(`option can't be empty`);
             }
             else {
-                throw new TypeError(`option can't be empty`);
+                console.error(`option can't be empty`);
             }
         }
     }
@@ -1739,8 +1739,25 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
             for (let item of option) {
                 let li = document.createElement('li');
                 li.classList = 'zc-option';
-                li.setAttribute('value', item.value);
-                li.setAttribute('text', item.text);
+                if (typeof item.value === undefined){
+                    if (ENV === 'development') {
+                        throw new ReferenceError(`option items must have 'value' attribute`);
+                    }
+                    else {
+                        console.error(`option items must have 'value' attribute`);
+                    }
+                }
+                else if (typeof item.text === undefined){
+                    if (ENV === 'development') {
+                        throw new ReferenceError(`option items must have 'text' attribute`);
+                    }
+                    else {
+                        console.error(`option items must have 'text' attribute`);
+                    }
+                }
+                for(let attr in item){
+                    li.setAttribute(attr, item[attr]);
+                }
                 let span = document.createElement('span');
                 span.innerText = item.text;
                 li.append(span);
