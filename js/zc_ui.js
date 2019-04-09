@@ -1680,7 +1680,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  * @param {string} placeholder placeholder in input
  * @returns {object} zc_select object or false if something wrong
  */
-ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选择'){
+ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 'text'], placeholder = '请选择'){
     let tools = new ZC_Tools();
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
@@ -1713,10 +1713,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     el.append(zc_option_wrapper);
 
     // reset option
-    el.setOption = function(option){
+    el.setOption = function(option, attributes){
         if (option && option.length) {
             this.clear();
-            this.addOptions(option);
+            this.addOptions(option, attributes);
         }
         else{
             if (ENV === 'development') {
@@ -1734,7 +1734,15 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
     }
 
     // add option
-    el.addOptions = function (option){
+    el.addOptions = function (option, attributes = ['value', 'text']){
+        if (!tools.inArr(attributes, 'value') || !tools.inArr(attributes, 'text')){
+            if (ENV === 'development') {
+                throw new ReferenceError(`attributes must have 'value' and 'text'`);
+            }
+            else {
+                console.error(`attributes must have 'value' and 'text'`);
+            }
+        }
         if (option && option.length) {
             for (let item of option) {
                 let li = document.createElement('li');
@@ -1861,7 +1869,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, placeholder = '请选�
         this.removeAttribute('disabled');
     }
 
-    el.setOption(initOption);
+    el.setOption(initOption, attributes);
 
     return el;
 }
