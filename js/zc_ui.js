@@ -1682,6 +1682,7 @@ ZC_UI.prototype.ZC_Notice.prototype.$confirm = function (title, content, option,
  */
 ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 'text'], placeholder = '请选择'){
     let tools = new ZC_Tools();
+    this.zc_attributes = attributes;
     if (!tools.hasClass(el,'zc-select')){
         if(ENV === 'development'){
             throw new ReferenceError(`To create select,el must have class 'zc-select'.`);
@@ -1714,17 +1715,10 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
 
     // reset option
     el.setOption = function(option, attributes){
+        this.zc_attributes = attributes;
         if (option && option.length) {
             this.clear();
-            this.addOptions(option, attributes);
-        }
-        else{
-            if (ENV === 'development') {
-                throw new TypeError(`option can't be empty`);
-            }
-            else {
-                console.error(`option can't be empty`);
-            }
+            this.addOptions(option, this.zc_attributes);
         }
     }
 
@@ -1735,7 +1729,8 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
 
     // add option
     el.addOptions = function (option, attributes = ['value', 'text']){
-        if (!tools.inArr(attributes, 'value') || !tools.inArr(attributes, 'text')){
+        this.zc_attributes = attributes;
+        if (!tools.inArr(this.zc_attributes, 'value') || !tools.inArr(this.zc_attributes, 'text')){
             if (ENV === 'development') {
                 throw new ReferenceError(`attributes must have 'value' and 'text'`);
             }
@@ -1747,7 +1742,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
             for (let item of option) {
                 let li = document.createElement('li');
                 li.classList = 'zc-option';
-                for (let attr of attributes){
+                for (let attr of this.zc_attributes){
                     if (typeof item[attr] === 'undefined') {
                         if (ENV === 'development') {
                             throw new ReferenceError(`option items must have '${attr}' attribute according to attributes param`);
@@ -1842,11 +1837,13 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
             else if (tools.inArr(target.parentNode.classList, 'zc-option')) {
                 liNode = target.parentNode;
             }
+            let selectNode = liNode.parentNode.parentNode.parentNode;
+            for(let attr of this.zc_attributes){
+                let attrValue = liNode.getAttribute(attr);
+                selectNode.setAttribute(attr, attrValue);
+            }
             let text = liNode.getAttribute('text');
             let value = liNode.getAttribute('value');
-            let selectNode = liNode.parentNode.parentNode.parentNode;
-            selectNode.setAttribute('text', text);
-            selectNode.setAttribute('value', value);
             selectNode.value = value;
             selectNode.getElementsByClassName('zc-select-input')[0].value = text;
             this.callback && this.callback();       // jshint ignore:line
@@ -1861,7 +1858,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
         this.removeAttribute('disabled');
     }
 
-    el.setOption(initOption, attributes);
+    el.setOption(initOption, this.zc_attributes);
 
     return el;
 }
