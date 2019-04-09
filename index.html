@@ -173,6 +173,7 @@
     <div class="zc_btn zc_btn_primary" onclick="showNumberValue()">获取计数器的值</div>
     <br><br>
     <div class="zc-select mySelect"></div>
+    <div class="zc-select setAttr"></div>
     <br><br><br>
     <div class="zc_tag">防遮挡测试</div>
     <div class="zc_btn zc_btn_primary">防遮挡测试</div>
@@ -401,10 +402,31 @@
             $notice.$message({ text: `获取的值为:${value}`, type: 'success', showClose: true, duration: 3 * 1000 });
         }
 
-        let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[{value:1,text:'aaaaa'}, { value: 2, text: 'bbbbb' }, { value: 3, text: 'ccccc' }]);
-        // mySelect.setOption([{value:1,text:'11111'}, { value: 2, text: '22222' }, { value: 3, text: '33333' }, { value: 4, text: '44444' }, { value: 5, text: '55555' }, { value: 6, text: '66666' }]);
-        mySelect.addOptions([{value:7,text:'77777'}, { value: 8, text: '88888' }, { value: 9, text: '99999' }, { value: 10, text: '101010' }]);
-        // mySelect.addOptions([{ value: 7, text: '77777' }, { value: 8, text: '88888' }, { value: 9, text: '99999' }, { value: 10, text: '101010' }]);
+        let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[
+            {value:1,text:'aaaaa'}, 
+            { value: 2, text: 'bbbbb' }, 
+            { value: 3, text: 'ccccc' }
+        ]);
+        // mySelect.setOption([
+        //     {value:1,text:'11111'}, 
+        //     { value: 2, text: '22222' }, 
+        //     { value: 3, text: '33333' }, 
+        //     { value: 4, text: '44444' }, 
+        //     { value: 5, text: '55555' }, 
+        //     { value: 6, text: '66666' }
+        // ]);
+        // mySelect.addOptions([
+        //     {value:7,text:'77777'}, 
+        //     { value: 8, text: '88888' }, 
+        //     { value: 9, text: '99999' }, 
+        //     { value: 10, text: '101010' }
+        // ]);
+        // mySelect.addOptions([
+        //     { value: 7, text: '77777' }, 
+        //     { value: 8, text: '88888' }, 
+        //     { value: 9, text: '99999' }, 
+        //     { value: 10, text: '101010' }
+        // ]);
         // mySelect.removeOptionsByValue(2);
         // mySelect.removeOptionsByText('11111');
         function selectCallback(){
@@ -412,6 +434,14 @@
         }
         mySelect.setSelectCallback(selectCallback);
         // mySelect.setDisabled();
+
+        let setAttr = ui.createSelect(document.getElementsByClassName('setAttr')[0], [
+            { value: 1, text: '1', attr: '111' }, 
+            { value: 2, text: '2', attr: '222' }, 
+            { value: 3, text: '3', attr: '333' }, 
+            { value: 4, text: '4', attr: '444' }, 
+            { value: 5, text: '5', attr: '555' }
+        ]);
 
         // progress demo
         // 1.get element
