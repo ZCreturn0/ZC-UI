@@ -436,12 +436,13 @@
         // mySelect.setDisabled();
 
         let setAttr = ui.createSelect(document.getElementsByClassName('setAttr')[0], [
+            // { value: 0, text: '0'},         // error
             { value: 1, text: '1', attr: '111' }, 
             { value: 2, text: '2', attr: '222' }, 
             { value: 3, text: '3', attr: '333' }, 
             { value: 4, text: '4', attr: '444' }, 
             { value: 5, text: '5', attr: '555' }
-        ]);
+        ],['value', 'text', 'attr']);
 
         // progress demo
         // 1.get element
