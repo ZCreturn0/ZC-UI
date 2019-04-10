@@ -317,6 +317,25 @@ function ZC_UI(){
             tools.addClass(increase, 'zc_input_number_disabled');
             input.setAttribute('disabled', 'disabled');
         }
+
+        el.getValue = function(){
+            return input.value;
+        }
+
+        el.setValue = function(value){
+            if (!tools.judgeNumber(value) || (min && value < min) || (max && value > max)) {
+                if (ENV === 'development') {
+                    throw new RangeError(`value must be a number and in range`);
+                }
+                else {
+                    console.error(`value must be a number and in range`);
+                }
+                return;
+            }
+            else{
+                input.value = value;
+            }
+        }
     }
     // fill number into zc-input-number-inner using value or default
     let numberList = document.getElementsByClassName('zc_input_number');
@@ -1030,7 +1049,7 @@ ZC_UI.prototype.ZC_Table.prototype.pagination = function (page,pageSize,total){
         throw 'total must be integer';
     }
     
-    let pageNum = Math.ceil(total / pageSize);
+    let pageNum = Math.ceil(total / pageSize) || 1;
     if(page > pageNum){
         if(ENV === 'development'){
             throw new RangeError('out of pageNum');
@@ -1829,6 +1848,7 @@ ZC_UI.prototype.createSelect = function (el, initOption, attributes = ['value', 
         this.setAttribute('value', value);
         this.value = value;
         this.getElementsByClassName('zc-select-input')[0].value = text;
+        this.callback && this.callback();       // jshint ignore:line
     }
 
     // reset zc_select,options ramained,value and text set to null
