@@ -149,63 +149,6 @@ ZC_Tools.prototype.inArr = function(arr,ele){
 function ZC_UI(){
     let tools = new ZC_Tools();
 
-    // fill number into zc-input-number-inner using value or default
-    let numberList = document.getElementsByClassName('zc_input_number');
-    for (let item of numberList){
-        let val = item.getAttribute('value') - 0 || 0;
-        let min = item.getAttribute("min") == null ? null : item.getAttribute("min") - 0;
-        let max = item.getAttribute("max") == null ? null : item.getAttribute("max") - 0;
-        let step = item.getAttribute("step") - 0 || 1;
-        let disabled = item.getAttribute("disabled");
-        // init value out of ranger
-        if(min && min > val){
-            if (ENV === "development"){
-                console.error('zc_input_number:init value can not less than min');
-            }
-            else if (ENV === "production"){
-                throw new RangeError('zc_input_number:init value can not less than min');
-            }
-            // set input value
-            item.getElementsByClassName('zc-input-number-inner')[0].value = min;
-            // set object value
-            item.value = min;
-            // set item attribute
-            item.setAttribute('value', min);
-            // set decrease disabled
-            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0],'zc_input_number_disabled');
-        }
-        else if (max && max < val) {
-            if (ENV === "development") {
-                console.error('zc_input_number:init value can not more than max');
-            }
-            else if (ENV === "production") {
-                throw new RangeError('zc_input_number:init value can not more than max');
-            }
-            item.getElementsByClassName('zc-input-number-inner')[0].value = max;
-            item.value = max;
-            item.setAttribute('value', max);
-            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
-        }
-        else{
-            item.getElementsByClassName('zc-input-number-inner')[0].value = val;
-            item.value = val;
-        }
-        // less than one step,set disabled
-        if (min && val - step < min){
-            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
-            item.getElementsByClassName('zc_input_number_decrease')[0].setAttribute('disabled', 'disabled');
-        }
-        if (max && val + step > max){
-            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
-            item.getElementsByClassName('zc_input_number_increase')[0].setAttribute('disabled', 'disabled');
-        }
-        if (disabled != null){
-            tools.addClass(item.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
-            tools.addClass(item.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
-            item.getElementsByClassName('zc-input-number-inner')[0].setAttribute('disabled','disabled');
-        }
-    }
-
     // progress list
     let progressList = document.getElementsByClassName('zc_progress');
     // observer
@@ -302,6 +245,83 @@ function ZC_UI(){
     let zc_input = document.getElementsByClassName('zc-input');
     for(let item of zc_input){
         initInput(item);
+    }
+
+    // create zc-input-number
+    function initNumberInput(el){
+        let val = el.getAttribute('value') - 0 || 0;
+        let min = el.getAttribute("min") == null ? null : el.getAttribute("min") - 0;
+        let max = el.getAttribute("max") == null ? null : el.getAttribute("max") - 0;
+        let step = el.getAttribute("step") - 0 || 1;
+        let disabled = el.getAttribute("disabled");
+        let decrease = document.createElement('span');
+        let decreaseIcon = document.createElement('i');
+        let increase = document.createElement('span');
+        let increaseIcon = document.createElement('i');
+        let input = document.createElement('input');
+        decrease.classList = 'zc_input_number_decrease';
+        decreaseIcon.classList = 'icon iconfont el-icon-erp-jian1';
+        increase.classList = 'zc_input_number_increase';
+        increaseIcon.classList = 'icon iconfont el-icon-erp-weibiaoti37';
+        decrease.append(decreaseIcon);
+        increase.append(increaseIcon);
+        input.setAttribute('type', 'text');
+        input.classList = 'zc-input__inner zc-input-number-inner';
+        el.append(decrease);
+        el.append(input);
+        el.append(increase);
+        // init value out of ranger
+        if (min && min > val) {
+            if (ENV === "development") {
+                throw new RangeError('zc_input_number:init value can not less than min');
+            }
+            else if (ENV === "production") {
+                console.error('zc_input_number:init value can not less than min');
+            }
+            // set input value
+            el.getElementsByClassName('zc-input-number-inner')[0].value = min;
+            // set object value
+            el.value = min;
+            // set el attribute
+            el.setAttribute('value', min);
+            // set decrease disabled
+            tools.addClass(el.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
+        }
+        else if (max && max < val) {
+            if (ENV === "development") {
+                throw new RangeError('zc_input_number:init value can not more than max');
+            }
+            else if (ENV === "production") {
+                console.error('zc_input_number:init value can not more than max');
+            }
+            el.getElementsByClassName('zc-input-number-inner')[0].value = max;
+            el.value = max;
+            el.setAttribute('value', max);
+            tools.addClass(el.getElementsByClassName('zc_input_number_increase')[0], 'zc_input_number_disabled');
+        }
+        else {
+            input.value = val;
+            el.value = val;
+        }
+        // less than one step,set disabled
+        if (min && val - step < min) {
+            tools.addClass(decrease, 'zc_input_number_disabled');
+            decrease.setAttribute('disabled', 'disabled');
+        }
+        if (max && val + step > max) {
+            tools.addClass(increase, 'zc_input_number_disabled');
+            increase.setAttribute('disabled', 'disabled');
+        }
+        if (disabled != null) {
+            tools.addClass(decrease, 'zc_input_number_disabled');
+            tools.addClass(increase, 'zc_input_number_disabled');
+            input.setAttribute('disabled', 'disabled');
+        }
+    }
+    // fill number into zc-input-number-inner using value or default
+    let numberList = document.getElementsByClassName('zc_input_number');
+    for (let item of numberList) {
+        initNumberInput(item);
     }
 
     // document observer
@@ -530,13 +550,13 @@ function ZC_UI(){
             }
             // step default 1
             let step = numberNode.getAttribute("step") - 0 || 1;
-            let min = numberNode.getAttribute("min") - 0;
-            let max = numberNode.getAttribute("max") - 0;
+            let min = numberNode.getAttribute("min") == null ? null : numberNode.getAttribute("min") - 0;
+            let max = numberNode.getAttribute("max") == null ? null : numberNode.getAttribute("max") - 0;
             let disabled = numberNode.getAttribute("disabled");
             let currentValue = numberNode.getElementsByClassName('zc-input-number-inner')[0].value - 0;
             if (disabled == null){
                 // less than one step, disabled, pass
-                if (typeof min && currentValue - step < min) {
+                if (min && currentValue - step < min) {
                     return;
                 }
                 // at least one step, currentValue decrease one step
@@ -548,7 +568,7 @@ function ZC_UI(){
                 numberNode.setAttribute('value', currentValue);
                 numberNode.getElementsByClassName('zc-input-number-inner')[0].value = currentValue;
                 // less than one step,set disabled;or opposite
-                if (typeof min && currentValue - step < min) {
+                if (min && currentValue - step < min) {
                     tools.addClass(numberNode.getElementsByClassName('zc_input_number_decrease')[0], 'zc_input_number_disabled');
                     numberNode.getElementsByClassName('zc_input_number_decrease')[0].setAttribute('disabled', 'disabled');
                 }
