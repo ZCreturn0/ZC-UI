@@ -331,6 +331,9 @@ function ZC_UI(){
                 if (node.classList && node.classList.length && tools.hasClass(node,'zc-input')){
                     initInput(node);
                 }
+                else if (node.classList && node.classList.length && tools.hasClass(node, 'zc_input_number')){
+                    initNumberInput(node);
+                }
             }
         });
     });
