@@ -125,7 +125,7 @@ tr:nth-child(odd){background: #1f2681;}
     100%{transform:rotate(360deg);-ms-transform:rotate(360deg);-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);}
 }
 .zc_loading{position: fixed;width: 100vw;height: 100vh;line-height: 100vh;font-size: 20px;text-align: center;cursor: default;color: #409eff;z-index: 999999;background: rgba(0,0,0,0.7);top: 0;left: 0;}
-.zc_icon_rotate{animation:loadingRotate 1s linear infinite;font-size: 20px;height: 20px;line-height: 20px;}
+.zc_icon_rotate{animation:loadingRotate 1s linear infinite;font-size: 16px;height: 16px;line-height: 16px;}
 
 @keyframes messageAppear{
     0%{opacity: 0;top: -100px;}
