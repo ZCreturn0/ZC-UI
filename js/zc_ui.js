@@ -240,6 +240,12 @@ function ZC_UI(){
         if (el.getAttribute('regex') != null) {
             input.setAttribute('regex', el.getAttribute('regex'));
         }
+        el.setValue = function(value){
+            this.getElementsByClassName('zc-input__inner')[0].value = value;
+        }
+        el.getValue = function(){
+            return this.getElementsByClassName('zc-input__inner')[0].value;
+        }
         el.append(input);
     }
     let zc_input = document.getElementsByClassName('zc-input');
