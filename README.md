@@ -458,10 +458,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 #### 3.7.3 claerable 内容可清除
 
 ```
-<div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" type="text" clearable/>
-    <i class="icon iconfont el-icon-erp-chucuo clearIcon"></i>
-</div>
+<div class="zc-input" clearable placeholder="请输入"></div>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-clearable.png)<br><br>
@@ -474,20 +471,14 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 
 图标在前:
 ```
-<div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" type="text" preIcon/>
-    <i class="icon iconfont el-icon-erp-sousuo preIcon"></i>
-</div>
+<div class="zc-input" preIcon="el-icon-erp-sousuo" placeholder="请输入"></div>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-preIcon.png)<br><br>
 
 图标在后:
 ```
-<div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" type="text" sufIcon/>
-    <i class="icon iconfont el-icon-erp-yanjing sufIcon"></i>
-</div>
+<div class="zc-input" sufIcon="el-icon-erp-yanjing" placeholder="请输入"></div>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-sufIcon.png)<br><br>
