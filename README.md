@@ -440,9 +440,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 #### 3.7.1 基本用法
 
 ```
-<div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" type="text"/>
-</div>
+<div class="zc-input" placeholder="请输入"></div>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input.png)<br><br>
@@ -452,9 +450,7 @@ $notice.$confirm(title,content,{confirmButtonText,cancelButtonText,type,cancelFi
 为input添加disabled属性即可生成disabled输入框;disabled状态下输入框显灰色,不可选中;去除disabled属性则恢复成正常的输入框<br><br>
 例子:
 ```
-<div class="zc-input-content">
-    <input class="zc-input" placeholder="请输入" disabled type="text"/>
-</div>
+<div class="zc-input" placeholder="请输入" disabled></div>
 ```
 所生成的效果如下:<br><br>
 ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/zc-input-disabled.png)<br><br>
