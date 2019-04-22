@@ -149,6 +149,11 @@
     <div class="zc_tag">防遮挡测试</div>
     <div class="zc_btn zc_btn_primary">防遮挡测试</div>
     <br><br><br><br><br><br><br><br><br>
+    <div class="zc-select normalSelect"></div>
+    <div class="zc-select mediumSelect" medium></div>
+    <div class="zc-select smallSelect" small></div>
+    <div class="zc-select miniSelect" mini></div>
+    <br><br><br>
     <div class="zc_progress" percentage="35"></div>
     <div class="zc_progress zc_progress_success" percentage="45"></div>
     <div class="zc_progress zc_progress_info" percentage="55"></div>
@@ -368,6 +373,27 @@
         let mySelect = ui.createSelect(document.getElementsByClassName('mySelect')[0],[
             {value:1,text:'aaaaa'}, 
             { value: 2, text: 'bbbbb' }, 
+            { value: 3, text: 'ccccc' }
+        ]);
+        // different size
+        let normalSelect = ui.createSelect(document.getElementsByClassName('normalSelect')[0], [
+            { value: 1, text: 'aaaaa' },
+            { value: 2, text: 'bbbbb' },
+            { value: 3, text: 'ccccc' }
+        ]);
+        let mediumSelect = ui.createSelect(document.getElementsByClassName('mediumSelect')[0], [
+            { value: 1, text: 'aaaaa' },
+            { value: 2, text: 'bbbbb' },
+            { value: 3, text: 'ccccc' }
+        ]); 
+        let smallSelect = ui.createSelect(document.getElementsByClassName('smallSelect')[0], [
+            { value: 1, text: 'aaaaa' },
+            { value: 2, text: 'bbbbb' },
+            { value: 3, text: 'ccccc' }
+        ]);
+        let miniSelect = ui.createSelect(document.getElementsByClassName('miniSelect')[0], [
+            { value: 1, text: 'aaaaa' },
+            { value: 2, text: 'bbbbb' },
             { value: 3, text: 'ccccc' }
         ]);
         // mySelect.setOption([
