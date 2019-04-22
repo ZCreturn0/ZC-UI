@@ -306,7 +306,7 @@ tr:nth-child(odd){background: #1f2681;}
 .zc_input_number[mini] .zc_input_number_increase{width: 25px;height: 25px;right: 0px;}
 
 .zc-select-area{margin-bottom: 0;}
-.zc-select{display: inline-block;position: relative;vertical-align: top;}
+.zc-select{display: inline-block;position: relative;vertical-align: middle;}
 .zc-select .el-icon-erp-xiangxiajiantouxiao{transform: rotate(-180deg);transition: transform .2s;}
 .zc-select input{cursor: pointer;}
 .zc-select[disabled] input{background-color: #f5f7fa;border-color: #e4e7ed;color: #c0c4cc;cursor: not-allowed;}
