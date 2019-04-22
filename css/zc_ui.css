@@ -314,8 +314,15 @@ tr:nth-child(odd){background: #1f2681;}
 .zc-option{height: 34px;line-height: 34px;cursor: pointer;}
 .zc-option:hover{background: #f5f7fa;}
 .zc-option span{padding: 0 15px;}
-.zc_option_wrapper{width: 220px;max-height: 0;overflow: hidden;margin-left: -20px;position: absolute;z-index: 999;transition: max-height cubic-bezier(0.63, -0.07, 0.92, 0.49) .2s;}
+.zc_option_wrapper{width: 220px;max-height: 0;overflow: hidden;margin-left: -20px;position: absolute;z-index: 9999;transition: max-height cubic-bezier(0.63, -0.07, 0.92, 0.49) .2s;}
 .zc_option_wrapper::before{width: 0;height: 0;border: 10px solid #fff;content: '';position: absolute;z-index: 999;top: 3px;left: 38px;border-top: none;border-left-color: transparent;border-right-color: transparent;}
+
+.zc-select[medium] .zc-input__inner{height: 36px;line-height: 36px;}
+.zc-select[medium] .zc-select-icon{top: 8px;}
+.zc-select[small] .zc-input__inner{height: 32px;line-height: 32px;}
+.zc-select[small] .zc-select-icon{top: 6px;}
+.zc-select[mini] .zc-input__inner{height: 28px;line-height: 28px;}
+.zc-select[mini] .zc-select-icon{top: 4px;}
 
 .zc_progress{display: inline-block;margin: 10px;}
 .zc_progress_bar{width: 300px;height: 6px;background-color: #ebeef5;border-radius: 3px;overflow: hidden;margin: 20px 0;display: inline-block;}
