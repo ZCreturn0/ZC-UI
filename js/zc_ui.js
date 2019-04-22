@@ -231,6 +231,9 @@ function ZC_UI(){
             }
             input.setAttribute(size, '');
         }
+        if (el.getAttribute('readonly') != null) {
+            input.setAttribute('readonly', el.getAttribute('readonly'));
+        }
         if (el.getAttribute('nullmsg') != null){
             input.setAttribute('nullmsg', el.getAttribute('nullmsg'));
         }
