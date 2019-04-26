@@ -50,6 +50,7 @@ tr:nth-child(odd){background: #1f2681;}
     display: inline-block;
     line-height: 1;
     white-space: nowrap;
+    vertical-align: middle;
     cursor: pointer;
     background: #fff;
     border: 1px solid #dcdfe6;
