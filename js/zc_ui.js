@@ -998,7 +998,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
         tr.innerHTML += `<th class="zc_th">${zc_index}</th>`;
     }
     for(let item of this.captain){
-        tr.innerHTML += `<th class="zc_td">${item}</th>`;
+        tr.innerHTML += `<th class="zc_th">${item}</th>`;
     }
 
     this.tools.addClass(tr,'zc_caption_tr');
@@ -1009,6 +1009,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     let n = 1;
     if (table_data.list.length == 0){
         let tr = document.createElement('tr');
+        tr.classList = "zc_tr";
         if (zc_index || zc_index == ''){
             tr.innerHTML += `<td class="zc_td">1</td>`;
             tr.innerHTML += `<td class="zc_td" colspan="${this.captain.length}">暂无数据</td>`;
@@ -1021,6 +1022,7 @@ ZC_UI.prototype.ZC_Table.prototype.update = function (table_data) {
     else{
         for (let item of table_data.list) {
             let tr = document.createElement('tr');
+            tr.classList = "zc_tr";
             if (zc_index || zc_index == '') {
                 tr.innerHTML += `<td class="zc_td">${n}</td>`;
             }
