@@ -520,6 +520,15 @@
         let added_zc_input_number = document.createElement('div');
         added_zc_input_number.classList = 'zc_input_number';
         document.body.append(added_zc_input_number);
+
+        document.write('<br><br>');
+
+        // add zc_progress by using js
+        // <div class="zc_progress zc_progress_wide zc_progress_success" percentage="45"></div>
+        let added_zc_progress = document.createElement('div');
+        added_zc_progress.classList = 'zc_progress zc_progress_wide zc_progress_success';
+        added_zc_progress.setAttribute('percentage','45');
+        document.body.append(added_zc_progress);
     </script>
 </body>
 </html>
