@@ -362,6 +362,9 @@ function ZC_UI(){
                 else if (node.classList && node.classList.length && tools.hasClass(node, 'zc_input_number')){
                     initNumberInput(node);
                 }
+                else if (node.classList && node.classList.length && tools.hasClass(node, 'zc_progress')) {
+                    initProgress(node);
+                }
             }
         });
     });
@@ -373,14 +376,19 @@ function ZC_UI(){
 
     // add progress to progress wrapper
     for (let item of progressList){
-        let percentage = item.getAttribute('percentage');
+        initProgress(item);
+    }
+
+    // create progress
+    function initProgress(el){
+        let percentage = el.getAttribute('percentage');
         let right = 100 - percentage;
         let zc_progress_inner = document.createElement('div');
         let zc_percentage = document.createElement('div');
         let zc_progress_bar = document.createElement('div');
-        let color = item.getAttribute('color');
-        let backgroundColor = item.getAttribute('backgroundColor');
-        let fontColor = item.getAttribute('fontColor');
+        let color = el.getAttribute('color');
+        let backgroundColor = el.getAttribute('backgroundColor');
+        let fontColor = el.getAttribute('fontColor');
         // when has statusIcon attr,the below 2 var is used
         let icon = document.createElement('i');
         icon.setAttribute('percentage', percentage);
@@ -392,41 +400,41 @@ function ZC_UI(){
         zc_progress_bar.classList = 'zc_progress_bar';
         zc_progress_inner.style.right = right + '%';
         zc_percentage.innerText = percentage + '%';
-        if(color){
+        if (color) {
             zc_progress_inner.style.backgroundColor = color;
         }
-        if (backgroundColor){
+        if (backgroundColor) {
             zc_progress_bar.style.backgroundColor = backgroundColor;
         }
-        if (fontColor){
+        if (fontColor) {
             zc_percentage.style.color = fontColor;
         }
         zc_progress_bar.append(zc_progress_inner);
-        item.append(zc_progress_bar);
-        if (item.getAttribute('statusIcon') != null){
-            item.append(icon);
+        el.append(zc_progress_bar);
+        if (el.getAttribute('statusIcon') != null) {
+            el.append(icon);
             zc_progress_inner.style.backgroundColor = statusColor;
         }
-        else{
-            if (tools.hasClass(item,'zc_progress_wide')){
+        else {
+            if (tools.hasClass(el, 'zc_progress_wide')) {
                 zc_percentage.style.position = 'absolute';
                 zc_percentage.style.bottom = '1px';
-                if (percentage >= 9){
+                if (percentage >= 9) {
                     zc_percentage.style.right = '3px';
                     zc_percentage.style.left = '';
                 }
-                else if (percentage < 9){
+                else if (percentage < 9) {
                     zc_percentage.style.right = '';
                     zc_percentage.style.left = (100 - percentage + 1) + '%';
                 }
                 zc_progress_inner.append(zc_percentage);
             }
-            else{
-                item.append(zc_percentage);
+            else {
+                el.append(zc_percentage);
             }
         }
         // observe every progress
-        progressObserver.observe(item, {
+        progressObserver.observe(el, {
             attributes: true
         });
     }
