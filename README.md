@@ -522,9 +522,7 @@ icon可自定义,但必须含有`clearIcon`类<br><br>
 
 创建输入框和按钮,并绑定事件:
 ```
-<div class="zc-input-content inputValue">
-    <input class="zc-input" placeholder="请输入" type="text"/>
-</div>
+<div class="zc-input inputValue"></div>
 <div class="zc_btn zc_btn_primary" onclick="showInputValue()">获取输入框的值</div>
 ```
 在事件函数获取值:
