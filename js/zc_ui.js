@@ -379,6 +379,8 @@ function ZC_UI(){
         let zc_percentage = document.createElement('div');
         let zc_progress_bar = document.createElement('div');
         let color = item.getAttribute('color');
+        let backgroundColor = item.getAttribute('backgroundColor');
+        let fontColor = item.getAttribute('fontColor');
         // when has statusIcon attr,the below 2 var is used
         let icon = document.createElement('i');
         icon.setAttribute('percentage', percentage);
@@ -392,6 +394,12 @@ function ZC_UI(){
         zc_percentage.innerText = percentage + '%';
         if(color){
             zc_progress_inner.style.backgroundColor = color;
+        }
+        if (backgroundColor){
+            zc_progress_bar.style.backgroundColor = backgroundColor;
+        }
+        if (fontColor){
+            zc_percentage.style.color = fontColor;
         }
         zc_progress_bar.append(zc_progress_inner);
         item.append(zc_progress_bar);
@@ -964,6 +972,7 @@ ZC_UI.prototype.ZC_Table.prototype.init = function (table_setting, paginationCal
     }
     this.el = table_setting.el;
     this.table = document.createElement('table');
+    this.table.classList = "zc_table";
     this.captain = table_setting.captain;
     this.field = table_setting.field;
     this.tools = new ZC_Tools();
