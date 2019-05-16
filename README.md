@@ -538,6 +538,19 @@ function showInputValue(){
 1.获取输入框元素
 2.获取这个元素的`value`属性
 
+#### 3.7.7 用js添加input
+
+最新版支持使用js动态添加input:<br><br>
+
+```
+
+var addedInput = document.createElement('div');
+addedInput.classList = 'zc-input';
+addedInput.setAttribute('placeholder', 'js动态添加输入框');
+document.body.append(addedInput);
+
+```
+
 ### 3.8 标签
 
 和按钮相似,标签必须含有`zc_tag`类:<br><br>
