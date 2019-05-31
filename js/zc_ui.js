@@ -354,7 +354,7 @@ function ZC_UI(){
 
     let switchObserver = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
-            let status = mutation.target.getAttribute('status');
+            let status = mutation.target.getAttribute('status') || 'left';
             let leftColor = mutation.target.getAttribute('leftColor') || '#dcdfe6';
             let rightColor = mutation.target.getAttribute('rightColor') || '#409eff';
             let switch_core = mutation.target.getElementsByClassName('zc_switch__core')[0];
@@ -374,7 +374,9 @@ function ZC_UI(){
     function initSwitch(el){
         let leftColor = el.getAttribute('leftColor') || '#dcdfe6';
         let rightColor = el.getAttribute('rightColor') || '#409eff';
-        let status = el.getAttribute('status');
+        let status = el.getAttribute('status') || 'left';
+        // when status was not set
+        el.setAttribute('status', status);
         let switch_core = document.createElement('div');
         switch_core.classList = 'zc_switch__core';
         el.append(switch_core);
