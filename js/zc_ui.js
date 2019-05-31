@@ -359,14 +359,22 @@ function ZC_UI(){
             let rightColor = mutation.target.getAttribute('rightColor') || '#409eff';
             let zc_switch__bg = mutation.target.getElementsByClassName('zc_switch__bg')[0];
             let switch_core = mutation.target.getElementsByClassName('zc_switch__core')[0];
+            let activeTextColor = mutation.target.getAttribute('activeTextColor') || '#409eff';
+            let passiveTextColor = mutation.target.getAttribute('passiveTextColor') || '#fff';
+            let leftTextNode = mutation.target.getElementsByClassName('zc_switch_text__pre')[0];
+            let rightTextNode = mutation.target.getElementsByClassName('zc_switch_text__next')[0];
             if (status == 'left') {
                 zc_switch__bg.style.backgroundColor = leftColor;
                 // mutation.target.style.border = `1px solid ${leftColor}`;
                 switch_core.style.left = '1px';
+                leftTextNode.style.color = activeTextColor;
+                rightTextNode.style.color = passiveTextColor;
             } else if (status == 'right') {
                 zc_switch__bg.style.backgroundColor = rightColor;
                 // mutation.target.style.border = `1px solid ${rightColor}`;
                 switch_core.style.left = '23px';
+                leftTextNode.style.color = passiveTextColor;
+                rightTextNode.style.color = activeTextColor;
             }
         });
     });
@@ -376,21 +384,49 @@ function ZC_UI(){
         let leftColor = el.getAttribute('leftColor') || '#dcdfe6';
         let rightColor = el.getAttribute('rightColor') || '#409eff';
         let status = el.getAttribute('status') || 'left';
+        let leftText = el.getAttribute('leftText');
+        let rightText = el.getAttribute('rightText');
+        let activeTextColor = el.getAttribute('activeTextColor') || '#409eff';
+        let passiveTextColor = el.getAttribute('passiveTextColor') || '#fff';
         // when status was not set
         el.setAttribute('status', status);
         let zc_switch__bg = document.createElement('div');
         let switch_core = document.createElement('div');
+        let leftTextNode = document.createElement('span');
+        let rightTextNode = document.createElement('span');
         zc_switch__bg.classList = 'zc_switch__bg';
         switch_core.classList = 'zc_switch__core';
+        leftTextNode.classList = 'zc_switch_text__pre';
+        rightTextNode.classList = 'zc_switch_text__next';
+        if (leftText) {
+            leftTextNode.innerText = leftText;
+            el.append(leftTextNode);
+        }
         el.append(zc_switch__bg);
+        if (rightText) {
+            rightTextNode.innerText = rightText;
+            el.append(rightTextNode);
+        }
         zc_switch__bg.append(switch_core);
         if (status == 'left') {
             zc_switch__bg.style.backgroundColor = leftColor;
             switch_core.style.left = '1px';
+            if (leftText) {
+                leftTextNode.style.color = activeTextColor;
+            }
+            if (rightText) {
+                rightTextNode.style.color = passiveTextColor;
+            }
         }
         else if (status == 'right') {
             zc_switch__bg.style.backgroundColor = rightColor;
             switch_core.style.left = '23px';
+            if (leftText) {
+                leftTextNode.style.color = passiveTextColor;
+            }
+            if (rightText) {
+                rightTextNode.style.color = activeTextColor;
+            }
         }
         switchObserver.observe(el, {
             attributes: true
