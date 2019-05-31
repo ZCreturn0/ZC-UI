@@ -352,6 +352,24 @@ function ZC_UI(){
         initNumberInput(item);
     }
 
+    let switchObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            let status = mutation.target.getAttribute('status');
+            let leftColor = mutation.target.getAttribute('leftColor') || '#dcdfe6';
+            let rightColor = mutation.target.getAttribute('rightColor') || '#409eff';
+            let switch_core = mutation.target.getElementsByClassName('zc_switch__core')[0];
+            if (status == 'left') {
+                mutation.target.style.backgroundColor = leftColor;
+                // mutation.target.style.border = `1px solid ${leftColor}`;
+                switch_core.style.left = '1px';
+            } else if (status == 'right') {
+                mutation.target.style.backgroundColor = rightColor;
+                // mutation.target.style.border = `1px solid ${rightColor}`;
+                switch_core.style.left = '23px';
+            }
+        });
+    });
+
     // create zc_switch
     function initSwitch(el){
         let leftColor = el.getAttribute('leftColor') || '#dcdfe6';
@@ -362,16 +380,17 @@ function ZC_UI(){
         el.append(switch_core);
         if (status == 'left') {
             el.style.backgroundColor = leftColor;
-            el.style.border = `1px solid ${leftColor}`;
+            // el.style.border = `1px solid ${leftColor}`;
             switch_core.style.left = '1px';
-            switch_core.style.right = '';
         }
         else if (status == 'right') {
             el.style.backgroundColor = rightColor;
-            el.style.border = `1px solid ${rightColor}`;
-            switch_core.style.left = '';
-            switch_core.style.right = '1px';
+            // el.style.border = `1px solid ${rightColor}`;
+            switch_core.style.left = '23px';
         }
+        switchObserver.observe(el, {
+            attributes: true
+        });
     }
     let zc_switch = document.getElementsByClassName('zc_switch');
     for(let item of zc_switch){
@@ -390,6 +409,9 @@ function ZC_UI(){
                 }
                 else if (node.classList && node.classList.length && tools.hasClass(node, 'zc_progress')) {
                     initProgress(node);
+                }
+                else if (node.classList && node.classList.length && tools.hasClass(node, 'zc_switch')) {
+                    initSwitch(node);
                 }
             }
         });
@@ -713,6 +735,13 @@ function ZC_UI(){
                     target.parentNode.parentNode.getElementsByClassName('zc_option_wrapper')[0].style.maxHeight = '0px';
                 }
             }
+        }
+        else if (target.classList && tools.inArr(target.classList, 'zc_switch')) {
+            var status = target.getAttribute('status') == 'left' ? 'right' : 'left';
+            target.setAttribute('status', status);
+        }
+        else if (target.classList && tools.inArr(target.classList, 'zc_switch__core')) {
+            target.parentNode.click();
         }
     },true);
     let numberBefore = "";
