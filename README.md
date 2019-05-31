@@ -572,11 +572,7 @@ document.body.append(addedInput);
 #### 3.9.1 基本用法
 
 ```
-<div class="zc_input_number">
-    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-    <input type="text" class="zc-input zc-input-number-inner">
-    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
-</div>
+<div class="zc_input_number"></div>
 ```
 效果:<br><br>
 
@@ -585,11 +581,7 @@ document.body.append(addedInput);
 #### 3.9.2 属性配置
 
 ```
-<div class="zc_input_number" step="10" value="75" min="30" max="100">
-    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-    <input type="text" class="zc-input zc-input-number-inner">
-    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
-</div>
+<div class="zc_input_number" step="10" value="75" min="30" max="100"></div>
 ```
 
 效果:<br><br>
@@ -618,11 +610,7 @@ document.body.append(addedInput);
 
 ```
 
-<div class="zc_input_number" step="10" value="75" min="30" max="100" disabled>
-    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-    <input type="text" class="zc-input zc-input-number-inner">
-    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
-</div>
+<div class="zc_input_number" step="10" value="75" min="30" max="100" disabled></div>
 
 ```
 
@@ -641,11 +629,7 @@ document.body.append(addedInput);
 创建输入框和按钮,并绑定事件:
 
 ```
-<div class="zc_input_number value_demo">
-    <span class="zc_input_number_decrease"><i class="icon iconfont el-icon-erp-jian1"></i></span>
-    <input type="text" class="zc-input zc-input-number-inner">
-    <span class="zc_input_number_increase"><i class="icon iconfont el-icon-erp-weibiaoti37"></i></span>
-</div>
+<div class="zc_input_number value_demo"></div>
 <div class="zc_btn zc_btn_primary" onclick="showNumberValue()">获取计数器的值</div>
 ```
 
