@@ -352,6 +352,32 @@ function ZC_UI(){
         initNumberInput(item);
     }
 
+    // create zc_switch
+    function initSwitch(el){
+        let leftColor = el.getAttribute('leftColor') || '#dcdfe6';
+        let rightColor = el.getAttribute('rightColor') || '#409eff';
+        let status = el.getAttribute('status');
+        let switch_core = document.createElement('div');
+        switch_core.classList = 'zc_switch__core';
+        el.append(switch_core);
+        if (status == 'left') {
+            el.style.backgroundColor = leftColor;
+            el.style.border = `1px solid ${leftColor}`;
+            switch_core.style.left = '1px';
+            switch_core.style.right = '';
+        }
+        else if (status == 'right') {
+            el.style.backgroundColor = rightColor;
+            el.style.border = `1px solid ${rightColor}`;
+            switch_core.style.left = '';
+            switch_core.style.right = '1px';
+        }
+    }
+    let zc_switch = document.getElementsByClassName('zc_switch');
+    for(let item of zc_switch){
+        initSwitch(item);
+    }
+
     // document observer
     let documentObserver = new MutationObserver(function (mutations){
         mutations.forEach(function(mutation){
