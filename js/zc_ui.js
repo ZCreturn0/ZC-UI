@@ -357,13 +357,14 @@ function ZC_UI(){
             let status = mutation.target.getAttribute('status') || 'left';
             let leftColor = mutation.target.getAttribute('leftColor') || '#dcdfe6';
             let rightColor = mutation.target.getAttribute('rightColor') || '#409eff';
+            let zc_switch__bg = mutation.target.getElementsByClassName('zc_switch__bg')[0];
             let switch_core = mutation.target.getElementsByClassName('zc_switch__core')[0];
             if (status == 'left') {
-                mutation.target.style.backgroundColor = leftColor;
+                zc_switch__bg.style.backgroundColor = leftColor;
                 // mutation.target.style.border = `1px solid ${leftColor}`;
                 switch_core.style.left = '1px';
             } else if (status == 'right') {
-                mutation.target.style.backgroundColor = rightColor;
+                zc_switch__bg.style.backgroundColor = rightColor;
                 // mutation.target.style.border = `1px solid ${rightColor}`;
                 switch_core.style.left = '23px';
             }
@@ -377,17 +378,18 @@ function ZC_UI(){
         let status = el.getAttribute('status') || 'left';
         // when status was not set
         el.setAttribute('status', status);
+        let zc_switch__bg = document.createElement('div');
         let switch_core = document.createElement('div');
+        zc_switch__bg.classList = 'zc_switch__bg';
         switch_core.classList = 'zc_switch__core';
-        el.append(switch_core);
+        el.append(zc_switch__bg);
+        zc_switch__bg.append(switch_core);
         if (status == 'left') {
-            el.style.backgroundColor = leftColor;
-            // el.style.border = `1px solid ${leftColor}`;
+            zc_switch__bg.style.backgroundColor = leftColor;
             switch_core.style.left = '1px';
         }
         else if (status == 'right') {
-            el.style.backgroundColor = rightColor;
-            // el.style.border = `1px solid ${rightColor}`;
+            zc_switch__bg.style.backgroundColor = rightColor;
             switch_core.style.left = '23px';
         }
         switchObserver.observe(el, {
@@ -741,6 +743,9 @@ function ZC_UI(){
         else if (target.classList && tools.inArr(target.classList, 'zc_switch')) {
             var status = target.getAttribute('status') == 'left' ? 'right' : 'left';
             target.setAttribute('status', status);
+        }
+        else if (target.classList && tools.inArr(target.classList, 'zc_switch__bg')) {
+            target.parentNode.click();
         }
         else if (target.classList && tools.inArr(target.classList, 'zc_switch__core')) {
             target.parentNode.click();
