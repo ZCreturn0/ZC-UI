@@ -189,6 +189,9 @@
     <div class="zc_input_number setting_progress" style="bottom:18px;" step="1" value="45" min="0" max="100"></div>
     <br><br><br>
     <div class="zc_switch" leftColor="" rightColor="" status="left"></div>
+    <div class="zc_switch" leftColor="rgb(255, 73, 73)" rightColor="rgb(19, 206, 102)" status="left"></div>
+    <br><br><br>
+    <p>以下元素使用js动态生成:</p>
     <br><br><br>
     <!-- raw $message html -->
     <!--
@@ -532,10 +535,13 @@
         added_zc_progress.setAttribute('percentage','45');
         document.body.append(added_zc_progress);
 
+        document.write('<br><br>');
         // add zc_switch by using js
         let added_zc_switch = document.createElement('div');
         added_zc_switch.classList = 'zc_switch';
         document.body.append(added_zc_switch);
+
+        document.write('<br><br>');
     </script>
 </body>
 </html>
