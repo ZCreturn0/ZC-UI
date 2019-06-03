@@ -376,7 +376,9 @@ function ZC_UI(){
                 leftTextNode.style.color = passiveTextColor;
                 rightTextNode.style.color = activeTextColor;
             }
-            mutation.target.callback.apply(null, mutation.target.args);
+            if (mutation.target.callback) {
+                mutation.target.callback.apply(null, mutation.target.args);
+            }
         });
     });
 
