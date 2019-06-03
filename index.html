@@ -522,6 +522,13 @@
         circle_demo1.setProgressChange(demo1ProgressChange);
         circle_demo2.setProgressChange(demo2ProgressChange);
 
+        var zc_switch = document.getElementsByClassName('zc_switch')[1];
+        zc_switch.setCallback(() => {
+            console.log(zc_switch.getAttribute('status'));
+        });
+
+        // using js
+
         // add zc-input by using js
         let addedInput = document.createElement('div');
         addedInput.classList = 'zc-input';
