@@ -376,6 +376,7 @@ function ZC_UI(){
                 leftTextNode.style.color = passiveTextColor;
                 rightTextNode.style.color = activeTextColor;
             }
+            mutation.target.callback.apply(null, mutation.target.args);
         });
     });
 
@@ -426,6 +427,12 @@ function ZC_UI(){
             }
             if (rightText) {
                 rightTextNode.style.color = activeTextColor;
+            }
+        }
+        el.setCallback = function(callback, ...args){
+            if(callback){
+                el.callback = callback;
+                el.args = args;
             }
         }
         switchObserver.observe(el, {
