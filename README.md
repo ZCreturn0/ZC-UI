@@ -132,12 +132,12 @@ table.update(table_data);
 
 |类名|描述|图例|
 |:---|:---|:---|
-|zc_btn_default|默认按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/default.png)|
-|zc_btn_primary|主要按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/primary.png)|
-|zc_btn_success|成功按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/success.png)|
-|zc_btn_info|信息按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/info.png)|
-|zc_btn_warning|警告按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/warning.png)|
-|zc_btn_danger|危险按钮| ![image](https://github.com/ZCreturn0/ZC-UI/blob/master/readme/danger.png)|
+|zc_btn_default|默认按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/default.png)|
+|zc_btn_primary|主要按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/primary.png)|
+|zc_btn_success|成功按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/success.png)|
+|zc_btn_info|信息按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/info.png)|
+|zc_btn_warning|警告按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/warning.png)|
+|zc_btn_danger|危险按钮| ![image](https://raw.githubusercontent.com/ZCreturn0/ZC-UI/master/readme/danger.png)|
 
 #### 3.2.2 朴素按钮
 
